@@ -1,185 +1,137 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0f6fff" />
-  <meta name="description" content="QR 안내 홈페이지" />
-  <title>섬 따라 등대 한 바퀴 안내 홈페이지</title>
+  <meta name="description" content="섬 따라 등대 한바퀴 안내 홈페이지" />
+  <title>섬 따라 등대 한바퀴 안내 홈페이지</title>
   <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/lang.js" defer></script>
 </head>
-<body>
-  <a class="skip-link" href="#main">본문 바로가기</a>
 
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">본문 바로가기</a>
   <header class="topbar">
     <div class="topbar__inner">
-      <a class="brand" href="#home" aria-label="홈으로 이동">
-        <img class="brand__logo" src="assets/logo.png" alt="등대 로고" />
+      <a class="brand" href="#home" data-i18n-aria="homeAria" aria-label="홈으로 이동">
+        <img class="brand__logo" src="assets/logo-ko.png" alt="2026 여수세계섬박람회" />
+        <span class="brand__title" data-i18n="tourTitle">섬 따라 등대 한바퀴</span>
       </a>
-
-      <button class="size-button" id="sizeButton" type="button" aria-haspopup="true" aria-expanded="false">
-        <span aria-hidden="true">가</span>
-        <span>글자 크기</span>
-      </button>
+      <div class="topbar__controls">
+        <label class="language-control">
+          <span class="language-label">LANG</span>
+          <select class="language-select" aria-label="언어 선택">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+          </select>
+        </label>
+        <button class="size-button" id="sizeButton" type="button" aria-haspopup="true" aria-expanded="false"><span
+            aria-hidden="true">F.S</span><span data-i18n="fontSize">글자 크기</span></button>
+      </div>
     </div>
-
     <div class="size-panel" id="sizePanel" hidden>
-      <div class="size-panel__inner" role="group" aria-label="글자 크기 설정">
-        <button type="button" data-font-size="small">작게</button>
-        <button type="button" data-font-size="normal" class="is-active">중간</button>
-        <button type="button" data-font-size="large">크게</button>
-      </div>
+      <div class="size-panel__inner" role="group" data-i18n-aria="fontGroup" aria-label="글자 크기 설정"><button type="button"
+          data-font-size="small" data-i18n="small">작게</button><button type="button" data-font-size="normal"
+          class="is-active" data-i18n="normal">중간</button><button type="button" data-font-size="large"
+          data-i18n="large">크게</button></div>
     </div>
-</header>
+  </header>
 
-<main id="main">
-  <section class="hero" id="home" aria-labelledby="hero-title">
-    <div class="hero__content">
-      <span class="hero__eyebrow">WELCOME</span>
-      <h1 id="hero-title">섬 따라 등대 한 바퀴 안내 홈페이지</h1>
-      <p>공지사항과 이용 안내를 확인하시고, 궁금하거나 불편사항, 민원이 있으시면 오픈 카톡으로 문의해주세요!</p>
-
-      <div class="hero__actions">
-        <a class="kakao-button" href="카톡주소" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3C6.48 3 2 6.58 2 11c0 2.86 1.88 5.37 4.7 6.78L5.5 22l4.74-2.69c.57.08 1.16.12 1.76.12 5.52 0 10-3.58 10-8.43S17.52 3 12 3Z" />
-          </svg>
-          
-          <span>
-            <strong>오픈카톡 바로가기</strong>
-            <small>문의사항을 남겨주세요.</small>
-          </span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-
-        <a class="directions-button" href="navigator.html">
-          <span class="directions-button__icon" aria-hidden="true">⌖</span>
-          <span>
-            <strong>찾아오는 길</strong>
-            <small>6개 방문 위치를 지도 앱으로 확인하세요.</small>
-          </span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-    <section class="content-section content-section--soft" aria-labelledby="guide-title">
-      <div class="section-heading">
-        <span class="section-heading__icon guide" aria-hidden="true">✓</span>
-        <div>
-          <p>GUIDE</p>
-          <h2 id="guide-title">안내문</h2>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__content"><span class="hero__eyebrow" data-i18n="welcome">WELCOME</span>
+        <h1 id="hero-title" data-i18n="heroTitle">섬 따라 등대 한바퀴 안내 홈페이지</h1>
+        <p data-i18n="heroText">공지사항과 이용 안내를 확인하시고, 궁금하거나 불편사항, 민원이 있으시면 오픈 카톡으로 문의해주세요!</p>
+        <div class="hero__actions">
+          <a class="kakao-button" href="카톡주소" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path
+                d="M12 3C6.48 3 2 6.58 2 11c0 2.86 1.88 5.37 4.7 6.78L5.5 22l4.74-2.69c.57.08 1.16.12 1.76.12 5.52 0 10-3.58 10-8.43S17.52 3 12 3Z" />
+            </svg><span><strong data-i18n="kakaoTitle">오픈카톡 바로가기</strong><small data-i18n="kakaoText">문의사항을
+                남겨주세요.</small></span><span class="arrow" aria-hidden="true">→</span></a>
+          <a class="directions-button" href="navigator.html"><span class="directions-button__icon"
+              aria-hidden="true">⌖</span><span><strong data-i18n="directions">찾아오는 길</strong><small
+                data-i18n="directionsText">6개 방문 위치를 지도 앱으로 확인하세요.</small></span><span class="arrow"
+              aria-hidden="true">→</span></a>
         </div>
       </div>
+    </section>
 
+    <section class="content-section content-section--soft" aria-labelledby="guide-title">
+      <div class="section-heading"><span class="section-heading__icon guide" aria-hidden="true">✓</span>
+        <div>
+          <p>GUIDE</p>
+          <h2 id="guide-title" data-i18n="guide">안내문</h2>
+        </div>
+      </div>
       <ol class="step-list">
-        <li>
-          <span class="step-list__number">1</span>
+        <li><span class="step-list__number">1</span>
           <div>
-            <h3>기념품 안내</h3>
-            <p><strong>오동도등대를 방문하여 기념품을 수령하실 수 있습니다.</strong></p>
+            <h3 data-i18n="giftTitle">기념품 안내</h3>
+            <p><strong data-i18n="giftText">오동도등대를 방문하여 기념품을 수령하실 수 있습니다.</strong></p>
           </div>
         </li>
-        <li>
-          <span class="step-list__number">2</span>
+        <li><span class="step-list__number">2</span>
           <div>
-            <h3>방문 시간 안내</h3>
-            <p><strong>오동도 등대는 18시 이후에 방문 하실 수 없습니다. <br>시간 확인 후 18시 이전에 방문하시길 바랍니다.</strong></p>
+            <h3 data-i18n="timeTitle">방문 시간 안내</h3>
+            <p><strong data-i18n="timeText">오동도 등대는 18시 이후에 방문하실 수 없습니다. 시간 확인 후 18시 이전에 방문하시길 바랍니다.</strong></p>
           </div>
         </li>
-        <!-- <li>
-          <span class="step-list__number">3</span>
-          <div>
-            <h3>문의사항이나 불편사항이 있으면 오픈카톡을 이용해 주세요.</h3>
-            <p>홈 화면의 오픈카톡 바로가기 버튼을 누르면 문의 채널로 이동합니다.</p>
-          </div>
-        </li> -->
       </ol>
     </section>
 
     <section class="content-section" aria-labelledby="notice-title">
-      <div class="section-heading">
-        <span class="section-heading__icon notice" aria-hidden="true">!</span>
+      <div class="section-heading"><span class="section-heading__icon notice" aria-hidden="true">!</span>
         <div>
           <p>NOTICE</p>
-          <h2 id="notice-title">공지사항</h2>
+          <h2 id="notice-title" data-i18n="notice">공지사항</h2>
         </div>
       </div>
-
       <div class="card-list">
         <article class="info-card">
-          <div class="info-card__meta">
-            <span class="badge badge--important">중요</span>
-            <time datetime="2026-07-29">2026. 07. 29.</time>
-          </div>
-          <h3>종이 여권 발급 장소</h3>
-          <p>여수 세계 섬 박람회 장소, 오동도 등대, 여객선 터미널 2곳</p>
+          <div class="info-card__meta"><span class="badge badge--important" data-i18n="important">중요</span><time
+              datetime="2026-07-29">2026. 07. 29.</time></div>
+          <h3 data-i18n="passportPlace">종이 여권 발급 장소</h3>
+          <p data-i18n="passportPlaceText">여수 세계 섬 박람회 장소, 오동도 등대, 여객선 터미널 2곳</p>
         </article>
-
-        <!-- <article class="info-card">
-          <div class="info-card__meta">
-            <span class="badge">안내</span>
-            <time datetime="2026-07-29">2026. 00. 00.</time>
-          </div>
-          <h3></h3>
-          <p></p>
-        </article> -->
-
       </div>
     </section>
 
     <section class="content-section" aria-labelledby="caution-title">
-      <div class="section-heading">
-        <span class="section-heading__icon caution" aria-hidden="true">△</span>
+      <div class="section-heading"><span class="section-heading__icon caution" aria-hidden="true">△</span>
         <div>
           <p>CAUTION</p>
-          <h2 id="caution-title">주의사항</h2>
+          <h2 id="caution-title" data-i18n="caution">주의사항</h2>
         </div>
       </div>
-
       <div class="caution-box">
         <ul>
-          <li><strong>QR 코드는 공식 안내 장소에 부착된 것만 이용해 주세요.</strong></li>
-          <li><strong>네트워크 상태에 따라 페이지 연결이 늦어질 수 있습니다.</strong></li>
-          <li><strong>개인정보나 민감한 정보는 오픈카톡에 남기지 마세요.</strong></li>
-          <li><strong>운영 상황에 따라 안내 내용이 변경될 수 있으니 최신 공지를 확인해 주세요.</strong></li>
-          <li><strong>상품은 1인 1회만 수령 가능하며 중복 수령은 불가합니다.</strong></li>
-          <li><strong>상품은 선착순으로 제공되며, 모두 소진되면 수령하지 못할 수 있습니다.</strong></li>
-          <li><strong>대리 수령 및 대리로 스탬프를 찍어주는 행위는 불가합니다.</strong></li>
+          <li><strong data-i18n="caution1">QR 코드는 공식 안내 장소에 부착된 것만 이용해 주세요.</strong></li>
+          <li><strong data-i18n="caution2">네트워크 상태에 따라 페이지 연결이 늦어질 수 있습니다.</strong></li>
+          <li><strong data-i18n="caution3">개인정보나 민감한 정보는 오픈카톡에 남기지 마세요.</strong></li>
+          <li><strong data-i18n="caution4">운영 상황에 따라 안내 내용이 변경될 수 있으니 최신 공지를 확인해 주세요.</strong></li>
+          <li><strong data-i18n="caution5">상품은 1인 1회만 수령 가능하며 중복 수령은 불가합니다.</strong></li>
+          <li><strong data-i18n="caution6">상품은 선착순으로 제공되며, 모두 소진되면 수령하지 못할 수 있습니다.</strong></li>
+          <li><strong data-i18n="caution7">대리 수령 및 대리로 스탬프를 찍어주는 행위는 불가합니다.</strong></li>
         </ul>
       </div>
     </section>
   </main>
 
-  <!-- ⌂ -->
-  <nav class="bottom-nav" aria-label="주요 메뉴">
-    <a href="#home" class="is-active">
-      <span aria-hidden="true">⌂</span>
-      <small>홈</small>
-    </a>
-    <a href="#guide-title">
-      <span aria-hidden="true">✓</span>
-      <small>안내</small>
-    </a>
-    <a href="#notice-title">
-      <span aria-hidden="true">!</span>
-      <small>공지</small>
-    </a>
-    <a href="#caution-title">
-      <span aria-hidden="true">△</span>
-      <small>주의</small>
-    </a>
-    <a href="navigator.html">
-      <span aria-hidden="true">⌖</span>
-      <small>길찾기</small>
-    </a>
-  </nav>
-
+  <nav class="bottom-nav" data-i18n-aria="navMain" aria-label="주요 메뉴"><a href="#home" class="is-active"><span
+        aria-hidden="true">⌂</span><small data-i18n="home">홈</small></a><a href="#guide-title"><span
+        aria-hidden="true">✓</span><small data-i18n="navGuide">안내</small></a><a href="#notice-title"><span
+        aria-hidden="true">!</span><small data-i18n="navNotice">공지</small></a><a href="#caution-title"><span
+        aria-hidden="true">△</span><small data-i18n="navCaution">주의</small></a><a href="navigator.html"><span
+        aria-hidden="true">⌖</span><small data-i18n="navDirections">길찾기</small></a></nav>
   <footer class="footer">
-    <p>© 여수지방해양수산청</p>
+    <p data-i18n="footer">© 여수지방해양수산청</p>
   </footer>
-
   <script src="assets/app.js"></script>
 </body>
+
 </html>

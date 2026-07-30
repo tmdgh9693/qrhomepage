@@ -27,24 +27,21 @@ html {
 body {
   margin: 0;
   color: var(--text);
-  background: #ffffff;
+  background: #d4d4d4;
   font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.65;
   word-break: keep-all;
   -webkit-font-smoothing: antialiased;
 }
 
-/*
-  assets/background.jpg
-
-body {
+/* body {
   background-image: url("./background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
-*/
+} */
+
 /* 배경 색 변경 */
 body{
   background: #d4d4d4;
@@ -617,4 +614,130 @@ main,
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* 다국어 헤더 */
+body { font-family: var(--lang-font, Pretendard), "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", "Apple SD Gothic Neo", system-ui, sans-serif; }
+.topbar__inner { min-height: 102px; align-items: center; }
+.brand { min-width: 0; gap: 14px; }
+.brand__logo { width: 178px; height: 88px; flex: 0 0 auto; }
+.brand__title { color: #0b4c97; font-size: clamp(1rem, 2.4vw, 1.3rem); font-weight: 850; line-height: 1.25; letter-spacing: -0.035em; }
+.topbar__controls { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.language-control { min-height: 42px; padding: 6px 9px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 13px; color: #344054; background: #fff; font-size: .86rem; font-weight: 750; }
+.language-select { min-height: 30px; max-width: 112px; border: 0; color: #182230; background: transparent; font: inherit; cursor: pointer; outline: none; }
+
+@media (max-width: 640px) {
+  .topbar__inner { min-height: 0; padding-top: 8px; padding-bottom: 8px; align-items: stretch; flex-direction: column; gap: 8px; }
+  .brand { width: 100%; justify-content: flex-start; }
+  .brand__logo { width: 132px; height: 66px; }
+  .brand__title { flex: 1; font-size: 1.04rem; }
+  .topbar__controls { width: 100%; justify-content: space-between; flex-wrap: nowrap; }
+  .language-control { flex: 1 1 auto; }
+  .language-select { width: 100%; max-width: none; }
+  .size-button { flex: 0 0 auto; }
+}
+
+@media (max-width: 390px) {
+  .brand__logo { width: 112px; height: 58px; }
+  .brand__title { font-size: .94rem; }
+  .size-button > span:last-child { display: none; }
+}
+
+/* 언어별 헤더 크기 및 간격 통일 */
+.brand {
+  min-width: 0;
+  gap: 12px;
+}
+
+.brand__logo {
+  flex: 0 0 140px;
+  width: 140px;
+  height: 70px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.brand__title {
+  width: 210px;
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+}
+
+.topbar__controls {
+  flex: 0 0 286px;
+  display: grid;
+  grid-template-columns: 142px 136px;
+  gap: 8px;
+}
+
+.language-control,
+.size-button {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  height: 44px;
+}
+
+.language-control {
+  padding: 6px 10px;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.language-label {
+  flex: 0 0 auto;
+  color: #344054;
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+}
+
+.language-select {
+  width: 76px;
+  max-width: 76px;
+  min-width: 76px;
+  text-align: left;
+}
+
+.size-button {
+  justify-content: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .brand {
+    width: 100%;
+  }
+
+  .brand__logo {
+    flex-basis: 128px;
+    width: 128px;
+    height: 64px;
+  }
+
+  .brand__title {
+    width: auto;
+    min-height: 2.5em;
+  }
+
+  .topbar__controls {
+    width: 100%;
+    flex: none;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .language-select {
+    width: 82px;
+    max-width: 82px;
+    min-width: 82px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand__logo {
+    flex-basis: 112px;
+    width: 112px;
+    height: 58px;
+  }
 }

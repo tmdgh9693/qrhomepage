@@ -1,218 +1,161 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f6fff" />
-  <meta name="description" content="등대 스탬프 투어 찾아오는 길" />
-  <title>찾아오는 길 | 등대 스탬프 투어</title>
-  <link rel="stylesheet" href="assets/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#0f6fff" />
+    <meta name="description" content="섬 따라 등대 한바퀴 찾아오는 길" />
+    <title>찾아오는 길 | 섬 따라 등대 한바퀴</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <script src="assets/lang.js" defer></script>
 </head>
+
 <body>
-  <a class="skip-link" href="#main">본문 바로가기</a>
-
-  <header class="topbar">
-    <div class="topbar__inner">
-      <a class="brand" href="index.html#home" aria-label="홈으로 이동">
-        <img class="brand__logo" src="assets/logo.png" alt="등대 로고" />
-      </a>
-
-      <button class="size-button" id="sizeButton" type="button" aria-haspopup="true" aria-expanded="false">
-        <span aria-hidden="true">가</span>
-        <span>글자 크기</span>
-      </button>
-    </div>
-
-    <div class="size-panel" id="sizePanel" hidden>
-      <div class="size-panel__inner" role="group" aria-label="글자 크기 설정">
-        <button type="button" data-font-size="small">작게</button>
-        <button type="button" data-font-size="normal" class="is-active">중간</button>
-        <button type="button" data-font-size="large">크게</button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main" class="directions-page">
-    <section class="directions-hero" aria-labelledby="directions-title">
-      <a class="back-link" href="index.html#home">← 홈으로 돌아가기</a>
-      <h1 id="directions-title">찾아오는 길</h1>
-      <p>방문할 위치를 선택한 뒤 사용 중인 지도 앱을 눌러주세요. 앱이 설치되어 있지 않으면 웹 지도로 연결됩니다.</p>
-    </section>
-
-    <section class="location-section" aria-label="방문 위치 6곳">
-        <article class="location-card">
-          <div class="location-card__top">
-            <span class="location-card__number">01</span>
-            <div>
-              <h2>섬박람회 주전시관</h2>
-              <p>여수시 돌산읍 진모지구(여수시 돌산읍 강남해안로 196)</p>
-            </div>
-          </div>
-          <div class="map-links" aria-label="섬박람회 주전시관 지도 앱 선택">
-            <a class="map-link map-link--kakao" href="https://kko.to/amOU0Bda1K" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">K</span>
-              <strong>카카오맵</strong>
-            </a>
-            <a class="map-link map-link--naver" href="https://naver.me/xgN2xpvD" data-map-app="naver" data-query="2026 여수세계섬박람회 주전시관 돌산 진모지구" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">N</span>
-              <strong>네이버지도</strong>
-            </a>
-            <a class="map-link map-link--google" href="https://maps.app.goo.gl/Ly53CxKWRduVrEa26" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">G</span>
-              <strong>구글 지도</strong>
-            </a>
-          </div>
-        </article>
-
-        <article class="location-card">
-          <div class="location-card__top">
-            <span class="location-card__number">02</span>
-            <div>
-              <h2>돌산항남방파제등대</h2>
-              <p>전남광주 여수시 돌산읍 군내리 1581</p>
-            </div>
-          </div>
-          <div class="map-links" aria-label="돌산항남방파제등대 지도 앱 선택">
-            <a class="map-link map-link--kakao" href="https://kko.to/vy3U2Gr7LW" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">K</span>
-              <strong>카카오맵</strong>
-            </a>
-            <a class="map-link map-link--naver" href="https://naver.me/x3HeuIzG" data-map-app="naver" data-query="전남 여수시 돌산항남방파제등대" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">N</span>
-              <strong>네이버지도</strong>
-            </a>
-            <a class="map-link map-link--google" href="https://maps.app.goo.gl/JdUj517x11EHz7at6" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">G</span>
-              <strong>구글 지도</strong>
-            </a>
-          </div>
-        </article>
-
-        <article class="location-card">
-          <div class="location-card__top">
-            <span class="location-card__number">03</span>
-            <div>
-              <h2>여수신북항방파제등대</h2>
-              <p>전남광주 여수시 덕충동 2101</p>
-            </div>
-          </div>
-          <div class="map-links" aria-label="여수신북항방파제등대 지도 앱 선택">
-            <a class="map-link map-link--kakao" href="https://kko.to/wto4YJnN1u" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">K</span>
-              <strong>카카오맵</strong>
-            </a>
-            <a class="map-link map-link--naver" href="https://naver.me/G8fBIn9X" data-map-app="naver" data-query="전남 여수시 여수신북항방파제등대" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">N</span>
-              <strong>네이버지도</strong>
-            </a>
-            <a class="map-link map-link--google" href="https://maps.app.goo.gl/259qPGSREyoERhuL6" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">G</span>
-              <strong>구글 지도</strong>
-            </a>
-          </div>
-        </article>
-
-        <article class="location-card">
-          <div class="location-card__top">
-            <span class="location-card__number">04</span>
-            <div>
-              <h2>여수구항방파제 하멜등대</h2>
-              <p>전남광주 여수시 종화동 458-7</p>
-            </div>
-          </div>
-          <div class="map-links" aria-label="여수구항방파제 하멜등대 지도 앱 선택">
-            <a class="map-link map-link--kakao" href="https://kko.to/TxDoI_19vd" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">K</span>
-              <strong>카카오맵</strong>
-            </a>
-            <a class="map-link map-link--naver" href="https://naver.me/x5GoLZUH" data-map-app="naver" data-query="전남 여수시 여수구항방파제 하멜등대" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">N</span>
-              <strong>네이버지도</strong>
-            </a>
-            <a class="map-link map-link--google" href="https://maps.app.goo.gl/F24qaDRRSX5vLb628" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">G</span>
-              <strong>구글 지도</strong>
-            </a>
-          </div>
-        </article>
-
-        <article class="location-card">
-          <div class="location-card__top">
-            <span class="location-card__number">05</span>
-            <div>
-              <h2>여수구항등대</h2>
-              <p>전남광주 여수시 교동 682-1</p>
-            </div>
-          </div>
-          <div class="map-links" aria-label="여수구항등대 지도 앱 선택">
-            <a class="map-link map-link--kakao" href="https://kko.to/DlhVWJBkNm" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">K</span>
-              <strong>카카오맵</strong>
-            </a>
-            <a class="map-link map-link--naver" href="https://naver.me/xKEUHQes" data-map-app="naver" data-query="전남 여수시 여수구항등대" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">N</span>
-              <strong>네이버지도</strong>
-            </a>
-            <a class="map-link map-link--google" href="https://maps.app.goo.gl/nu5q4J39cWP3yvFu7" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">G</span>
-              <strong>구글 지도</strong>
-            </a>
-          </div>
-        </article>
-
-        <article class="location-card">
-          <div class="location-card__top">
-            <span class="location-card__number">06</span>
-            <div>
-              <h2>오동도등대</h2>
-              <p>전남광주 여수시 수정동 1-7</p>
-            </div>
-          </div>
-          <div class="map-links" aria-label="오동도등대 지도 앱 선택">
-            <a class="map-link map-link--kakao" href="https://kko.to/uJh3fwNzpU" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">K</span>
-              <strong>카카오맵</strong>
-            </a>
-            <a class="map-link map-link--naver" href="https://naver.me/FnmraBPD" data-map-app="naver" data-query="전남 여수시 오동도등대" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">N</span>
-              <strong>네이버지도</strong>
-            </a>
-            <a class="map-link map-link--google" href="https://maps.app.goo.gl/HqZv8iDyBfsGEZZH8" target="_blank" rel="noopener noreferrer">
-              <span aria-hidden="true">G</span>
-              <strong>구글 지도</strong>
-            </a>
-          </div>
-        </article>
-    </section>
-  </main>
-
-  <nav class="bottom-nav" aria-label="주요 메뉴">
-    <a href="index.html#home">
-      <span aria-hidden="true">⌂</span>
-      <small>홈</small>
-    </a>
-    <a href="index.html#notice-title">
-      <span aria-hidden="true">!</span>
-      <small>공지</small>
-    </a>
-    <a href="index.html#guide-title">
-      <span aria-hidden="true">✓</span>
-      <small>안내</small>
-    </a>
-    <a href="index.html#caution-title">
-      <span aria-hidden="true">△</span>
-      <small>주의</small>
-    </a>
-    <a href="directions.html" class="is-active" aria-current="page">
-      <span aria-hidden="true">⌖</span>
-      <small>길찾기</small>
-    </a>
-  </nav>
-
-  <footer class="footer">
-    <p>© 여수지방해양수산청</p>
-  </footer>
-
-  <script src="assets/app.js"></script>
+    <a class="skip-link" href="#main" data-i18n="skip">본문 바로가기</a>
+    <header class="topbar">
+        <div class="topbar__inner"><a class="brand" href="index.html#home" data-i18n-aria="homeAria"
+                aria-label="홈으로 이동"><img class="brand__logo" src="assets/logo-ko.png" alt="2026 여수세계섬박람회" /><span
+                    class="brand__title" data-i18n="tourTitle">섬 따라 등대 한바퀴</span></a>
+            <div class="topbar__controls"><label class="language-control"><span
+                        class="language-label">LANG</span><select class="language-select" aria-label="언어 선택">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select></label><button class="size-button" id="sizeButton" type="button" aria-haspopup="true"
+                    aria-expanded="false"><span aria-hidden="true">가</span><span data-i18n="fontSize">글자
+                        크기</span></button></div>
+        </div>
+        <div class="size-panel" id="sizePanel" hidden>
+            <div class="size-panel__inner" role="group" data-i18n-aria="fontGroup"><button type="button"
+                    data-font-size="small" data-i18n="small">작게</button><button type="button" data-font-size="normal"
+                    class="is-active" data-i18n="normal">중간</button><button type="button" data-font-size="large"
+                    data-i18n="large">크게</button></div>
+        </div>
+    </header>
+    <main id="main" class="directions-page">
+        <section class="directions-hero" aria-labelledby="directions-title"><a class="back-link" href="index.html#home"
+                data-i18n="backHome">← 홈으로 돌아가기</a>
+            <h1 id="directions-title" data-i18n="directionsTitle">찾아오는 길</h1>
+            <p data-i18n="directionsIntro"></p>
+        </section>
+        <section class="location-section" data-i18n-aria="locationsAria">
+            <article class="location-card">
+                <div class="location-card__top"><span class="location-card__number">01</span>
+                    <div>
+                        <h2 data-i18n="loc1"></h2>
+                        <p data-i18n="addr1"></p>
+                    </div>
+                </div>
+                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
+                        class="map-link map-link--kakao" href="https://kko.to/amOU0Bda1K" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
+                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
+                        href="https://naver.me/xgN2xpvD" data-map-app="naver" data-query="2026 여수세계섬박람회 주전시관 돌산 진모지구"
+                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
+                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
+                        href="https://maps.app.goo.gl/Ly53CxKWRduVrEa26" target="_blank" rel="noopener noreferrer"><span
+                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
+            </article>
+            <article class="location-card">
+                <div class="location-card__top"><span class="location-card__number">02</span>
+                    <div>
+                        <h2 data-i18n="loc2"></h2>
+                        <p data-i18n="addr2"></p>
+                    </div>
+                </div>
+                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
+                        class="map-link map-link--kakao" href="https://kko.to/vy3U2Gr7LW" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
+                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
+                        href="https://naver.me/x3HeuIzG" data-map-app="naver" data-query="전남 여수시 돌산항남방파제등대"
+                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
+                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
+                        href="https://maps.app.goo.gl/JdUj517x11EHz7at6" target="_blank" rel="noopener noreferrer"><span
+                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
+            </article>
+            <article class="location-card">
+                <div class="location-card__top"><span class="location-card__number">03</span>
+                    <div>
+                        <h2 data-i18n="loc3"></h2>
+                        <p data-i18n="addr3"></p>
+                    </div>
+                </div>
+                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
+                        class="map-link map-link--kakao" href="https://kko.to/wto4YJnN1u" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
+                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
+                        href="https://naver.me/G8fBIn9X" data-map-app="naver" data-query="전남 여수시 여수신북항방파제등대"
+                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
+                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
+                        href="https://maps.app.goo.gl/259qPGSREyoERhuL6" target="_blank" rel="noopener noreferrer"><span
+                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
+            </article>
+            <article class="location-card">
+                <div class="location-card__top"><span class="location-card__number">04</span>
+                    <div>
+                        <h2 data-i18n="loc4"></h2>
+                        <p data-i18n="addr4"></p>
+                    </div>
+                </div>
+                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
+                        class="map-link map-link--kakao" href="https://kko.to/TxDoI_19vd" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
+                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
+                        href="https://naver.me/x5GoLZUH" data-map-app="naver" data-query="전남 여수시 여수구항방파제 하멜등대"
+                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
+                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
+                        href="https://maps.app.goo.gl/F24qaDRRSX5vLb628" target="_blank" rel="noopener noreferrer"><span
+                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
+            </article>
+            <article class="location-card">
+                <div class="location-card__top"><span class="location-card__number">05</span>
+                    <div>
+                        <h2 data-i18n="loc5"></h2>
+                        <p data-i18n="addr5"></p>
+                    </div>
+                </div>
+                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
+                        class="map-link map-link--kakao" href="https://kko.to/DlhVWJBkNm" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
+                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
+                        href="https://naver.me/xKEUHQes" data-map-app="naver" data-query="전남 여수시 여수구항등대" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
+                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
+                        href="https://maps.app.goo.gl/nu5q4J39cWP3yvFu7" target="_blank" rel="noopener noreferrer"><span
+                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
+            </article>
+            <article class="location-card">
+                <div class="location-card__top"><span class="location-card__number">06</span>
+                    <div>
+                        <h2 data-i18n="loc6"></h2>
+                        <p data-i18n="addr6"></p>
+                    </div>
+                </div>
+                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
+                        class="map-link map-link--kakao" href="https://kko.to/uJh3fwNzpU" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
+                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
+                        href="https://naver.me/FnmraBPD" data-map-app="naver" data-query="전남 여수시 오동도등대" target="_blank"
+                        rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
+                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
+                        href="https://maps.app.goo.gl/HqZv8iDyBfsGEZZH8" target="_blank" rel="noopener noreferrer"><span
+                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
+            </article>
+        </section>
+    </main>
+    <nav class="bottom-nav" data-i18n-aria="navMain"><a href="index.html#home"><span aria-hidden="true">⌂</span><small
+                data-i18n="home">홈</small></a><a href="index.html#guide-title"><span aria-hidden="true">✓</span><small
+                data-i18n="navGuide">안내</small></a><a href="index.html#notice-title"><span
+                aria-hidden="true">!</span><small data-i18n="navNotice">공지</small></a><a
+            href="index.html#caution-title"><span aria-hidden="true">△</span><small
+                data-i18n="navCaution">주의</small></a><a href="navigator.html" class="is-active"
+            aria-current="page"><span aria-hidden="true">⌖</span><small data-i18n="navDirections">길찾기</small></a></nav>
+    <footer class="footer">
+        <p data-i18n="footer">© 여수지방해양수산청</p>
+    </footer>
+    <script src="assets/app.js"></script>
 </body>
+
 </html>
