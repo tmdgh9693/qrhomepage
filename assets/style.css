@@ -741,3 +741,159 @@ body { font-family: var(--lang-font, Pretendard), "Noto Sans KR", "Noto Sans JP"
     height: 58px;
   }
 }
+
+
+/* ===== 최종 헤더: 박람회 로고 + 언어별 타이틀 로고 ===== */
+.topbar__inner {
+  width: min(100%, var(--page-width));
+  min-height: 118px;
+  margin: 0 auto;
+  padding: 12px clamp(16px, 3.5vw, 24px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand {
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.brand__logo {
+  width: 90px;
+  height: 64px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.brand__title-logo {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  max-height: 94px;
+  object-fit: contain;
+  object-position: left center;
+  mix-blend-mode: multiply;
+}
+
+.topbar__controls {
+  width: 264px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 8px;
+}
+
+.language-control,
+.size-button {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  border-radius: 12px;
+}
+
+.language-control {
+  padding: 6px 9px;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.language-label {
+  flex: 0 0 auto;
+  font-size: .72rem;
+  letter-spacing: .06em;
+}
+
+.language-select {
+  width: 72px;
+  min-width: 0;
+  max-width: 72px;
+  padding: 0;
+  text-overflow: ellipsis;
+}
+
+.size-button {
+  padding: 7px 9px;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: .82rem;
+}
+
+.size-button span:first-child {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  font-size: .66rem;
+}
+
+@media (max-width: 700px) {
+  .topbar__inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 9px;
+  }
+
+  .brand {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .brand__logo {
+    width: 76px;
+    height: 54px;
+  }
+
+  .brand__title-logo {
+    max-width: none;
+    max-height: 86px;
+  }
+
+  .topbar__controls {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .language-select {
+    width: min(84px, 50%);
+    max-width: 84px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .brand__logo {
+    width: 62px;
+    height: 46px;
+  }
+
+  .brand__title-logo {
+    max-height: 76px;
+  }
+
+  .language-control,
+  .size-button {
+    height: 42px;
+    min-height: 42px;
+  }
+
+  .size-button > span:last-child {
+    display: inline;
+  }
+}

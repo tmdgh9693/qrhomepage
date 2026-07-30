@@ -15,7 +15,7 @@
             giftTitle: '기념품 안내', giftText: '오동도등대를 방문하여 기념품을 수령하실 수 있습니다.',
             timeTitle: '방문 시간 안내', timeText: '오동도 등대는 18시 이후에 방문하실 수 없습니다. 시간 확인 후 18시 이전에 방문하시길 바랍니다.',
             // 공지사항
-            notice: '공지사항', important: '중요', passportPlace: '종이 여권 발급 장소',
+            notice: '공지사항', important: '중요', passportPlace: '종이 여권 수령 장소',
             passportPlaceText: '여수 세계 섬 박람회 장소, 오동도 등대, 여객선 터미널 2곳',
             // 주의사항
             caution: '주의사항',
@@ -181,6 +181,13 @@
         zh: 'assets/logo-zh.png'
     };
 
+    const titleLogoMap = {
+        ko: 'assets/title-ko.png',
+        en: 'assets/title-en.png',
+        ja: 'assets/title-ja.png',
+        zh: 'assets/title-zh.png'
+    };
+
     const localeMap = {
         ko: 'ko-KR',
         en: 'en-US',
@@ -216,11 +223,15 @@
             if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
         });
 
-        const logo = document.querySelector('.brand__logo');
-        if (logo) {
+        document.querySelectorAll('.brand__logo').forEach((logo) => {
             logo.src = logoMap[selected];
             logo.alt = dict.documentTitle;
-        }
+        });
+
+        document.querySelectorAll('.brand__title-logo').forEach((titleLogo) => {
+            titleLogo.src = titleLogoMap[selected];
+            titleLogo.alt = dict.tourTitle;
+        });
 
         document.querySelectorAll('.language-select').forEach((select) => { select.value = selected; });
         localStorage.setItem('qrPageLanguage', selected);
