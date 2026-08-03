@@ -897,3 +897,186 @@ body { font-family: var(--lang-font, Pretendard), "Noto Sans KR", "Noto Sans JP"
     display: inline;
   }
 }
+
+
+/* ===== CJK 줄바꿈 및 칸 넘침 보정 ===== */
+/* 공통: grid/flex 자식이 긴 번역문 때문에 부모 폭을 밀어내지 않도록 제한 */
+.hero__content,
+.kakao-button > *,
+.directions-button > *,
+.section-heading > *,
+.step-list li > *,
+.info-card > *,
+.location-card__top > *,
+.map-link > *,
+.topbar__controls > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+[data-i18n],
+[data-i18n-html],
+.hero h1,
+.hero p,
+.kakao-button strong,
+.kakao-button small,
+.directions-button strong,
+.directions-button small,
+.section-heading h2,
+.info-card h3,
+.info-card p,
+.step-list h3,
+.step-list p,
+.caution-box li,
+.directions-hero h1,
+.directions-hero p,
+.location-card h2,
+.location-card p,
+.bottom-nav small {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* 일본어·중국어는 글자 사이 줄바꿈을 허용하고 금칙처리를 적용 */
+html:lang(ja) body,
+html:lang(zh-CN) body,
+html:lang(zh) body {
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+html:lang(ja) body {
+  font-family: "Noto Sans JP", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", Meiryo, system-ui, sans-serif;
+}
+
+html:lang(zh-CN) body,
+html:lang(zh) body {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
+}
+
+html:lang(ja) [data-i18n],
+html:lang(ja) [data-i18n-html],
+html:lang(zh-CN) [data-i18n],
+html:lang(zh-CN) [data-i18n-html],
+html:lang(zh) [data-i18n],
+html:lang(zh) [data-i18n-html] {
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+/* 지도 앱 이름도 일본어·중국어에서는 말줄임표 대신 자연스럽게 줄바꿈 */
+html:lang(ja) .map-link strong,
+html:lang(zh-CN) .map-link strong,
+html:lang(zh) .map-link strong {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* 번역문이 길어질 때 버튼 높이를 고정하지 않고 내용에 맞춰 확장 */
+html:lang(ja) .kakao-button,
+html:lang(ja) .directions-button,
+html:lang(zh-CN) .kakao-button,
+html:lang(zh-CN) .directions-button,
+html:lang(zh) .kakao-button,
+html:lang(zh) .directions-button {
+  height: auto;
+}
+
+html:lang(ja) .bottom-nav a,
+html:lang(zh-CN) .bottom-nav a,
+html:lang(zh) .bottom-nav a {
+  padding-inline: 2px;
+}
+
+html:lang(ja) .bottom-nav small,
+html:lang(zh-CN) .bottom-nav small,
+html:lang(zh) .bottom-nav small {
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* ===== 페이지 최하단 기관 로고 ===== */
+.site-footer {
+  width: min(100%, var(--page-width));
+  margin: 0 auto;
+  padding: 30px clamp(20px, 5vw, 42px) calc(104px + var(--safe-bottom));
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.site-footer__logos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: clamp(18px, 5vw, 38px);
+}
+
+.site-footer__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 54px;
+  object-fit: contain;
+}
+
+.site-footer__logo--office { max-width: 286px; }
+.site-footer__logo--korea { max-width: 286px; }
+
+@media (min-width: 820px) {
+  .site-footer {
+    padding-bottom: 132px;
+    box-shadow: var(--shadow);
+  }
+}
+
+@media (max-width: 430px) {
+  .site-footer {
+    padding-top: 24px;
+    padding-inline: 16px;
+  }
+
+  .site-footer__logos {
+    gap: 14px;
+  }
+
+  .site-footer__logo {
+    max-height: 42px;
+  }
+}
+
+@media (max-width: 340px) {
+  .site-footer__logos {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__logo {
+    width: min(100%, 240px);
+    max-height: 48px;
+  }
+}
+
+/* 섹션 제목 영역이 GUIDE/NOTICE 라벨의 최소 폭으로 축소되지 않도록 고정 */
+.section-heading > div {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .site-footer__logos {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .site-footer__logo {
+    width: min(100%, 270px);
+    max-height: 56px;
+  }
+}

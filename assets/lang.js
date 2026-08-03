@@ -40,6 +40,7 @@
             loc5: '여수구항등대', addr5: '전라남도 여수시 교동 682-1',
             loc6: '오동도등대', addr6: '전라남도 여수시 수정동 1-7'
         },
+        
         en: {
             documentTitle: 'A Lighthouse Journey Along the Islands',
             description: 'A Lighthouse Journey Along the Islands information website',
