@@ -16,7 +16,8 @@
             timeTitle: '방문 시간 안내', timeText: '오동도 등대는 18시 이후에 방문하실 수 없습니다. 시간 확인 후 18시 이전에 방문하시길 바랍니다.',
             // 공지사항
             notice: '공지사항', important: '중요', passportPlace: '종이 여권 수령 장소',
-            passportPlaceText: '여수 세계 섬 박람회 장소, 오동도 등대, 여객선 터미널 2곳',
+            passportPlaceText: '여수 세계 섬 박람회 장소, 오동도 등대, 여수 연안 여객선 터미널',
+            passportPlaceText2: '여수 구항등대는 근처에서 사진 촬영만 가능하며, 등대 내부는 방문하실 수 없습니다.',
             // 주의사항
             caution: '주의사항',
             caution1: 'QR 코드는 공식 안내 장소에 부착된 것만 이용해 주세요.',
@@ -60,7 +61,8 @@
             timeText: 'Odongdo Lighthouse cannot be visited after 6:00 PM. Please check the time and arrive before 6:00 PM.',
             // 공지사항
             notice: 'Notices', important: 'Important', passportPlace: 'Paper Passport Issuance Locations',
-            passportPlaceText: 'Yeosu World Island Exhibition venue, Odongdo Lighthouse, and two passenger terminals',
+            passportPlaceText: 'Yeosu World Island Exhibition venue, Odongdo Lighthouse, and Yeosu Coastal Passenger Terminal',
+            passportPlaceText2: 'Yeosu Gugang Lighthouse is only accessible for photography outside the premises, and internal visits are not permitted.',
             // 주의사항
             caution: 'Important Notes', 
             caution1: 'Use only QR codes posted at official information locations.',
@@ -105,7 +107,8 @@
             timeText: '梧桐島灯台は18時以降は訪問できません。時間をご確認のうえ、18時前にお越しください。',
             // 공지사항
             notice: 'お知らせ', important: '重要', passportPlace: '紙パスポート発行場所',
-            passportPlaceText: '麗水世界島博覧会会場、梧桐島灯台、旅客船ターミナル2か所',
+            passportPlaceText: '麗水世界島博覧会会場、梧桐島灯台、麗水沿岸旅客船ターミナル',
+            passportPlaceText2: '麗水旧港灯台は周囲での写真撮影のみ可能で、内部への訪問はできません。',
             // 주의사항
             caution: '注意事項', 
             caution1: 'QRコードは公式案内場所に掲示されたものだけをご利用ください。', 
@@ -147,7 +150,8 @@
             // 공지사항
             notice: '公告事项',
             important: '重要', passportPlace: '纸质护照发放地点',
-            passportPlaceText: '丽水世界岛屿博览会会场、梧桐岛灯塔及两处客运码头',
+            passportPlaceText: '丽水世界岛屿博览会会场、梧桐岛灯塔、丽水沿海客运码头',
+            passportPlaceText2: '丽水旧港灯塔仅可在周边进行拍照，内部参观不可。',
             // 주의사항
             caution: '注意事项', 
             caution1: '请仅使用张贴在官方说明地点的二维码。',
