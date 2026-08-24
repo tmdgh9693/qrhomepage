@@ -218,6 +218,29 @@
   });
 
 
+  // 메인 화면 스탬프 명소 6곳 전체 위치도 팝업.
+  const locationOverviewDialog = document.getElementById('locationOverviewDialog');
+  const locationOverviewButtons = [...document.querySelectorAll('[data-location-overview-open]')];
+
+  function closeLocationOverviewDialog() {
+    if (!locationOverviewDialog) return;
+    if (typeof locationOverviewDialog.close === 'function' && locationOverviewDialog.open) locationOverviewDialog.close();
+    else locationOverviewDialog.removeAttribute('open');
+  }
+
+  locationOverviewButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!locationOverviewDialog) return;
+      if (typeof locationOverviewDialog.showModal === 'function') locationOverviewDialog.showModal();
+      else locationOverviewDialog.setAttribute('open', '');
+    });
+  });
+
+  document.querySelectorAll('[data-location-overview-close]').forEach((button) => button.addEventListener('click', closeLocationOverviewDialog));
+  locationOverviewDialog?.addEventListener('click', (event) => {
+    if (event.target === locationOverviewDialog) closeLocationOverviewDialog();
+  });
+
   // 네비게이션 명소별 "안전하게 방문하기" 안내창.
   const safetyDialog = document.getElementById('safetyGuideDialog');
   const safetyDialogTitle = document.getElementById('safetyGuideDialogTitle');
