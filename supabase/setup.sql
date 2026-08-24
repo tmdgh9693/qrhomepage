@@ -19,9 +19,13 @@ create table if not exists public.survey_responses (
     check (operation_satisfaction in ('1', '2', '3', '4', '5', 'not_used')),
   lighthouse_interest smallint
     check (lighthouse_interest is null or lighthouse_interest between 1 and 5),
+  souvenir_helpfulness smallint
+    check (souvenir_helpfulness is null or souvenir_helpfulness between 1 and 5),
   future_participation smallint
     check (future_participation is null or future_participation between 1 and 5),
   inconveniences text[] not null default '{}',
+  inconvenience_other text not null default ''
+    check (char_length(inconvenience_other) <= 500),
   improvement_comment text not null default ''
     check (char_length(improvement_comment) <= 1000),
   positive_comment text not null default ''
@@ -62,3 +66,15 @@ with check (true);
 
 -- SELECT / UPDATE / DELETE 정책은 만들지 않습니다.
 -- 따라서 Publishable key를 사용하는 일반 방문자는 응답을 읽거나 수정·삭제할 수 없습니다.
+
+
+-- 기존 테이블을 사용하는 프로젝트에도 새 설문 필드를 추가합니다.
+alter table public.survey_responses
+  add column if not exists souvenir_helpfulness smallint
+    check (souvenir_helpfulness is null or souvenir_helpfulness between 1 and 5);
+
+alter table public.survey_responses
+  add column if not exists inconvenience_other text not null default ''
+    check (char_length(inconvenience_other) <= 500);
+
+notify pgrst, 'reload schema';

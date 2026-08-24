@@ -5,8 +5,10 @@
   const status = document.getElementById('surveyStatus');
   const complete = document.getElementById('surveyComplete');
   const submitButton = document.getElementById('surveySubmitButton');
+  const q8OtherWrap = document.getElementById('q8OtherWrap');
+  const q8OtherInput = document.getElementById('q8_other');
   const config = window.SURVEY_CONFIG || {};
-  const requiredGroups = ['q1', 'q2', 'q3', 'q4'];
+  const requiredGroups = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
   let supabaseClient = null;
 
   function language() {
@@ -57,23 +59,64 @@
     return form.querySelector(`input[name="${name}"]:checked`)?.value || '';
   }
 
+  function checkedValues(name) {
+    return [...form.querySelectorAll(`input[name="${name}"]:checked`)].map((input) => input.value);
+  }
+
   function scoreOrNull(value) {
     return /^[1-5]$/.test(String(value)) ? Number(value) : null;
   }
 
+  function q8OtherSelected() {
+    return Boolean(form.querySelector('input[name="q8"][value="other"]:checked'));
+  }
+
+  function syncQ8Other() {
+    const visible = q8OtherSelected();
+    if (q8OtherWrap) q8OtherWrap.hidden = !visible;
+    if (q8OtherInput) {
+      q8OtherInput.required = visible;
+      if (!visible) {
+        q8OtherInput.value = '';
+        q8OtherInput.removeAttribute('aria-invalid');
+        const counter = form.querySelector('[data-count-for="q8_other"]');
+        if (counter) counter.textContent = '0';
+      }
+    }
+  }
+
   function validateRequired() {
     let firstInvalid = null;
+
     requiredGroups.forEach((name) => {
       const fieldset = form.querySelector(`[data-required-group="${name}"]`);
       const valid = Boolean(checkedValue(name));
       fieldset?.classList.toggle('is-invalid', !valid);
       if (!valid && !firstInvalid) firstInvalid = fieldset;
     });
+
+    if (q8OtherSelected()) {
+      const otherValid = Boolean(q8OtherInput?.value.trim());
+      const q8Fieldset = form.querySelector('[data-required-group="q8"]');
+      q8OtherInput?.toggleAttribute('aria-invalid', !otherValid);
+      if (!otherValid) {
+        q8Fieldset?.classList.add('is-invalid');
+        if (!firstInvalid) firstInvalid = q8OtherInput || q8Fieldset;
+      }
+    }
+
     if (firstInvalid) {
-      setStatus(t('surveyRequiredError', '필수 문항에 모두 응답해 주세요.'));
+      const otherMissing = q8OtherSelected() && !q8OtherInput?.value.trim();
+      setStatus(
+        otherMissing
+          ? t('surveyOtherRequiredError', '8번에서 기타를 선택한 경우 기타 불편사항을 작성해 주세요.')
+          : t('surveyRequiredError', '필수 문항에 모두 응답해 주세요.')
+      );
       firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (firstInvalid === q8OtherInput) q8OtherInput?.focus({ preventScroll: true });
       return false;
     }
+
     clearStatus();
     return true;
   }
@@ -88,10 +131,12 @@
       stamp_process_convenience: scoreOrNull(checkedValue('q3')),
       operation_satisfaction: q4 === 'not_used' ? 'not_used' : String(scoreOrNull(q4) || ''),
       lighthouse_interest: scoreOrNull(checkedValue('q5')),
-      future_participation: scoreOrNull(checkedValue('q6')),
-      inconveniences: [...form.querySelectorAll('input[name="q7"]:checked')].map((input) => input.value),
-      improvement_comment: form.elements.q8.value.trim().slice(0, 1000),
-      positive_comment: form.elements.q9.value.trim().slice(0, 1000),
+      souvenir_helpfulness: scoreOrNull(checkedValue('q6')),
+      future_participation: scoreOrNull(checkedValue('q7')),
+      inconveniences: checkedValues('q8'),
+      inconvenience_other: q8OtherSelected() ? q8OtherInput.value.trim().slice(0, 500) : '',
+      improvement_comment: form.elements.q9.value.trim().slice(0, 1000),
+      positive_comment: form.elements.q10.value.trim().slice(0, 1000),
       submitted_at_client: new Date().toISOString(),
       source_page: 'survey.html'
     };
@@ -144,7 +189,9 @@
     const { error } = await client.from(tableName).insert(data);
     if (error) {
       console.error('Supabase survey insert failed:', error);
-      throw new Error('SUPABASE_INSERT_FAILED');
+      const wrapped = new Error('SUPABASE_INSERT_FAILED');
+      wrapped.cause = error;
+      throw wrapped;
     }
   }
 
@@ -152,14 +199,31 @@
     if (event.target.matches('input[type="radio"]')) {
       event.target.closest('.survey-question')?.classList.remove('is-invalid');
     }
-    if (event.target.matches('input[name="q7"]')) {
-      const all = [...form.querySelectorAll('input[name="q7"]')];
+
+    if (event.target.matches('input[name="q8"]')) {
+      const all = [...form.querySelectorAll('input[name="q8"]')];
       const none = all.find((input) => input.dataset.noneOption !== undefined);
+
       if (event.target === none && none.checked) {
         all.filter((input) => input !== none).forEach((input) => { input.checked = false; });
       } else if (event.target !== none && event.target.checked && none) {
         none.checked = false;
       }
+
+      syncQ8Other();
+
+      const fieldset = event.target.closest('.survey-question');
+      if (checkedValue('q8') && (!q8OtherSelected() || q8OtherInput?.value.trim())) {
+        fieldset?.classList.remove('is-invalid');
+      }
+    }
+  });
+
+  q8OtherInput?.addEventListener('input', () => {
+    if (q8OtherInput.value.trim()) {
+      q8OtherInput.removeAttribute('aria-invalid');
+      form.querySelector('[data-required-group="q8"]')?.classList.remove('is-invalid');
+      clearStatus();
     }
   });
 
@@ -198,6 +262,7 @@
   window.addEventListener('languagechange', updateLanguageDetails);
   document.addEventListener('DOMContentLoaded', () => {
     updateLanguageDetails();
+    syncQ8Other();
     const alreadySubmitted = config.duplicateStorageKey && localStorage.getItem(config.duplicateStorageKey) === 'true';
     if (alreadySubmitted) showComplete(true);
   });

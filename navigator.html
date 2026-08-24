@@ -1,170 +1,238 @@
 <!doctype html>
 <html lang="ko">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-    <meta name="theme-color" content="#0f6fff" />
-    <meta name="description" content="섬 따라 등대 한바퀴 찾아오는 길" />
-    <title>찾아오는 길 | 섬 따라 등대 한바퀴</title>
-    <link rel="stylesheet" href="assets/style.css" />
-    <script src="assets/lang.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0f6fff" />
+  <meta name="description" content="섬 따라 등대 한바퀴 찾아오는 길" />
+  <title>찾아오는 길 | 섬 따라 등대 한바퀴</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/lang.js" defer></script>
+  <script src="assets/app.js" defer></script>
 </head>
-
 <body>
-    <a class="skip-link" href="#main" data-i18n="skip">본문 바로가기</a>
-    <header class="topbar">
-        <div class="topbar__inner"><a class="brand" href="index.html#home" data-i18n-aria="homeAria"
-                aria-label="홈으로 이동"><img class="brand__logo" src="assets/logo-ko.png" alt="2026 여수세계섬박람회" /><img class="brand__title-logo" src="assets/title-ko.png" alt="섬따라등대한바퀴" /></a>
-            <div class="topbar__controls"><label class="language-control"><span
-                        class="language-label">🌐</span><select class="language-select" aria-label="언어 선택">
-                        <option value="ko">한국어</option>
-                        <option value="en">English</option>
-                        <option value="ja">日本語</option>
-                        <option value="zh">中文</option>
-                    </select></label><button class="size-button" id="sizeButton" type="button" aria-haspopup="true"
-                    aria-expanded="false"><span aria-hidden="true">F.S</span><span data-i18n="fontSize">글자
-                        크기</span></button></div>
-        </div>
-        <div class="size-panel" id="sizePanel" hidden>
-            <div class="size-panel__inner" role="group" data-i18n-aria="fontGroup"><button type="button"
-                    data-font-size="small" data-i18n="small">작게</button><button type="button" data-font-size="normal"
-                    class="is-active" data-i18n="normal">중간</button><button type="button" data-font-size="large"
-                    data-i18n="large">크게</button></div>
-        </div>
-    </header>
-    <main id="main" class="directions-page">
-        <section class="directions-hero" aria-labelledby="directions-title"><a class="back-link" href="index.html#home"
-                data-i18n="backHome">← 홈으로 돌아가기</a>
-            <h1 id="directions-title" data-i18n="directionsTitle">찾아오는 길</h1>
-            <p data-i18n="directionsIntro"></p>
-        </section>
-        <section class="location-section" data-i18n-aria="locationsAria">
-            <article class="location-card">
-                <div class="location-card__top"><span class="location-card__number">01</span>
-                    <div>
-                        <h2 data-i18n="loc1"></h2>
-                        <p data-i18n="addr1"></p>
-                    </div>
-                </div>
-                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
-                        class="map-link map-link--kakao" href="https://kko.to/amOU0Bda1K" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
-                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
-                        href="https://naver.me/xgN2xpvD" data-map-app="naver" data-query="2026 여수세계섬박람회 주전시관 돌산 진모지구"
-                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
-                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
-                        href="https://maps.app.goo.gl/Ly53CxKWRduVrEa26" target="_blank" rel="noopener noreferrer"><span
-                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
-                            <img class="expoimage" src="assets/조감도.jpg" alt="조감도" />
-            </article>
-            <article class="location-card">
-                <div class="location-card__top"><span class="location-card__number">02</span>
-                    <div>
-                        <h2 data-i18n="loc2"></h2>
-                        <p data-i18n="addr2"></p>
-                    </div>
-                </div>
-                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
-                        class="map-link map-link--kakao" href="https://kko.to/vy3U2Gr7LW" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
-                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
-                        href="https://naver.me/x3HeuIzG" data-map-app="naver" data-query="전남 여수시 돌산항남방파제등대"
-                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
-                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
-                        href="https://maps.app.goo.gl/JdUj517x11EHz7at6" target="_blank" rel="noopener noreferrer"><span
-                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
-                            <img class="dolsanimage" src="assets/돌산항남방파제등대.jpg" alt="돌산항남방파제등대" />
-            </article>
-            <article class="location-card">
-                <div class="location-card__top"><span class="location-card__number">03</span>
-                    <div>
-                        <h2 data-i18n="loc3"></h2>
-                        <p data-i18n="addr3"></p>
-                    </div>
-                </div>
-                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
-                        class="map-link map-link--kakao" href="https://kko.to/wto4YJnN1u" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
-                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
-                        href="https://naver.me/G8fBIn9X" data-map-app="naver" data-query="전남 여수시 여수신북항방파제등대"
-                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
-                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
-                        href="https://maps.app.goo.gl/259qPGSREyoERhuL6" target="_blank" rel="noopener noreferrer"><span
-                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
-                            <img class="organimage" src="assets/오르간등대.jpg" alt="오르간등대" />
-            </article>
-            <article class="location-card">
-                <div class="location-card__top"><span class="location-card__number">04</span>
-                    <div>
-                        <h2 data-i18n="loc4"></h2>
-                        <p data-i18n="addr4"></p>
-                    </div>
-                </div>
-                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
-                        class="map-link map-link--kakao" href="https://kko.to/TxDoI_19vd" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
-                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
-                        href="https://naver.me/x5GoLZUH" data-map-app="naver" data-query="전남 여수시 여수구항방파제 하멜등대"
-                        target="_blank" rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
-                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
-                        href="https://maps.app.goo.gl/F24qaDRRSX5vLb628" target="_blank" rel="noopener noreferrer"><span
-                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
-                            <img class="hamelimage" src="assets/하멜등대.jpg" alt="하멜등대" />
-            </article>
-            <article class="location-card">
-                <div class="location-card__top"><span class="location-card__number">05</span>
-                    <div>
-                        <h2 data-i18n="loc5"></h2>
-                        <p data-i18n="addr5"></p>
-                    </div>
-                </div>
-                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
-                        class="map-link map-link--kakao" href="https://kko.to/DlhVWJBkNm" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
-                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
-                        href="https://naver.me/xKEUHQes" data-map-app="naver" data-query="전남 여수시 여수구항등대" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
-                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
-                        href="https://maps.app.goo.gl/nu5q4J39cWP3yvFu7" target="_blank" rel="noopener noreferrer"><span
-                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
-                            <img class="bportimage" src="assets/여수구항등대.jpg" alt="여수구항등대" />
-            </article>
-            <article class="location-card">
-                <div class="location-card__top"><span class="location-card__number">06</span>
-                    <div>
-                        <h2 data-i18n="loc6"></h2>
-                        <p data-i18n="addr6"></p>
-                    </div>
-                </div>
-                <div class="map-links" data-i18n-aria="mapChoice" aria-label="지도 앱 선택"><a
-                        class="map-link map-link--kakao" href="https://kko.to/uJh3fwNzpU" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">K</span><strong
-                            data-i18n="kakaoMap"></strong></a><a class="map-link map-link--naver"
-                        href="https://naver.me/FnmraBPD" data-map-app="naver" data-query="전남 여수시 오동도등대" target="_blank"
-                        rel="noopener noreferrer"><span aria-hidden="true">N</span><strong
-                            data-i18n="naverMap"></strong></a><a class="map-link map-link--google"
-                        href="https://maps.app.goo.gl/HqZv8iDyBfsGEZZH8" target="_blank" rel="noopener noreferrer"><span
-                            aria-hidden="true">G</span><strong data-i18n="googleMap"></strong></a></div>
-                            <img class="odongdoimage" src="assets/오동도등대.jpg" alt="오동도등대" />
-            </article>
-        </section>
-    </main>
-
-    <footer class="site-footer" aria-label="기관 로고">
-      <div class="site-footer__logos">
-        <img class="site-footer__logo site-footer__logo--office" src="assets/yeosu-office-logo.png" alt="여수지방해양수산청" />
-        <img class="site-footer__logo site-footer__logo--korea" src="assets/korea-signature-logo.png" alt="대체불가 대한민국" />
+  <a class="skip-link" href="#main" data-i18n="skip">본문 바로가기</a>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html#home" data-i18n-aria="homeAria" aria-label="홈으로 이동">
+        <img class="brand__logo" src="assets/logo-ko.png" alt="2026 여수세계섬박람회" />
+        <img class="brand__title-logo" src="assets/title-ko.png" alt="섬따라등대한바퀴" />
+      </a>
+      <div class="topbar__controls">
+        <label class="language-control"><span class="language-label">🌐</span><select class="language-select" aria-label="언어 선택">
+          <option value="ko">한국어</option><option value="en">English</option><option value="ja">日本語</option><option value="zh">中文</option>
+        </select></label>
+        <button class="size-button" id="sizeButton" type="button" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true">F.S</span><span data-i18n="fontSize">글자 크기</span></button>
       </div>
-    </footer>
-    <nav class="bottom-nav" data-i18n-aria="navMain"><a href="index.html#home"><span aria-hidden="true">⏏️</span><small
-                data-i18n="home">홈</small></a><a href="index.html#guide-title"><span aria-hidden="true">✅</span><small
-                data-i18n="navGuide">안내</small></a><a href="index.html#notice-title"><span
-                aria-hidden="true">❗</span><small data-i18n="navNotice">공지</small></a><a
-            href="index.html#caution-title"><span aria-hidden="true">⚠️</span><small
-                data-i18n="navCaution">주의</small></a><a href="navigator.html" class="is-active"
-            aria-current="page"><span aria-hidden="true">🗺️</span><small data-i18n="navDirections">길찾기</small></a></nav>
-<script src="assets/app.js"></script>
-</body>
+    </div>
+    <div class="size-panel" id="sizePanel" hidden><div class="size-panel__inner" role="group" data-i18n-aria="fontGroup">
+      <button type="button" data-font-size="small" data-i18n="small">작게</button><button type="button" data-font-size="normal" class="is-active" data-i18n="normal">중간</button><button type="button" data-font-size="large" data-i18n="large">크게</button>
+    </div></div>
+  </header>
 
+  <main id="main" class="directions-page directions-page--cards">
+    <section class="directions-hero directions-hero--cards" aria-labelledby="directions-title">
+      <a class="back-link" href="index.html#home" data-i18n="backHome">← 홈으로 돌아가기</a>
+      <span class="directions-hero__eyebrow">NAVIGATION</span>
+      <h1 id="directions-title" data-i18n="directionsTitle">찾아오는 길</h1>
+      <p data-i18n="navigatorIntro">각 명소의 특징과 스탬프·종이 여권 수령 여부를 확인하고, 길찾기와 안전 안내를 이용해 주세요.</p>
+      <div class="navigator-summary">
+        <span><i aria-hidden="true">●</i><strong data-i18n="stampAllSix">6곳 모두 스탬프 있음</strong></span>
+        <span><i aria-hidden="true">📘</i><strong data-i18n="passportThree">3곳에서 종이 여권 수령 가능</strong></span>
+        <span><i aria-hidden="true">🛡️</i><strong data-i18n="safetyCheck">방문 전 안전 안내 확인</strong></span>
+      </div>
+    </section>
+
+    <section class="nav-place-section" data-i18n-aria="locationsAria" aria-label="방문 위치 6곳">
+        <article class="nav-place-card" id="location-1">
+          <div class="nav-place-card__image">
+            <img src="assets/spot-01.jpg" alt="" loading="lazy" />
+            <span class="nav-place-card__number">1</span>
+          </div>
+          <div class="nav-place-card__body">
+            <h2 data-i18n="loc1"></h2>
+            <p class="nav-place-card__description" data-i18n="loc1Desc"></p>
+            <div class="nav-place-card__status" aria-label="운영 상태">
+              <span class="nav-status-badge nav-status-badge--stamp"><span aria-hidden="true">●</span><strong data-i18n="stampAvailable">스탬프 있음</strong></span>
+              <span class="nav-status-badge nav-status-badge--yes"><span aria-hidden="true">📘</span><strong data-i18n="passportAvailable"></strong></span>
+            </div>
+            <div class="nav-place-card__address">
+              <span aria-hidden="true">🗺️</span>
+              <div><strong data-i18n="addressLabel">주소</strong><p data-i18n="addr1"></p></div>
+            </div>
+            <div class="nav-place-card__actions">
+              <button class="nav-place-action nav-place-action--route" type="button"
+                data-map-choice data-kakao-url="https://kko.to/amOU0Bda1K" data-naver-url="https://naver.me/xgN2xpvD" data-google-url="https://maps.app.goo.gl/Ly53CxKWRduVrEa26"
+                data-query="2026 여수세계섬박람회 주전시관 돌산 진모지구" data-title-key="loc1"><span aria-hidden="true">🗺️</span><strong data-i18n="findRoute">길찾기</strong></button>
+              <button class="nav-place-action nav-place-action--safe" type="button" data-safety-guide
+                data-title-key="loc1" data-safety-key="safe1"><span aria-hidden="true">🛡️</span><strong data-i18n="visitSafely">안전하게 방문하기</strong></button>
+            </div>
+          </div>
+        </article>
+        <article class="nav-place-card" id="location-2">
+          <div class="nav-place-card__image">
+            <img src="assets/spot-02.jpg" alt="" loading="lazy" />
+            <span class="nav-place-card__number">2</span>
+          </div>
+          <div class="nav-place-card__body">
+            <h2 data-i18n="loc2"></h2>
+            <p class="nav-place-card__description" data-i18n="loc2Desc"></p>
+            <div class="nav-place-card__status" aria-label="운영 상태">
+              <span class="nav-status-badge nav-status-badge--stamp"><span aria-hidden="true">●</span><strong data-i18n="stampAvailable">스탬프 있음</strong></span>
+              <span class="nav-status-badge nav-status-badge--no"><span aria-hidden="true">📘</span><strong data-i18n="passportUnavailable"></strong></span>
+            </div>
+            <div class="nav-place-card__address">
+              <span aria-hidden="true">🗺️</span>
+              <div><strong data-i18n="addressLabel">주소</strong><p data-i18n="addr2"></p></div>
+            </div>
+            <div class="nav-place-card__actions">
+              <button class="nav-place-action nav-place-action--route" type="button"
+                data-map-choice data-kakao-url="https://kko.to/vy3U2Gr7LW" data-naver-url="https://naver.me/x3HeuIzG" data-google-url="https://maps.app.goo.gl/JdUj517x11EHz7at6"
+                data-query="전남 여수시 돌산항남방파제등대" data-title-key="loc2"><span aria-hidden="true">🗺️</span><strong data-i18n="findRoute">길찾기</strong></button>
+              <button class="nav-place-action nav-place-action--safe" type="button" data-safety-guide
+                data-title-key="loc2" data-safety-key="safe2"><span aria-hidden="true">🛡️</span><strong data-i18n="visitSafely">안전하게 방문하기</strong></button>
+            </div>
+          </div>
+        </article>
+        <article class="nav-place-card" id="location-3">
+          <div class="nav-place-card__image">
+            <img src="assets/spot-03.jpg" alt="" loading="lazy" />
+            <span class="nav-place-card__number">3</span>
+          </div>
+          <div class="nav-place-card__body">
+            <h2 data-i18n="loc3"></h2>
+            <p class="nav-place-card__description" data-i18n="loc3Desc"></p>
+            <div class="nav-place-card__status" aria-label="운영 상태">
+              <span class="nav-status-badge nav-status-badge--stamp"><span aria-hidden="true">●</span><strong data-i18n="stampAvailable">스탬프 있음</strong></span>
+              <span class="nav-status-badge nav-status-badge--no"><span aria-hidden="true">📘</span><strong data-i18n="passportUnavailable"></strong></span>
+            </div>
+            <div class="nav-place-card__address">
+              <span aria-hidden="true">🗺️</span>
+              <div><strong data-i18n="addressLabel">주소</strong><p data-i18n="addr3"></p></div>
+            </div>
+            <div class="nav-place-card__actions">
+              <button class="nav-place-action nav-place-action--route" type="button"
+                data-map-choice data-kakao-url="https://kko.to/wto4YJnN1u" data-naver-url="https://naver.me/G8fBIn9X" data-google-url="https://maps.app.goo.gl/259qPGSREyoERhuL6"
+                data-query="전남 여수시 여수신북항방파제등대" data-title-key="loc3"><span aria-hidden="true">🗺️</span><strong data-i18n="findRoute">길찾기</strong></button>
+              <button class="nav-place-action nav-place-action--safe" type="button" data-safety-guide
+                data-title-key="loc3" data-safety-key="safe3"><span aria-hidden="true">🛡️</span><strong data-i18n="visitSafely">안전하게 방문하기</strong></button>
+            </div>
+          </div>
+        </article>
+        <article class="nav-place-card" id="location-4">
+          <div class="nav-place-card__image">
+            <img src="assets/spot-04.jpg" alt="" loading="lazy" />
+            <span class="nav-place-card__number">4</span>
+          </div>
+          <div class="nav-place-card__body">
+            <h2 data-i18n="loc4"></h2>
+            <p class="nav-place-card__description" data-i18n="loc4Desc"></p>
+            <div class="nav-place-card__status" aria-label="운영 상태">
+              <span class="nav-status-badge nav-status-badge--stamp"><span aria-hidden="true">●</span><strong data-i18n="stampAvailable">스탬프 있음</strong></span>
+              <span class="nav-status-badge nav-status-badge--no"><span aria-hidden="true">📘</span><strong data-i18n="passportUnavailable"></strong></span>
+            </div>
+            <div class="nav-place-card__address">
+              <span aria-hidden="true">🗺️</span>
+              <div><strong data-i18n="addressLabel">주소</strong><p data-i18n="addr4"></p></div>
+            </div>
+            <div class="nav-place-card__actions">
+              <button class="nav-place-action nav-place-action--route" type="button"
+                data-map-choice data-kakao-url="https://kko.to/TxDoI_19vd" data-naver-url="https://naver.me/x5GoLZUH" data-google-url="https://maps.app.goo.gl/F24qaDRRSX5vLb628"
+                data-query="전남 여수시 여수구항방파제 하멜등대" data-title-key="loc4"><span aria-hidden="true">🗺️</span><strong data-i18n="findRoute">길찾기</strong></button>
+              <button class="nav-place-action nav-place-action--safe" type="button" data-safety-guide
+                data-title-key="loc4" data-safety-key="safe4"><span aria-hidden="true">🛡️</span><strong data-i18n="visitSafely">안전하게 방문하기</strong></button>
+            </div>
+          </div>
+        </article>
+        <article class="nav-place-card" id="location-5">
+          <div class="nav-place-card__image">
+            <img src="assets/spot-05.jpg" alt="" loading="lazy" />
+            <span class="nav-place-card__number">5</span>
+          </div>
+          <div class="nav-place-card__body">
+            <h2 data-i18n="loc5"></h2>
+            <p class="nav-place-card__description" data-i18n="loc5Desc"></p>
+            <div class="nav-place-card__status" aria-label="운영 상태">
+              <span class="nav-status-badge nav-status-badge--stamp"><span aria-hidden="true">●</span><strong data-i18n="stampAvailable">스탬프 있음</strong></span>
+              <span class="nav-status-badge nav-status-badge--yes"><span aria-hidden="true">📘</span><strong data-i18n="passportAvailable"></strong></span>
+            </div>
+            <div class="nav-place-card__address">
+              <span aria-hidden="true">🗺️</span>
+              <div><strong data-i18n="addressLabel">주소</strong><p data-i18n="addr5"></p></div>
+            </div>
+            <div class="nav-place-card__actions">
+              <button class="nav-place-action nav-place-action--route" type="button"
+                data-map-choice data-kakao-url="https://kko.to/DlhVWJBkNm" data-naver-url="https://naver.me/xKEUHQes" data-google-url="https://maps.app.goo.gl/nu5q4J39cWP3yvFu7"
+                data-query="전남 여수시 여수구항등대" data-title-key="loc5"><span aria-hidden="true">🗺️</span><strong data-i18n="findRoute">길찾기</strong></button>
+              <button class="nav-place-action nav-place-action--safe" type="button" data-safety-guide
+                data-title-key="loc5" data-safety-key="safe5"><span aria-hidden="true">🛡️</span><strong data-i18n="visitSafely">안전하게 방문하기</strong></button>
+            </div>
+          </div>
+        </article>
+        <article class="nav-place-card" id="location-6">
+          <div class="nav-place-card__image">
+            <img src="assets/spot-06.jpg" alt="" loading="lazy" />
+            <span class="nav-place-card__number">6</span>
+          </div>
+          <div class="nav-place-card__body">
+            <h2 data-i18n="loc6"></h2>
+            <p class="nav-place-card__description" data-i18n="loc6Desc"></p>
+            <div class="nav-place-card__status" aria-label="운영 상태">
+              <span class="nav-status-badge nav-status-badge--stamp"><span aria-hidden="true">●</span><strong data-i18n="stampAvailable">스탬프 있음</strong></span>
+              <span class="nav-status-badge nav-status-badge--yes"><span aria-hidden="true">📘</span><strong data-i18n="passportAvailable"></strong></span>
+              <span class="nav-status-badge nav-status-badge--gift"><span aria-hidden="true">🎁</span><strong data-i18n="giftAvailable">기념품 수령 가능</strong></span>
+            </div>
+            <div class="nav-place-card__address">
+              <span aria-hidden="true">🗺️</span>
+              <div><strong data-i18n="addressLabel">주소</strong><p data-i18n="addr6"></p></div>
+            </div>
+            <div class="nav-place-card__actions">
+              <button class="nav-place-action nav-place-action--route" type="button"
+                data-map-choice data-kakao-url="https://kko.to/uJh3fwNzpU" data-naver-url="https://naver.me/FnmraBPD" data-google-url="https://maps.app.goo.gl/HqZv8iDyBfsGEZZH8"
+                data-query="전남 여수시 오동도등대" data-title-key="loc6"><span aria-hidden="true">🗺️</span><strong data-i18n="findRoute">길찾기</strong></button>
+              <button class="nav-place-action nav-place-action--safe" type="button" data-safety-guide
+                data-title-key="loc6" data-safety-key="safe6"><span aria-hidden="true">🛡️</span><strong data-i18n="visitSafely">안전하게 방문하기</strong></button>
+            </div>
+          </div>
+        </article>
+    </section>
+
+    <section class="navigator-footnote" aria-label="공통 방문 안내">
+      <span aria-hidden="true">ℹ️</span>
+      <p data-i18n="navigatorFootnote">운영·스탬프 시간과 현장 출입 가능 여부는 상황에 따라 변경될 수 있습니다. 현장 안내와 통제에 따라 이용해 주세요.</p>
+    </section>
+  </main>
+
+  <dialog class="map-choice-dialog" id="mapChoiceDialog" aria-labelledby="mapChoiceDialogTitle">
+    <div class="map-choice-dialog__top"><div><p>MAP</p><h2 id="mapChoiceDialogTitle" data-i18n="mapChoice">지도 앱 선택</h2></div><button class="map-choice-dialog__close" type="button" data-map-dialog-close data-i18n-aria="closeDialog" aria-label="닫기">×</button></div>
+    <p class="map-choice-dialog__guide" data-i18n="mapChoiceGuide">사용할 지도 서비스를 선택해 주세요.</p>
+    <div class="map-choice-dialog__options" data-i18n-aria="mapChoice" aria-label="지도 앱 선택">
+      <a id="mapChoiceKakao" class="map-choice-option map-choice-option--kakao" href="#" target="_blank" rel="noopener noreferrer"><span class="map-brand" aria-hidden="true">K</span><strong data-i18n="kakaoMap">카카오맵</strong><small>Kakao Map</small></a>
+      <a id="mapChoiceGoogle" class="map-choice-option map-choice-option--google" href="#" target="_blank" rel="noopener noreferrer"><span class="map-brand" aria-hidden="true">G</span><strong data-i18n="googleMap">구글 지도</strong><small>Google Maps</small></a>
+      <a id="mapChoiceNaver" class="map-choice-option map-choice-option--naver" href="#" data-map-app="naver" data-query="" target="_blank" rel="noopener noreferrer"><span class="map-brand" aria-hidden="true">N</span><strong data-i18n="naverMap">네이버지도</strong><small>NAVER Map</small></a>
+    </div>
+    <button class="map-choice-dialog__bottom-close" type="button" data-map-dialog-close data-i18n="close">닫기</button>
+  </dialog>
+
+  <dialog class="safety-guide-dialog" id="safetyGuideDialog" aria-labelledby="safetyGuideDialogTitle">
+    <div class="safety-guide-dialog__top"><div><p>SAFETY GUIDE</p><h2 id="safetyGuideDialogTitle" data-i18n="visitSafely">안전하게 방문하기</h2></div><button class="safety-guide-dialog__close" type="button" data-safety-dialog-close data-i18n-aria="closeDialog" aria-label="닫기">×</button></div>
+    <div class="safety-guide-dialog__body">
+      <div class="safety-guide-dialog__place"><span aria-hidden="true">🛡️</span><div><strong id="safetyGuidePlaceName"></strong><p id="safetyGuideMessage"></p></div></div>
+      <div class="safety-guide-common"><strong data-i18n="safetyCommonTitle">공통 안전 안내</strong><ul>
+        <li data-i18n="safetyCommon1">방파제·등대 주변은 미끄럼 및 추락 위험이 있으니 주의해 주세요.</li>
+        <li data-i18n="safetyCommon2">강풍·우천·높은 파도 시에는 무리한 접근을 삼가 주세요.</li>
+        <li data-i18n="safetyCommon3">출입 제한구역과 시설 내부 무단 진입을 금합니다.</li>
+        <li data-i18n="safetyCommon4">야간 방문 시 조명이 어두운 구간은 보행에 유의해 주세요.</li>
+        <li data-i18n="safetyCommon5">사진 촬영 시 안전선 밖이동과 난간 위 행동을 금합니다.</li>
+        <li data-i18n="safetyCommon6">어린이 방문 시 보호자 동반을 권장합니다.</li>
+        <li data-i18n="safetyCommon7">현장 안내표지와 관리자의 안내를 따라 주세요.</li>
+      </ul></div>
+    </div>
+    <button class="safety-guide-dialog__bottom-close" type="button" data-safety-dialog-close data-i18n="close">닫기</button>
+  </dialog>
+
+  <footer class="site-footer" aria-label="기관 로고"><div class="site-footer__logos"><img class="site-footer__logo site-footer__logo--office" src="assets/yeosu-office-logo.png" alt="여수지방해양수산청" /><img class="site-footer__logo site-footer__logo--korea" src="assets/korea-signature-logo.png" alt="대체불가 대한민국" /></div></footer>
+
+  <nav class="bottom-nav" data-i18n-aria="navMain"><a href="index.html#home"><span aria-hidden="true">⌂</span><small data-i18n="home">홈</small></a><a href="index.html#stamp-spots"><span aria-hidden="true">⚓</span><small data-i18n="navSpots">명소</small></a><a href="index.html#guide"><span aria-hidden="true">✅</span><small data-i18n="navGuide">안내</small></a><a href="index.html#notice"><span aria-hidden="true">❗</span><small data-i18n="navNotice">공지</small></a><a href="navigator.html" class="is-active" aria-current="page"><span aria-hidden="true">🗺️</span><small data-i18n="navDirections">길찾기</small></a></nav>
+</body>
 </html>

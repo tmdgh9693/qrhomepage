@@ -48,9 +48,9 @@
 
   const sections = [
     { selector: '#home', href: '#home' },
-    { selector: '#notice-title', href: '#notice-title' },
-    { selector: '#guide-title', href: '#guide-title' },
-    { selector: '#caution-title', href: '#caution-title' }
+    { selector: '#stamp-spots', href: '#stamp-spots' },
+    { selector: '#guide', href: '#guide' },
+    { selector: '#notice', href: '#notice' }
   ];
 
   const observer = new IntersectionObserver((entries) => {
@@ -108,6 +108,146 @@
         if (!pageHidden && !document.hidden) window.location.href = fallbackUrl;
       }, 1200);
     });
+  });
+
+
+  // 메인 명소 카드의 "지도 보기"는 바로 이동하지 않고 지도 앱 선택창을 띄웁니다.
+  const mapChoiceDialog = document.getElementById('mapChoiceDialog');
+  const mapChoiceTitle = document.getElementById('mapChoiceDialogTitle');
+  const mapChoiceKakao = document.getElementById('mapChoiceKakao');
+  const mapChoiceNaver = document.getElementById('mapChoiceNaver');
+  const mapChoiceGoogle = document.getElementById('mapChoiceGoogle');
+  const mapChoiceButtons = [...document.querySelectorAll('[data-map-choice]')];
+
+  function closeMapChoiceDialog() {
+    if (!mapChoiceDialog) return;
+    if (typeof mapChoiceDialog.close === 'function' && mapChoiceDialog.open) mapChoiceDialog.close();
+    else mapChoiceDialog.removeAttribute('open');
+  }
+
+  mapChoiceButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!mapChoiceDialog) return;
+      const dict = currentTranslations();
+      const titleKey = button.dataset.titleKey;
+      const title = dict[titleKey] || button.closest('.stamp-spot-card')?.querySelector('h3')?.textContent || '';
+      if (mapChoiceTitle) mapChoiceTitle.textContent = `${title} · ${dict.mapChoice || '지도 앱 선택'}`;
+
+      if (mapChoiceKakao) mapChoiceKakao.href = button.dataset.kakaoUrl || '#';
+      if (mapChoiceNaver) {
+        mapChoiceNaver.href = button.dataset.naverUrl || '#';
+        mapChoiceNaver.dataset.query = button.dataset.query || title;
+      }
+      if (mapChoiceGoogle) mapChoiceGoogle.href = button.dataset.googleUrl || '#';
+
+      if (typeof mapChoiceDialog.showModal === 'function') mapChoiceDialog.showModal();
+      else mapChoiceDialog.setAttribute('open', '');
+    });
+  });
+
+  document.querySelectorAll('[data-map-dialog-close]').forEach((button) => button.addEventListener('click', closeMapChoiceDialog));
+  mapChoiceDialog?.addEventListener('click', (event) => {
+    if (event.target === mapChoiceDialog) closeMapChoiceDialog();
+  });
+
+
+  // 메인 화면의 "스탬프 위치 보기" 사진 팝업.
+  // assets/stamp-locations/01~06 파일만 넣으면 jpg/jpeg/png/webp 순서로 자동 탐색합니다.
+  const stampDialog = document.getElementById('stampLocationDialog');
+  const stampImage = document.getElementById('stampLocationImage');
+  const stampEmpty = document.getElementById('stampLocationEmpty');
+  const stampDialogTitle = document.getElementById('stampLocationDialogTitle');
+  const stampButtons = [...document.querySelectorAll('[data-stamp-location]')];
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+
+  function currentTranslations() {
+    const lang = (document.documentElement.lang || 'ko').toLowerCase();
+    const key = lang.startsWith('ja') ? 'ja' : lang.startsWith('zh') ? 'zh' : lang.startsWith('en') ? 'en' : 'ko';
+    return window.QR_LANG?.translations?.[key] || window.QR_LANG?.translations?.ko || {};
+  }
+
+  function closeStampDialog() {
+    if (!stampDialog) return;
+    if (typeof stampDialog.close === 'function' && stampDialog.open) stampDialog.close();
+  }
+
+  function loadStampImage(base, title) {
+    if (!stampImage || !stampEmpty) return;
+    let index = 0;
+    stampImage.hidden = true;
+    stampImage.removeAttribute('src');
+    stampImage.alt = title;
+    stampEmpty.hidden = false;
+
+    const tryNext = () => {
+      if (index >= imageExtensions.length) {
+        stampImage.onerror = null;
+        stampImage.onload = null;
+        stampImage.hidden = true;
+        stampEmpty.hidden = false;
+        return;
+      }
+      const src = `${base}${imageExtensions[index++]}`;
+      stampImage.onload = () => {
+        stampEmpty.hidden = true;
+        stampImage.hidden = false;
+        stampImage.onerror = null;
+      };
+      stampImage.onerror = tryNext;
+      stampImage.src = src;
+    };
+    tryNext();
+  }
+
+  stampButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!stampDialog) return;
+      const dict = currentTranslations();
+      const titleKey = button.dataset.titleKey;
+      const title = dict[titleKey] || button.closest('.stamp-spot-card')?.querySelector('h3')?.textContent || '';
+      if (stampDialogTitle) stampDialogTitle.textContent = `${title} · ${dict.viewStampLocation || '스탬프 위치 보기'}`;
+      loadStampImage(button.dataset.stampImageBase || '', title);
+      if (typeof stampDialog.showModal === 'function') stampDialog.showModal();
+      else stampDialog.setAttribute('open', '');
+    });
+  });
+
+  document.querySelectorAll('[data-dialog-close]').forEach((button) => button.addEventListener('click', closeStampDialog));
+  stampDialog?.addEventListener('click', (event) => {
+    if (event.target === stampDialog) closeStampDialog();
+  });
+
+
+  // 네비게이션 명소별 "안전하게 방문하기" 안내창.
+  const safetyDialog = document.getElementById('safetyGuideDialog');
+  const safetyDialogTitle = document.getElementById('safetyGuideDialogTitle');
+  const safetyPlaceName = document.getElementById('safetyGuidePlaceName');
+  const safetyMessage = document.getElementById('safetyGuideMessage');
+  const safetyButtons = [...document.querySelectorAll('[data-safety-guide]')];
+
+  function closeSafetyDialog() {
+    if (!safetyDialog) return;
+    if (typeof safetyDialog.close === 'function' && safetyDialog.open) safetyDialog.close();
+    else safetyDialog.removeAttribute('open');
+  }
+
+  safetyButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!safetyDialog) return;
+      const dict = currentTranslations();
+      const title = dict[button.dataset.titleKey] || '';
+      const message = dict[button.dataset.safetyKey] || '';
+      if (safetyDialogTitle) safetyDialogTitle.textContent = dict.visitSafely || '안전하게 방문하기';
+      if (safetyPlaceName) safetyPlaceName.textContent = title;
+      if (safetyMessage) safetyMessage.textContent = message;
+      if (typeof safetyDialog.showModal === 'function') safetyDialog.showModal();
+      else safetyDialog.setAttribute('open', '');
+    });
+  });
+
+  document.querySelectorAll('[data-safety-dialog-close]').forEach((button) => button.addEventListener('click', closeSafetyDialog));
+  safetyDialog?.addEventListener('click', (event) => {
+    if (event.target === safetyDialog) closeSafetyDialog();
   });
 
 })();
