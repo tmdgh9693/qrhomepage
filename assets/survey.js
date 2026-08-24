@@ -123,20 +123,22 @@
 
   function payload() {
     const q4 = checkedValue('q4');
+
+    // Supabase Table Editor에서 질문 내용을 바로 알아볼 수 있도록
+    // 실제 DB의 한국어 컬럼명을 그대로 사용합니다.
     return {
-      survey_version: String(config.surveyVersion || '2026-01').slice(0, 30),
-      language: language(),
-      overall_satisfaction: scoreOrNull(checkedValue('q1')),
-      participation_clarity: scoreOrNull(checkedValue('q2')),
-      stamp_process_convenience: scoreOrNull(checkedValue('q3')),
-      operation_satisfaction: q4 === 'not_used' ? 'not_used' : String(scoreOrNull(q4) || ''),
-      lighthouse_interest: scoreOrNull(checkedValue('q5')),
-      souvenir_helpfulness: scoreOrNull(checkedValue('q6')),
-      future_participation: scoreOrNull(checkedValue('q7')),
-      inconveniences: checkedValues('q8'),
-      inconvenience_other: q8OtherSelected() ? q8OtherInput.value.trim().slice(0, 500) : '',
-      improvement_comment: form.elements.q9.value.trim().slice(0, 1000),
-      positive_comment: form.elements.q10.value.trim().slice(0, 1000),
+      '언어': language(),
+      "이번 '섬 따라 등대 한바퀴' 행사에 전반적으로 ": scoreOrNull(checkedValue('q1')),
+      '행사 참여 방법은 이해하기 쉬웠나요?': scoreOrNull(checkedValue('q2')),
+      '스탬프 대상지 위치와 이동 동선은 찾기 편리했': scoreOrNull(checkedValue('q3')),
+      '홈페이지의 명소정보·길찾기·운영시간·안전': q4 === 'not_used' ? 'not_used' : String(scoreOrNull(q4) || ''),
+      '스탬프 투어를 통해 여수의 등대와 주변 관광지': scoreOrNull(checkedValue('q5')),
+      '기념품은 행사 참여와 완주에 도움이 되었나요?': scoreOrNull(checkedValue('q6')),
+      '앞으로 비슷한 행사가 열린다면 다시 참여하고 ': scoreOrNull(checkedValue('q7')),
+      '행사에 참여하면서 불편했던 사항이 있었나요?': checkedValues('q8'),
+      '행사에 참여하면서 불편했던 사항이 있었나요? ': q8OtherSelected() ? q8OtherInput.value.trim().slice(0, 500) : '',
+      '불편했던 점이나 개선되었으면 하는 사항을 알': form.elements.q9.value.trim().slice(0, 1000),
+      '이번 행사에서 가장 만족스러웠던 점을 알려주': form.elements.q10.value.trim().slice(0, 1000),
       submitted_at_client: new Date().toISOString(),
       source_page: 'survey.html'
     };
