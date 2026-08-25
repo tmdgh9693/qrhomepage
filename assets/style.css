@@ -1918,3 +1918,223 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
   .location-overview-dialog { width: calc(100% - 16px); border-radius: 18px; }
   .location-overview-dialog__media { max-height: 72vh; }
 }
+
+
+/* ===== index 단일화: 추천코스 + 명소 상세정보 ===== */
+.recommended-course-section {
+  background:
+    linear-gradient(180deg, rgba(237,245,255,.82), rgba(255,255,255,.98)),
+    #fff;
+}
+
+.dashboard-number--course {
+  color: #fff;
+  background: #173b72;
+}
+
+.recommended-course-grid {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.recommended-course-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #d8e4f3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 7px 20px rgba(16,24,40,.05);
+}
+
+.recommended-course-card__heading {
+  display: grid;
+  grid-template-columns: 38px minmax(0,1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.recommended-course-card__badge {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: #173b72;
+  font-weight: 900;
+}
+
+.recommended-course-card h3 {
+  margin: 0;
+  color: #122544;
+  font-size: .96rem;
+  line-height: 1.35;
+}
+
+.recommended-course-card__heading p {
+  margin: 5px 0 0;
+  color: #667085;
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.recommended-course-route {
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+  list-style: none;
+}
+
+.recommended-course-route li {
+  position: relative;
+}
+
+.recommended-course-route li:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  left: 13px;
+  bottom: -9px;
+  z-index: 1;
+  color: #8aa4c7;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.recommended-course-route a {
+  min-height: 39px;
+  padding: 7px 9px;
+  display: grid;
+  grid-template-columns: 27px minmax(0,1fr);
+  gap: 8px;
+  align-items: center;
+  border: 1px solid #e0e8f3;
+  border-radius: 11px;
+  color: #344054;
+  background: #f9fbfe;
+  text-decoration: none;
+}
+
+.recommended-course-route a > span {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #173b72;
+  background: #e8f1ff;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.recommended-course-route strong {
+  min-width: 0;
+  font-size: .72rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.recommended-course-note,
+.stamp-spots-footnote {
+  margin: 13px 0 0;
+  padding: 10px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  border-radius: 12px;
+  color: #536176;
+  background: #f3f6fa;
+  font-size: .7rem;
+  line-height: 1.55;
+}
+
+.stamp-spot-card--detailed .stamp-spot-card__body {
+  padding: 13px;
+}
+
+.stamp-spot-card--detailed h3 {
+  min-height: 0;
+}
+
+.stamp-spot-card__description {
+  min-height: 4.6em !important;
+  margin: 7px 0 0 !important;
+  color: #667085 !important;
+  font-size: .72rem !important;
+  line-height: 1.52 !important;
+}
+
+.stamp-spot-card__status {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.stamp-spot-card__address {
+  margin-top: 11px;
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: 18px minmax(0,1fr);
+  gap: 6px;
+  border-top: 1px dashed #dce4ef;
+}
+
+.stamp-spot-card__address > span {
+  margin-top: 1px;
+  font-size: .76rem;
+}
+
+.stamp-spot-card__address strong {
+  display: block;
+  color: #344054;
+  font-size: .61rem;
+  font-weight: 850;
+}
+
+.stamp-spot-card__address p {
+  min-height: 0 !important;
+  margin: 2px 0 0 !important;
+  color: #667085 !important;
+  font-size: .66rem !important;
+  line-height: 1.42 !important;
+  overflow-wrap: anywhere;
+}
+
+.stamp-spot-card__actions--detailed {
+  margin-top: 11px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stamp-spot-card__actions--detailed .spot-action--safe {
+  grid-column: 1 / -1;
+  color: #173b72;
+  border-color: #c9d8ed;
+  background: #f4f8fe;
+}
+
+.stamp-spot-card--detailed {
+  scroll-margin-top: 92px;
+}
+
+@media (max-width: 640px) {
+  .recommended-course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stamp-spot-card__description {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .stamp-spot-card__actions--detailed {
+    grid-template-columns: 1fr;
+  }
+
+  .stamp-spot-card__actions--detailed .spot-action--safe {
+    grid-column: auto;
+  }
+}
