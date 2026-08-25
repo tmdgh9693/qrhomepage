@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f6fff" />
+  <meta name="description" content="섬 따라 등대 한바퀴 행사 만족도 조사" />
+  <title>행사 만족도 조사</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/lang.js" defer></script>
+  <script src="assets/survey-lang.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="assets/survey-config.js" defer></script>
+  <script src="assets/survey.js" defer></script>
+</head>
+<body class="survey-page">
+  <a class="skip-link" href="#survey-main" data-i18n="skip">본문 바로가기</a>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html" data-i18n-aria="homeAria" aria-label="홈으로 이동">
+        <img class="brand__logo" src="assets/logo-ko.png" alt="2026 여수세계섬박람회" />
+        <img class="brand__title-logo" src="assets/title-ko.png" alt="섬따라등대한바퀴" />
+      </a>
+      <div class="topbar__controls">
+        <label class="language-control">
+          <span class="language-label">🌐</span>
+          <select class="language-select" aria-label="언어 선택">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+          </select>
+        </label>
+        <button class="size-button" id="sizeButton" type="button" aria-haspopup="true" aria-expanded="false">
+          <span aria-hidden="true">F.S</span><span data-i18n="fontSize">글자 크기</span>
+        </button>
+      </div>
+    </div>
+    <div class="size-panel" id="sizePanel" hidden>
+      <div class="size-panel__inner" role="group" data-i18n-aria="fontGroup" aria-label="글자 크기 설정">
+        <button type="button" data-font-size="small" data-i18n="small">작게</button>
+        <button type="button" data-font-size="normal" class="is-active" data-i18n="normal">중간</button>
+        <button type="button" data-font-size="large" data-i18n="large">크게</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="survey-main" class="survey-main">
+    <section class="survey-intro" aria-labelledby="survey-title">
+      <a class="survey-back-link" href="index.html" data-i18n="surveyBackHome">← 홈페이지로 돌아가기</a>
+      <span class="survey-intro__eyebrow">SURVEY</span>
+      <h1 id="survey-title" data-i18n="surveyTitle">여수 등대 스탬프 투어 만족도 조사</h1>
+      <p data-i18n="surveyIntro">여수 등대 스탬프 투어에 참여해 주셔서 감사합니다. 보내주신 의견은 앞으로의 행사 운영과 서비스 개선을 위한 자료로 활용됩니다.</p>
+      <div class="survey-notice" role="note">
+        <strong data-i18n="surveyNoticeTitle">설문 참여 안내</strong>
+        <ul>
+          <li data-i18n="surveyNotice1">설문 참여는 선택이며 약 1분 정도 소요됩니다.</li>
+          <li data-i18n="surveyNotice2">이름, 전화번호, 이메일 등의 개인정보는 수집하지 않습니다.</li>
+          <li data-i18n="surveyNotice3">자유 의견에는 개인정보를 작성하지 말아 주세요.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="survey-form-section" aria-labelledby="survey-form-title">
+      <h2 id="survey-form-title" class="visually-hidden" data-i18n="surveyFormTitle">설문 문항</h2>
+      <div id="surveyStatus" class="survey-status" role="status" aria-live="polite" hidden></div>
+
+      <form id="eventSurveyForm" class="event-survey-form" novalidate>
+        <fieldset class="survey-question" data-required-group="q1">
+          <legend><span class="survey-question__number">1</span><span data-i18n="surveyQ1">이번 '섬 따라 등대 한바퀴' 행사에 전반적으로 만족하셨나요?</span><span class="required-mark" data-i18n="required">필수</span></legend>
+          <div class="survey-options survey-options--rating">
+            <label><input type="radio" name="q1" value="5" required><span data-i18n="satisfaction5">매우 만족</span></label>
+            <label><input type="radio" name="q1" value="4"><span data-i18n="satisfaction4">만족</span></label>
+            <label><input type="radio" name="q1" value="3"><span data-i18n="satisfaction3">보통</span></label>
+            <label><input type="radio" name="q1" value="2"><span data-i18n="satisfaction2">불만족</span></label>
+            <label><input type="radio" name="q1" value="1"><span data-i18n="satisfaction1">매우 불만족</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-question" data-required-group="q2">
+          <legend><span class="survey-question__number">2</span><span data-i18n="surveyQ2">행사 참여방법(여권 수령 → 6개소 방문 → 스탬프 → 기념품 수령)은 이해하기 쉬웠나요?</span><span class="required-mark" data-i18n="required">필수</span></legend>
+          <div class="survey-options survey-options--rating">
+            <label><input type="radio" name="q2" value="5" required><span data-i18n="easy5">매우 쉬웠다</span></label>
+            <label><input type="radio" name="q2" value="4"><span data-i18n="easy4">쉬웠다</span></label>
+            <label><input type="radio" name="q2" value="3"><span data-i18n="easy3">보통이다</span></label>
+            <label><input type="radio" name="q2" value="2"><span data-i18n="easy2">어려웠다</span></label>
+            <label><input type="radio" name="q2" value="1"><span data-i18n="easy1">매우 어려웠다</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-question" data-required-group="q3">
+          <legend><span class="survey-question__number">3</span><span data-i18n="surveyQ3">스탬프 대상지 위치와 이동 동선은 찾기 편리했나요?</span><span class="required-mark" data-i18n="required">필수</span></legend>
+          <div class="survey-options survey-options--rating">
+            <label><input type="radio" name="q3" value="5" required><span data-i18n="convenient5">매우 편리했다</span></label>
+            <label><input type="radio" name="q3" value="4"><span data-i18n="convenient4">편리했다</span></label>
+            <label><input type="radio" name="q3" value="3"><span data-i18n="convenient3">보통이다</span></label>
+            <label><input type="radio" name="q3" value="2"><span data-i18n="convenient2">불편했다</span></label>
+            <label><input type="radio" name="q3" value="1"><span data-i18n="convenient1">매우 불편했다</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-question" data-required-group="q4">
+          <legend><span class="survey-question__number">4</span><span data-i18n="surveyQ4">홈페이지의 명소정보·길찾기·운영시간·안전안내가 도움이 되었나요? </span><span class="required-mark" data-i18n="required">필수</span></legend>
+          <div class="survey-options">
+            <label><input type="radio" name="q4" value="5" required><span data-i18n="satisfaction5">매우 도움됨</span></label>
+            <label><input type="radio" name="q4" value="4"><span data-i18n="satisfaction4">도움됨</span></label>
+            <label><input type="radio" name="q4" value="3"><span data-i18n="satisfaction3">보통</span></label>
+            <label><input type="radio" name="q4" value="2"><span data-i18n="satisfaction2">도움되지 않음</span></label>
+            <label><input type="radio" name="q4" value="1"><span data-i18n="satisfaction1">매우 도움되지 않음</span></label>
+            <label><input type="radio" name="q4" value="not_used"><span data-i18n="notUsedGuide">현장 안내를 이용하지 않았다</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-question" data-required-group="q5">
+          <legend><span class="survey-question__number">5</span><span data-i18n="surveyQ5">스탬프 투어를 통해 여수의 등대와 주변 관광지에 더 관심이 생겼나요?</span><span class="required-mark" data-i18n="required">필수</span></legend>
+          <div class="survey-options survey-options--rating">
+            <label><input type="radio" name="q5" value="5" required><span data-i18n="agree5">매우 그렇다</span></label>
+            <label><input type="radio" name="q5" value="4"><span data-i18n="agree4">그렇다</span></label>
+            <label><input type="radio" name="q5" value="3"><span data-i18n="agree3">보통이다</span></label>
+            <label><input type="radio" name="q5" value="2"><span data-i18n="agree2">그렇지 않다</span></label>
+            <label><input type="radio" name="q5" value="1"><span data-i18n="agree1">전혀 그렇지 않다</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-question" data-required-group="q6">
+          <legend><span class="survey-question__number">6</span><span data-i18n="surveyQ6">기념품은 행사 참여와 완주에 도움이 되었나요?</span><span class="required-mark" data-i18n="required">필수</span></legend>
+          <div class="survey-options survey-options--rating">
+            <label><input type="radio" name="q6" value="5" required><span data-i18n="agree5">매우 그렇다</span></label>
+            <label><input type="radio" name="q6" value="4"><span data-i18n="agree4">그렇다</span></label>
+            <label><input type="radio" name="q6" value="3"><span data-i18n="agree3">보통이다</span></label>
+            <label><input type="radio" name="q6" value="2"><span data-i18n="agree2">그렇지 않다</span></label>
+            <label><input type="radio" name="q6" value="1"><span data-i18n="agree1">전혀 그렇지 않다</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-question" data-required-group="q7">
+          <legend><span class="survey-question__number">7</span><span data-i18n="surveyQ7">앞으로 비슷한 행사가 열린다면 다시 참여하고 싶나요?</span><span class="required-mark" data-i18n="required">필수</span></legend>
+          <div class="survey-options survey-options--rating">
+            <label><input type="radio" name="q7" value="5" required><span data-i18n="join5">반드시 참여하고 싶다</span></label>
+            <label><input type="radio" name="q7" value="4"><span data-i18n="join4">참여하고 싶다</span></label>
+            <label><input type="radio" name="q7" value="3"><span data-i18n="join3">잘 모르겠다</span></label>
+            <label><input type="radio" name="q7" value="2"><span data-i18n="join2">참여하고 싶지 않다</span></label>
+            <label><input type="radio" name="q7" value="1"><span data-i18n="join1">전혀 참여하고 싶지 않다</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-question" data-required-group="q8">
+          <legend><span class="survey-question__number">8</span><span data-i18n="surveyQ8">행사에 참여하면서 불편했던 사항이 있었나요?</span><span class="required-mark" data-i18n="requiredMulti">필수 · 복수 선택 가능</span></legend>
+          <div class="survey-options survey-options--checkboxes">
+            <label><input type="checkbox" name="q8" value="method"><span data-i18n="issueMethod">행사 참여 방법이 이해하기 어려웠다</span></label>
+            <label><input type="checkbox" name="q8" value="location"><span data-i18n="issueLocation">행사장이나 등대 위치를 찾기 어려웠다</span></label>
+            <label><input type="checkbox" name="q8" value="route"><span data-i18n="issueRoute">이동 동선이 불편했다</span></label>
+            <label><input type="checkbox" name="q8" value="stamp"><span data-i18n="issueStamp">스탬프 이용이 어려웠다</span></label>
+            <label><input type="checkbox" name="q8" value="qr"><span data-i18n="issueQr">QR코드 또는 홈페이지 이용이 불편했다</span></label>
+            <label><input type="checkbox" name="q8" value="guidance"><span data-i18n="issueGuidance">행사 안내가 부족했다</span></label>
+            <label><input type="checkbox" name="q8" value="gift"><span data-i18n="issueGift">기념품 또는 경품 안내가 부족했다</span></label>
+            <label><input type="checkbox" name="q8" value="other"><span data-i18n="issueOther">기타</span></label>
+            <label class="survey-option--none"><input type="checkbox" name="q8" value="none" data-none-option><span data-i18n="issueNone">별다른 불편 사항이 없었다</span></label>
+          </div>
+
+          <div id="q8OtherWrap" class="survey-other-detail" hidden>
+            <label for="q8_other" class="survey-other-detail__label">
+              <span data-i18n="surveyQ8OtherLabel">기타 불편사항을 구체적으로 작성해 주세요.</span>
+              <span class="required-mark" data-i18n="required">필수</span>
+            </label>
+            <p class="survey-question__help" data-i18n="surveyQ8OtherHelp">‘기타’를 선택한 경우에만 작성해 주세요.</p>
+            <textarea id="q8_other" name="q8_other" rows="3" maxlength="500" data-placeholder-key="surveyQ8OtherPlaceholder" placeholder="개인정보를 제외하고 기타 불편사항을 작성해 주세요."></textarea>
+            <div class="survey-char-count"><span data-count-for="q8_other">0</span>/500</div>
+          </div>
+        </fieldset>
+
+        <div class="survey-question survey-question--textarea">
+          <label for="q9"><span class="survey-question__legend"><span class="survey-question__number">9</span><span data-i18n="surveyQ9">불편했던 점이나 개선되었으면 하는 사항을 알려주세요.</span><span class="optional-mark" data-i18n="optional">선택</span></span></label>
+          <p class="survey-question__help" data-i18n="surveyQ9Help">행사 안내, 이동 동선, 스탬프 위치, QR코드 이용, 기념품, 현장 운영 등에 대한 의견을 자유롭게 작성해 주세요.</p>
+          <textarea id="q9" name="q9" rows="5" maxlength="1000" data-placeholder-key="surveyQ9Placeholder" placeholder="개인정보를 제외한 의견을 작성해 주세요."></textarea>
+          <div class="survey-char-count"><span data-count-for="q9">0</span>/1000</div>
+        </div>
+
+        <div class="survey-question survey-question--textarea">
+          <label for="q10"><span class="survey-question__legend"><span class="survey-question__number">10</span><span data-i18n="surveyQ10">이번 행사에서 가장 만족스러웠던 점을 알려주세요.</span><span class="optional-mark" data-i18n="optional">선택</span></span></label>
+          <textarea id="q10" name="q10" rows="5" maxlength="1000" data-placeholder-key="surveyQ10Placeholder" placeholder="가장 좋았던 점을 작성해 주세요."></textarea>
+          <div class="survey-char-count"><span data-count-for="q10">0</span>/1000</div>
+        </div>
+
+        <div class="survey-privacy-reminder" role="note">
+          <span aria-hidden="true">🔒</span>
+          <p data-i18n="surveyPrivacyReminder">자유 의견에 이름, 전화번호, 이메일 등 개인정보를 작성하지 말아 주세요.</p>
+        </div>
+
+        <button id="surveySubmitButton" class="survey-submit-button" type="submit">
+          <span data-i18n="surveySubmit">설문 제출하기</span><span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <div id="surveyComplete" class="survey-complete" hidden>
+        <div class="survey-complete__icon" aria-hidden="true">✓</div>
+        <h2 data-i18n="surveyCompleteTitle">설문조사가 제출되었습니다.</h2>
+        <p data-i18n="surveyCompleteText">소중한 의견을 보내주셔서 감사합니다. 보내주신 의견은 앞으로의 행사 운영과 서비스 개선에 활용하겠습니다.</p>
+        <a class="survey-home-button" href="index.html" data-i18n="surveyBackHomeButton">홈페이지로 돌아가기</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--survey" aria-label="기관 로고">
+    <div class="site-footer__logos">
+      <img class="site-footer__logo site-footer__logo--office" src="assets/yeosu-office-logo.png" alt="여수지방해양수산청" />
+      <img class="site-footer__logo site-footer__logo--korea" src="assets/korea-signature-logo.png" alt="대체불가 대한민국" />
+    </div>
+  </footer>
+  <script src="assets/app.js"></script>
+</body>
+</html>
