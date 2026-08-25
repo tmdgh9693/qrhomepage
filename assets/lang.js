@@ -19,7 +19,7 @@
             passportPlaceText: '여수 세계 섬 박람회 장소, 오동도 등대, 여수 연안 여객선터미널',
             newNotice: '여수연안여객선터미널의 구항등대는 출입이 불가합니다. 인증사진은 스탬프 설치 장소 또는 구항등대가 보이는 출입 가능한 인근 장소에서 촬영해 주세요. 안전을 위해 출입 제한구역에 접근하지 마시고 현장 안내를 반드시 따라주시기 바랍니다.',
             noticeMustRead: '필독',
-            guhangNoticeTitle: '여수연안여객선터미널(구항등대) 방문 안내',
+            guhangNoticeTitle: '구항등대 (여수연안여객선터미널) 방문 안내',
             guhangAccessBlocked: '구항등대는 출입이 불가합니다.',
             guhangVerifyLead: '인증사진은 아래 방법 중 하나로 촬영해 주세요.',
             guhangVerifyStamp: '스탬프 설치 장소에서 촬영',
@@ -90,8 +90,10 @@
             loc2: '돌산항남방파제등대', addr2: '전라남도 여수시 돌산읍 군내리 1581',
             loc3: '여수신북항방파제등대', addr3: '전라남도 여수시 덕충동 2101',
             loc4: '여수구항방파제 하멜등대', addr4: '전라남도 여수시 종화동 458-7',
-            loc5: '여수연안여객선터미널(구항등대)', addr5: '전라남도 여수시 교동 682-1',
-            loc6: '오동도등대', addr6: '전라남도 여수시 수정동 1-7'
+            loc5: '구항등대 (여수연안여객선터미널)', addr5: '전라남도 여수시 교동 682-1',
+            loc6: '오동도등대', addr6: '전라남도 여수시 수정동 1-7',
+            course: '섬박람회 주행사장 → 돌산항남방파제등대 → 구항등대 (여수연안여객선터미널) → 여수구항방파제 하멜등대 → 여수신북항방파제등대 → 오동도 등대',
+            course1: '오동도 등대 → 여수신북항방파제등대 → 구항등대 (여수연안여객선터미널) → 여수구항방파제 하멜등대 → 섬박람회 주행사장 → 돌산항남방파제등대 → 오동도 등대'
         },
         
         en: {
@@ -116,7 +118,7 @@
             passportPlaceText: 'Yeosu World Island Exhibition venue, Odongdo Lighthouse, and Yeosu Coastal Passenger Ferry Terminal',
             newNotice: 'The Old Harbor Lighthouse at Yeosu Coastal Passenger Ferry Terminal is not open to visitors. For your verification photo, take a photo at the stamp location or from an accessible nearby area where the lighthouse is visible. For safety, do not enter restricted areas and follow all on-site guidance.',
             noticeMustRead: 'Must Read',
-            guhangNoticeTitle: 'Yeosu Coastal Passenger Ferry Terminal (Old Harbor Lighthouse) Visit Guide',
+            guhangNoticeTitle: 'Old Harbor Lighthouse (Yeosu Coastal Passenger Ferry Terminal) Visit Guide',
             guhangAccessBlocked: 'The Old Harbor Lighthouse is not open to visitors.',
             guhangVerifyLead: 'Please take your verification photo using one of the following methods.',
             guhangVerifyStamp: 'Take a photo at the stamp installation area.',
@@ -190,8 +192,10 @@
             loc2: 'Dolsan Port South Breakwater Lighthouse', addr2: '1581 Gunnae-ri, Dolsan-eup, Yeosu, Jeollanam-do',
             loc3: 'Yeosu New North Port Breakwater Lighthouse', addr3: '2101 Deokchung-dong, Yeosu, Jeollanam-do',
             loc4: 'Hamel Lighthouse at Yeosu Old Port Breakwater', addr4: '458-7 Jonghwa-dong, Yeosu, Jeollanam-do',
-            loc5: 'Yeosu Coastal Passenger Ferry Terminal (Old Harbor Lighthouse)', addr5: '682-1 Gyo-dong, Yeosu, Jeollanam-do',
-            loc6: 'Odongdo Lighthouse', addr6: '1-7 Sujeong-dong, Yeosu, Jeollanam-do'
+            loc5: 'Old Harbor Lighthouse (Yeosu Coastal Passenger Ferry Terminal)', addr5: '682-1 Gyo-dong, Yeosu, Jeollanam-do',
+            loc6: 'Odongdo Lighthouse', addr6: '1-7 Sujeong-dong, Yeosu, Jeollanam-do',
+            course: 'World Island Exhibition Main Venue → Dolsan Port South Breakwater Lighthouse → Old Harbor Lighthouse (Yeosu Coastal Passenger Ferry Terminal) → Hamel Lighthouse at Yeosu Old Port Breakwater → Yeosu New North Port Breakwater Lighthouse → Odongdo Lighthouse',
+            course1: 'Odongdo Lighthouse → Yeosu New North Port Breakwater Lighthouse → Old Harbor Lighthouse (Yeosu Coastal Passenger Ferry Terminal) → Hamel Lighthouse at Yeosu Old Port Breakwater → World Island Exhibition Main Venue → Dolsan Port South Breakwater Lighthouse → Odongdo Lighthouse'
         },
 
         // 일본어
@@ -214,12 +218,12 @@
             passportPlaceText: '麗水世界島博覧会会場、梧桐島灯台、麗水沿岸旅客ターミナル',
             newNotice: '麗水沿岸旅客ターミナルの旧港灯台は立入禁止です。認証写真は、スタンプ設置場所または旧港灯台が見える立入可能な周辺場所で撮影してください。安全のため立入制限区域には近づかず、現地の案内に必ず従ってください。',
             noticeMustRead: '必読',
-            guhangNoticeTitle: '麗水沿岸旅客ターミナル（旧港灯台）訪問案内',
+            guhangNoticeTitle: '旧港灯台（麗水沿岸旅客ターミナル）訪問案内',
             guhangAccessBlocked: '旧港灯台には立ち入ることができません。',
             guhangVerifyLead: '認証写真は次のいずれかの方法で撮影してください。',
             guhangVerifyStamp: 'スタンプ設置場所で撮影',
             guhangVerifyNearby: '旧港灯台が見える立入可能な周辺場所で撮影',
-            guhangSafetyWarning: '安全のため立入制限区域には入らず、現地の案内に必ず従ってください。',
+            guhangSafetyWarning: '安全のため立入制限区域には入らず、現地の案内に必ず従ってください。' ,
             // 주의사항
             caution: '注意事項', 
             caution1: 'QRコードは公式案内場所に掲示されたものだけをご利用ください。', 
@@ -287,8 +291,10 @@
             loc2: '突山港南防波堤灯台', addr2: '全羅南道麗水市突山邑郡内里1581',
             loc3: '麗水新北港防波堤灯台', addr3: '全羅南道麗水市徳忠洞2101',
             loc4: '麗水旧港防波堤ハメル灯台', addr4: '全羅南道麗水市鍾和洞458-7',
-            loc5: '麗水沿岸旅客ターミナル（旧港の灯台）', addr5: '全羅南道麗水市校洞682-1',
-            loc6: '梧桐島灯台', addr6: '全羅南道麗水市水晶洞1-7'
+            loc5: '旧港灯台（麗水沿岸旅客ターミナル）', addr5: '全羅南道麗水市校洞682-1',
+            loc6: '梧桐島灯台', addr6: '全羅南道麗水市水晶洞1-7',
+            course: '島博覧会メイン会場 →  突山港南防波堤灯台 → 旧港灯台（麗水沿岸旅客ターミナル） → 麗水旧港防波堤ハメル灯台 → 麗水新北港防波堤灯台 → 梧桐島灯台',
+            course1: '梧桐島灯台 → 麗水新北港防波堤灯台 → 旧港灯台（麗水沿岸旅客ターミナル） → 麗水旧港防波堤ハメル灯台 → 島博覧会メイン会場 →  突山港南防波堤灯台 → 梧桐島灯台'
         },
 
         // 중국어
@@ -309,7 +315,7 @@
             passportPlaceText: '丽水世界岛屿博览会会场、梧桐岛灯塔、丽水沿海客运码头',
             newNotice: '丽水沿岸客运码头的旧港灯塔禁止进入。认证照片请在印章设置处，或在可合法进入且能看到旧港灯塔的附近地点拍摄。为确保安全，请勿进入限制区域，并务必遵守现场指引。',
             noticeMustRead: '必读',
-            guhangNoticeTitle: '丽水沿岸客运码头（旧港灯塔）到访指南',
+            guhangNoticeTitle: '旧港灯塔（丽水沿岸客运码头）到访指南',
             guhangAccessBlocked: '旧港灯塔禁止进入。',
             guhangVerifyLead: '认证照片请使用以下任一方式拍摄。',
             guhangVerifyStamp: '在印章设置地点拍摄。',
@@ -382,8 +388,10 @@
             loc2: '突山港南防波堤灯塔', addr2: '全罗南道丽水市突山邑郡内里1581',
             loc3: '丽水新北港防波堤灯塔', addr3: '全罗南道丽水市德忠洞2101',
             loc4: '丽水旧港防波堤哈梅尔灯塔', addr4: '全罗南道丽水市钟和洞458-7',
-            loc5: '丽水沿海客运码头（旧港灯塔）', addr5: '全罗南道丽水市校洞682-1',
-            loc6: '梧桐岛灯塔', addr6: '全罗南道丽水市水晶洞1-7'
+            loc5: '旧港灯塔（丽水沿岸客运码头）', addr5: '全罗南道丽水市校洞682-1',
+            loc6: '梧桐岛灯塔', addr6: '全罗南道丽水市水晶洞1-7',
+            course: '岛屿博览会主会场 → 突山港南防波堤灯塔 → 旧港灯塔（丽水沿岸客运码头） → 丽水旧港防波堤哈梅尔灯塔 → 丽水新北港防波堤灯塔 → 梧桐岛灯塔',
+            course1: '梧桐岛灯塔 → 丽水新北港防波堤灯塔 → 旧港灯塔（丽水沿岸客运码头） → 丽水旧港防波堤哈梅尔灯塔 → 岛屿博览会主会场 → 突山港南防波堤灯塔 → 梧桐岛灯塔'
         }
     };
 
