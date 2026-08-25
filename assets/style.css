@@ -2405,3 +2405,82 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
     font-size: .68rem;
   }
 }
+
+
+/* ===== 명소 운영시간 강조 ===== */
+.stamp-spot-hours {
+  margin-top: 9px;
+  padding: 10px 11px;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  border: 1px solid #f0cf8f;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fffaf0 0%, #fff5df 100%);
+}
+
+.stamp-spot-hours__icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 7px rgba(65, 45, 15, .08);
+  font-size: .9rem;
+}
+
+.stamp-spot-hours__text {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 8px;
+  row-gap: 2px;
+  align-items: baseline;
+}
+
+.stamp-spot-hours__text small {
+  min-width: 0;
+  color: #765116;
+  font-size: .61rem;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.stamp-spot-hours__text strong {
+  color: #9b570a;
+  font-size: .86rem;
+  font-weight: 950;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.stamp-spot-hours__text > span {
+  grid-column: 1 / -1;
+  color: #8a6225;
+  font-size: .59rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.nav-status-badge--time {
+  color: #89500d;
+  border-color: #ebc983;
+  background: #fff5df;
+}
+
+.nav-status-badge--time > span {
+  font-size: .68rem;
+}
+
+@media (max-width: 430px) {
+  .stamp-spot-hours__text {
+    grid-template-columns: 1fr;
+  }
+
+  .stamp-spot-hours__text strong {
+    margin-top: 1px;
+  }
+}

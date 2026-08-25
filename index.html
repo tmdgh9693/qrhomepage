@@ -75,7 +75,7 @@
       <div class="notice-caution-grid">
         <article class="dashboard-panel dashboard-panel--notice">
           <div class="dashboard-panel__heading"><span aria-hidden="true">❗</span><div><p>NOTICE</p><h2 id="notice-title" data-i18n="notice">공지사항</h2></div></div>
-          <div class="dashboard-panel__body"><span class="badge badge--important" data-i18n="important">중요</span><h3 data-i18n="passportPlace">종이 여권 수령 장소</h3><p data-i18n="passportPlaceText">여수 세계 섬 박람회 장소, 오동도 등대, 여객선 터미널 2곳</p></div>
+          <div class="dashboard-panel__body"><span class="badge badge--important" data-i18n="important">중요</span><h3 data-i18n="passportPlace">종이 여권 수령 장소</h3><p data-i18n="passportPlaceText">여수 세계 섬 박람회 장소, 오동도등대, 여객선 터미널 2곳</p></div>
           <div class="dashboard-panel__foot guhang-notice-card">
             <div class="guhang-notice-card__title-row">
               <span class="badge badge--new" data-i18n="noticeMustRead">필독</span>
@@ -86,6 +86,8 @@
               <span aria-hidden="true">⛔</span>
               <strong data-i18n="guhangAccessBlocked">구항등대는 출입이 불가합니다.</strong>
             </div>
+
+            <p class="notice-card" data-i18n="guhangNoticeText"> 구항등대 및 오동도등대는 18시까지 운영됩니다.</p>
 
             <p class="guhang-notice-card__lead" data-i18n="guhangVerifyLead">인증사진은 아래 방법 중 하나로 촬영해 주세요.</p>
 
@@ -137,7 +139,7 @@
               <p data-i18n="courseADesc">돌산 남쪽에서 출발해 박람회장과 도심 명소를 거쳐 오동도로 이동하는 순서입니다.</p>
             </div>
           </div>
-          <p data-i18n="course">섬박람회 주행사장 → 돌산항남방파제등대 → 구항등대 (여수연안여객선터미널) → 여수구항방파제 하멜등대 → 여수신북항방파제등대 → 오동도 등대</p>
+          <p data-i18n="course">섬박람회 주행사장 → 돌산항남방파제등대 → 구항등대 (여수연안여객선터미널) → 여수구항방파제 하멜등대 → 여수신북항방파제등대 → 오동도등대</p>
           <!-- <ol class="recommended-course-route">
             <li><a href="#spot-1"><span>1</span><strong data-i18n="loc1">섬박람회 주행사장</strong></a></li>
             <li><a href="#spot-2"><span>2</span><strong data-i18n="loc2">돌산항남방파제등대</strong></a></li>
@@ -155,7 +157,7 @@
               <p data-i18n="courseBDesc">오동도에서 출발해 도심 명소를 둘러본 뒤 박람회장과 돌산 방향으로 이동하는 순서입니다.</p>
             </div>
           </div>
-          <p data-i18n="course1">오동도 등대 → 여수신북항방파제등대 → 구항등대 (여수연안여객선터미널) → 여수구항방파제 하멜등대 → 섬박람회 주행사장 → 돌산항남방파제등대 → 오동도 등대</p>
+          <p data-i18n="course1">오동도등대 → 여수신북항방파제등대 → 구항등대 (여수연안여객선터미널) → 여수구항방파제 하멜등대 → 섬박람회 주행사장 → 돌산항남방파제등대 → 오동도등대</p>
         </article>
         <!--
 <article class="recommended-course-card">
@@ -209,7 +211,7 @@
         <article class="stamp-spot-card stamp-spot-card--detailed" id="spot-1">
           <div class="stamp-spot-card__image-wrap">
             <span class="stamp-spot-card__number">1</span>
-            <img src="assets/섬박람회 주행사장.jpg" alt="섬박람회 주전시관" loading="lazy" />
+            <img src="assets/섬박람회 주행사장.jpg" alt="섬박람회 주행사장" loading="lazy" />
           </div>
           <div class="stamp-spot-card__body">
             <h3 data-i18n="loc1">섬박람회 주행사장</h3>
@@ -369,6 +371,14 @@
           </div>
           <div class="stamp-spot-card__body">
             <h3 data-i18n="loc5">구항등대 (여수연안여객선터미널)</h3>
+            <div class="stamp-spot-hours stamp-spot-hours--terminal">
+              <span class="stamp-spot-hours__icon" aria-hidden="true">⏰</span>
+              <div class="stamp-spot-hours__text">
+                <small data-i18n="loc5HoursLabel">운영시간</small>
+                <strong data-i18n="loc5Hours">04:30 ~ 18:00</strong>
+                <span data-i18n="hoursBefore18">18:00 이전 방문을 권장합니다.</span>
+              </div>
+            </div>
             <p class="stamp-spot-card__description" data-i18n="loc5Desc"></p>
 
             <div class="stamp-spot-card__status">
@@ -408,12 +418,20 @@
           </div>
           <div class="stamp-spot-card__body">
             <h3 data-i18n="loc6">오동도등대</h3>
+            <div class="stamp-spot-hours stamp-spot-hours--lighthouse">
+              <span class="stamp-spot-hours__icon" aria-hidden="true">⏰</span>
+              <div class="stamp-spot-hours__text">
+                <small data-i18n="loc6HoursLabel">운영시간</small>
+                <strong data-i18n="loc6Hours">09:00 ~ 18:00</strong>
+                <span data-i18n="hoursBefore18">18:00 이전 방문을 권장합니다.</span>
+              </div>
+            </div>
             <p class="stamp-spot-card__description" data-i18n="loc6Desc"></p>
 
             <div class="stamp-spot-card__status">
               <span class="nav-status-badge nav-status-badge--stamp"><span aria-hidden="true">●</span><strong data-i18n="stampAvailable">스탬프 있음</strong></span>
-              <span class="nav-status-badge nav-status-badge--yes"><span aria-hidden="true">📘</span><strong data-i18n="passportAvailable">여권 수령 가능</strong></span>
-              <span class="nav-status-badge nav-status-badge--gift"><span aria-hidden="true">🎁</span><strong data-i18n="giftAvailable">기념품 수령 가능</strong></span>
+              <span class="nav-status-badge nav-status-badge--yes"><span aria-hidden="true">🎁</span><strong data-i18n="giftAvailable">여권 수령 가능</strong></span>
+              <span class="nav-status-badge nav-status-badge--gift"><span aria-hidden="true">📘</span><strong data-i18n="passportAvailable">기념품 수령 가능</strong></span>
             </div>
 
             <div class="stamp-spot-card__address">
@@ -454,8 +472,8 @@
       <strong>
       <div class="operation-grid">
         <article><span aria-hidden="true">🎁</span><div><strong data-i18n="giftTitle">기념품 안내</strong><p data-i18n="giftText">오동도등대를 방문하여 기념품을 수령하실 수 있습니다.</p></div></article>
-        <article><span aria-hidden="true">⏰</span><div><strong data-i18n="timeTitle">방문 시간 안내</strong><p data-i18n="timeText">오동도 등대는 18시 이후에 방문하실 수 없습니다.</p></div></article>
-        <article><span aria-hidden="true">📘</span><div><strong data-i18n="passportPlace">종이 여권 수령 장소</strong><p data-i18n="passportPlaceText">여수 세계 섬 박람회 장소, 오동도 등대, 여수 연안 여객선터미널</p></div></article>
+        <article><span aria-hidden="true">⏰</span><div><strong data-i18n="timeTitle">방문 시간 안내</strong><p data-i18n="timeText">여수구항등대 (여수연안여객선터미널) 및 오동도등대는 18시 이후에 방문하실 수 없습니다.</p></div></article>
+        <article><span aria-hidden="true">📘</span><div><strong data-i18n="passportPlace">종이 여권 수령 장소</strong><p data-i18n="passportPlaceText">섬박람회 주행사장 정문 종합 안내소, 오동도등대, 여수연안여객선터미널</p></div></article>
         <article><span aria-hidden="true">🗺️</span><div><strong data-i18n="directions">찾아오는 길</strong><p data-i18n="directionsText">6개 방문 위치를 지도 앱으로 확인하세요.</p><a class="inline-link" href="#stamp-spots" data-i18n="openSpotDirections">명소별 길찾기 보기 →</a></div></article>
       </div>
     </section>
