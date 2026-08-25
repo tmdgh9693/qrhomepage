@@ -76,6 +76,35 @@
         <article class="dashboard-panel dashboard-panel--notice">
           <div class="dashboard-panel__heading"><span aria-hidden="true">❗</span><div><p>NOTICE</p><h2 id="notice-title" data-i18n="notice">공지사항</h2></div></div>
           <div class="dashboard-panel__body"><span class="badge badge--important" data-i18n="important">중요</span><h3 data-i18n="passportPlace">종이 여권 수령 장소</h3><p data-i18n="passportPlaceText">여수 세계 섬 박람회 장소, 오동도 등대, 여객선 터미널 2곳</p></div>
+          <div class="dashboard-panel__foot guhang-notice-card">
+            <div class="guhang-notice-card__title-row">
+              <span class="badge badge--new" data-i18n="noticeMustRead">필독</span>
+              <h3 data-i18n="guhangNoticeTitle">여수연안여객선터미널(구항등대) 방문 안내</h3>
+            </div>
+
+            <div class="guhang-notice-card__blocked">
+              <span aria-hidden="true">⛔</span>
+              <strong data-i18n="guhangAccessBlocked">구항등대는 출입이 불가합니다.</strong>
+            </div>
+
+            <p class="guhang-notice-card__lead" data-i18n="guhangVerifyLead">인증사진은 아래 방법 중 하나로 촬영해 주세요.</p>
+
+            <ol class="guhang-notice-card__methods">
+              <li>
+                <span class="guhang-notice-card__number">1</span>
+                <span data-i18n="guhangVerifyStamp">스탬프 설치 장소에서 촬영</span>
+              </li>
+              <li>
+                <span class="guhang-notice-card__number">2</span>
+                <span data-i18n="guhangVerifyNearby">구항등대가 보이는 출입 가능한 인근 장소에서 촬영</span>
+              </li>
+            </ol>
+
+            <div class="guhang-notice-card__safety">
+              <span aria-hidden="true">⚠️</span>
+              <p data-i18n="guhangSafetyWarning">안전을 위해 출입 제한구역에는 들어가지 마시고 현장 안내를 반드시 따라주세요.</p>
+            </div>
+          </div>
         </article>
 
         <article class="dashboard-panel dashboard-panel--caution" id="caution" aria-labelledby="caution-title">
@@ -109,16 +138,16 @@
             </div>
           </div>
           <ol class="recommended-course-route">
-            <li><a href="#spot-2"><span>1</span><strong data-i18n="loc2">섬박람회 주행사장</strong></a></li>
-            <li><a href="#spot-1"><span>2</span><strong data-i18n="loc1">돌산항남방파제등대</strong></a></li>
-            <li><a href="#spot-4"><span>3</span><strong data-i18n="loc4">여수구항방파제 하멜등대</strong></a></li>
-            <li><a href="#spot-5"><span>4</span><strong data-i18n="loc5">여수연안여객선터미널(구항등대)</strong></a></li>
+            <li><a href="#spot-1"><span>1</span><strong data-i18n="loc1">섬박람회 주행사장</strong></a></li>
+            <li><a href="#spot-2"><span>2</span><strong data-i18n="loc2">돌산항남방파제등대</strong></a></li>
+            <li><a href="#spot-5"><span>3</span><strong data-i18n="loc5">여수연안여객선터미널(구항등대)</strong></a></li>
+            <li><a href="#spot-4"><span>4</span><strong data-i18n="loc4">여수구항방파제 하멜등대</strong></a></li>
             <li><a href="#spot-3"><span>5</span><strong data-i18n="loc3">여수신북항방파제등대</strong></a></li>
             <li><a href="#spot-6"><span>6</span><strong data-i18n="loc6">오동도등대</strong></a></li>
           </ol>
         </article>
-
-        <article class="recommended-course-card">
+        <!--
+<article class="recommended-course-card">
           <div class="recommended-course-card__heading">
             <span class="recommended-course-card__badge">B</span>
             <div>
@@ -135,6 +164,8 @@
             <li><a href="#spot-2"><span>6</span><strong data-i18n="loc2">돌산항남방파제등대</strong></a></li>
           </ol>
         </article>
+        -->
+
       </div>
 
       <p class="recommended-course-note"><span aria-hidden="true">ℹ️</span><span data-i18n="recommendedCourseNote">추천코스는 이동 편의를 위한 예시입니다. 실제 이동 전 교통 상황과 각 시설 운영시간을 확인해 주세요.</span></p>

@@ -2138,3 +2138,270 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
     grid-column: auto;
   }
 }
+
+
+/* ===== 2026-08-25 추천코스 가로형 + 명소 설명 전체 표시 ===== */
+
+/* 현재 표시되는 추천코스 1개가 전체 너비를 사용 */
+.recommended-course-grid {
+  display: block !important;
+  width: 100%;
+}
+
+.recommended-course-card {
+  width: 100%;
+  max-width: none;
+}
+
+/* 6개 코스를 한 줄 가로 흐름으로 표시 */
+.recommended-course-route {
+  width: 100%;
+  margin: 16px 0 0 !important;
+  padding: 2px 2px 8px !important;
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  list-style: none;
+  overflow: visible;
+}
+
+.recommended-course-route li {
+  min-width: 0;
+  position: relative;
+}
+
+.recommended-course-route li:not(:last-child)::after {
+  content: "→" !important;
+  left: auto !important;
+  right: -17px !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: #6988b3;
+  font-size: 1rem !important;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.recommended-course-route a {
+  width: 100%;
+  min-height: 76px !important;
+  padding: 10px 8px !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center;
+  gap: 7px !important;
+  border: 1px solid #dce6f3;
+  border-radius: 13px;
+  background: #f9fbfe;
+  text-align: center;
+}
+
+.recommended-course-route a > span {
+  flex: 0 0 auto;
+}
+
+.recommended-course-route strong {
+  width: 100%;
+  min-width: 0;
+  font-size: .68rem !important;
+  line-height: 1.35 !important;
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+/* 스탬프 명소 설명/주소의 말줄임(...) 완전 해제 */
+.stamp-spot-card--detailed p,
+.stamp-spot-card--detailed .stamp-spot-card__description,
+.stamp-spot-card--detailed .stamp-spot-card__address p {
+  display: block !important;
+  -webkit-box-orient: initial !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  max-height: none !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+}
+
+.stamp-spot-card--detailed .stamp-spot-card__description {
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 7px 0 0 !important;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+/* 모바일도 세로 목록이 아니라 가로 스크롤 유지 */
+@media (max-width: 760px) {
+  .recommended-course-card {
+    padding: 14px;
+  }
+
+  .recommended-course-route {
+    grid-template-columns: repeat(6, 132px) !important;
+    gap: 22px !important;
+    padding: 3px 3px 12px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .recommended-course-route li {
+    scroll-snap-align: start;
+  }
+
+  .recommended-course-route a {
+    min-height: 82px !important;
+  }
+
+  .recommended-course-route li:not(:last-child)::after {
+    right: -19px !important;
+  }
+}
+
+
+/* ===== 구항등대 출입불가 구조형 공지 카드 ===== */
+.guhang-notice-card {
+  padding: 14px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffdfd 0%, #fff8f8 100%);
+}
+
+.guhang-notice-card__title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.guhang-notice-card__title-row h3 {
+  flex: 1 1 190px;
+  margin: 0;
+  color: #26354d;
+  font-size: .84rem;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.guhang-notice-card .badge--new {
+  flex: 0 0 auto;
+  color: #fff;
+  background: #c93535;
+}
+
+.guhang-notice-card__blocked {
+  margin-top: 11px;
+  padding: 11px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #f2b8b8;
+  border-radius: 12px;
+  color: #9e2020;
+  background: #fff0f0;
+}
+
+.guhang-notice-card__blocked > span {
+  flex: 0 0 auto;
+  font-size: 1.05rem;
+}
+
+.guhang-notice-card__blocked strong {
+  font-size: .79rem;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.guhang-notice-card__lead {
+  margin: 12px 0 8px;
+  color: #475467;
+  font-size: .72rem;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.guhang-notice-card__methods {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+  list-style: none;
+}
+
+.guhang-notice-card__methods li {
+  min-width: 0;
+  padding: 9px 10px;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  border: 1px solid #dce5f0;
+  border-radius: 11px;
+  color: #344054;
+  background: #fff;
+  font-size: .71rem;
+  font-weight: 700;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.guhang-notice-card__number {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #315d93;
+  font-size: .66rem;
+  font-weight: 900;
+}
+
+.guhang-notice-card__safety {
+  margin-top: 10px;
+  padding: 9px 10px;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 7px;
+  align-items: start;
+  border-radius: 10px;
+  color: #7b5414;
+  background: #fff7e7;
+}
+
+.guhang-notice-card__safety > span {
+  font-size: .85rem;
+  line-height: 1.4;
+}
+
+.guhang-notice-card__safety p {
+  margin: 0;
+  font-size: .68rem;
+  font-weight: 700;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+@media (max-width: 480px) {
+  .guhang-notice-card {
+    padding: 12px;
+  }
+
+  .guhang-notice-card__title-row {
+    align-items: flex-start;
+  }
+
+  .guhang-notice-card__title-row h3 {
+    font-size: .78rem;
+  }
+
+  .guhang-notice-card__methods li {
+    font-size: .68rem;
+  }
+}
