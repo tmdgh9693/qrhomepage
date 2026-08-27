@@ -116,7 +116,7 @@
   const mapChoiceTitle = document.getElementById('mapChoiceDialogTitle');
   const mapChoiceKakao = document.getElementById('mapChoiceKakao');
   const mapChoiceNaver = document.getElementById('mapChoiceNaver');
-  const mapChoiceGoogle = document.getElementById('mapChoiceGoogle');
+  // const mapChoiceGoogle = document.getElementById('mapChoiceGoogle');
   const mapChoiceButtons = [...document.querySelectorAll('[data-map-choice]')];
 
   function closeMapChoiceDialog() {
@@ -138,7 +138,7 @@
         mapChoiceNaver.href = button.dataset.naverUrl || '#';
         mapChoiceNaver.dataset.query = button.dataset.query || title;
       }
-      if (mapChoiceGoogle) mapChoiceGoogle.href = button.dataset.googleUrl || '#';
+      // if (mapChoiceGoogle) mapChoiceGoogle.href = button.dataset.googleUrl || '#';
 
       if (typeof mapChoiceDialog.showModal === 'function') mapChoiceDialog.showModal();
       else mapChoiceDialog.setAttribute('open', '');
