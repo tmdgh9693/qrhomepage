@@ -325,7 +325,9 @@
                 <span aria-hidden="true">📷</span><span data-i18n="viewStampLocation">스탬프 위치 보기</span>
               </button>
               <button class="spot-action spot-action--safe" type="button"
-                data-safety-guide data-title-key="loc3" data-safety-key="safe3">
+                data-safety-guide data-title-key="loc3" data-safety-key="safe3"
+                data-safety-image="assets/shinbuk-safety-guide.jpg"
+                data-safety-image-alt-key="safe3PhotoAlt">
                 <span aria-hidden="true">🛡️</span><span data-i18n="visitSafely">안전하게 방문하기</span>
               </button>
             </div>
@@ -548,6 +550,11 @@
         <span aria-hidden="true">🛡️</span>
         <div><strong id="safetyGuidePlaceName"></strong><p id="safetyGuideMessage"></p></div>
       </div>
+
+      <figure class="safety-guide-photo" id="safetyGuidePhotoWrap" hidden>
+        <img id="safetyGuidePhoto" src="" alt="" />
+        <figcaption data-i18n="safetySitePhoto">입구 사진</figcaption>
+      </figure>
       <div class="safety-guide-common">
         <strong data-i18n="safetyCommonTitle">공통 안전 안내</strong>
         <ul>

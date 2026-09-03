@@ -246,6 +246,8 @@
   const safetyDialogTitle = document.getElementById('safetyGuideDialogTitle');
   const safetyPlaceName = document.getElementById('safetyGuidePlaceName');
   const safetyMessage = document.getElementById('safetyGuideMessage');
+  const safetyPhotoWrap = document.getElementById('safetyGuidePhotoWrap');
+  const safetyPhoto = document.getElementById('safetyGuidePhoto');
   const safetyButtons = [...document.querySelectorAll('[data-safety-guide]')];
 
   function closeSafetyDialog() {
@@ -260,9 +262,26 @@
       const dict = currentTranslations();
       const title = dict[button.dataset.titleKey] || '';
       const message = dict[button.dataset.safetyKey] || '';
+      const imageUrl = button.dataset.safetyImage || '';
+      const imageAltKey = button.dataset.safetyImageAltKey || '';
+      const imageAlt = imageAltKey ? (dict[imageAltKey] || title) : title;
+
       if (safetyDialogTitle) safetyDialogTitle.textContent = dict.visitSafely || '안전하게 방문하기';
       if (safetyPlaceName) safetyPlaceName.textContent = title;
       if (safetyMessage) safetyMessage.textContent = message;
+
+      if (safetyPhotoWrap && safetyPhoto) {
+        if (imageUrl) {
+          safetyPhoto.src = imageUrl;
+          safetyPhoto.alt = imageAlt;
+          safetyPhotoWrap.hidden = false;
+        } else {
+          safetyPhotoWrap.hidden = true;
+          safetyPhoto.removeAttribute('src');
+          safetyPhoto.alt = '';
+        }
+      }
+
       if (typeof safetyDialog.showModal === 'function') safetyDialog.showModal();
       else safetyDialog.setAttribute('open', '');
     });

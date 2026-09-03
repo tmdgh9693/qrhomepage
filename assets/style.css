@@ -2484,3 +2484,43 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
     margin-top: 1px;
   }
 }
+
+
+/* ===== 여수신북항방파제등대 안전 안내 현장사진 ===== */
+.safety-guide-photo {
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #d8e4f3;
+  border-radius: 15px;
+  background: #f5f7fa;
+}
+
+.safety-guide-photo[hidden] {
+  display: none !important;
+}
+
+.safety-guide-photo img {
+  width: 100%;
+  height: auto;
+  max-height: 430px;
+  display: block;
+  object-fit: contain;
+  background: #eef2f6;
+}
+
+.safety-guide-photo figcaption {
+  margin: 0;
+  padding: 8px 11px;
+  color: #667085;
+  background: #fff;
+  border-top: 1px solid #e5eaf0;
+  font-size: .7rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .safety-guide-photo img {
+    max-height: 55vh;
+  }
+}
