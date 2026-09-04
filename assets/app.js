@@ -171,33 +171,149 @@
     if (typeof stampDialog.close === 'function' && stampDialog.open) stampDialog.close();
   }
 
-  function loadStampImage(base, title) {
+  const stampMedia = stampImage?.closest('.stamp-location-dialog__media') || null;
+  let stampSlides = [];
+  let stampSlideIndex = 0;
+  let stampTouchStartX = 0;
+  let stampLoadToken = 0;
+
+  // index.html은 수정하지 않고 필요한 슬라이더 버튼을 실행 시 자동 생성합니다.
+  const stampPrevButton = document.createElement('button');
+  stampPrevButton.type = 'button';
+  stampPrevButton.className = 'stamp-location-slider__arrow stamp-location-slider__arrow--prev';
+  stampPrevButton.setAttribute('aria-label', '이전 사진');
+  stampPrevButton.textContent = '‹';
+  stampPrevButton.hidden = true;
+
+  const stampNextButton = document.createElement('button');
+  stampNextButton.type = 'button';
+  stampNextButton.className = 'stamp-location-slider__arrow stamp-location-slider__arrow--next';
+  stampNextButton.setAttribute('aria-label', '다음 사진');
+  stampNextButton.textContent = '›';
+  stampNextButton.hidden = true;
+
+  const stampCounter = document.createElement('div');
+  stampCounter.className = 'stamp-location-slider__counter';
+  stampCounter.setAttribute('aria-live', 'polite');
+  stampCounter.hidden = true;
+
+  stampMedia?.append(stampPrevButton, stampNextButton, stampCounter);
+
+  function renderStampSlide() {
     if (!stampImage || !stampEmpty) return;
-    let index = 0;
+
+    if (!stampSlides.length) {
+      stampImage.hidden = true;
+      stampImage.removeAttribute('src');
+      stampEmpty.hidden = false;
+      stampPrevButton.hidden = true;
+      stampNextButton.hidden = true;
+      stampCounter.hidden = true;
+      return;
+    }
+
+    stampSlideIndex = Math.max(0, Math.min(stampSlideIndex, stampSlides.length - 1));
+    stampImage.src = stampSlides[stampSlideIndex];
+    stampImage.hidden = false;
+    stampEmpty.hidden = true;
+
+    const multiple = stampSlides.length > 1;
+    stampPrevButton.hidden = !multiple;
+    stampNextButton.hidden = !multiple;
+    stampCounter.hidden = !multiple;
+    if (multiple) stampCounter.textContent = `${stampSlideIndex + 1} / ${stampSlides.length}`;
+  }
+
+  function previousStampSlide() {
+    if (stampSlides.length <= 1) return;
+    stampSlideIndex = (stampSlideIndex - 1 + stampSlides.length) % stampSlides.length;
+    renderStampSlide();
+  }
+
+  function nextStampSlide() {
+    if (stampSlides.length <= 1) return;
+    stampSlideIndex = (stampSlideIndex + 1) % stampSlides.length;
+    renderStampSlide();
+  }
+
+  function probeImage(src) {
+    return new Promise((resolve) => {
+      const image = new Image();
+      image.onload = () => resolve(src);
+      image.onerror = () => resolve(null);
+      image.src = src;
+    });
+  }
+
+  async function findExistingImage(base) {
+    for (const extension of imageExtensions) {
+      const found = await probeImage(`${base}${extension}`);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  async function loadStampImage(base, title) {
+    if (!stampImage || !stampEmpty) return;
+
+    const token = ++stampLoadToken;
+    stampSlides = [];
+    stampSlideIndex = 0;
     stampImage.hidden = true;
     stampImage.removeAttribute('src');
     stampImage.alt = title;
     stampEmpty.hidden = false;
+    stampPrevButton.hidden = true;
+    stampNextButton.hidden = true;
+    stampCounter.hidden = true;
 
-    const tryNext = () => {
-      if (index >= imageExtensions.length) {
-        stampImage.onerror = null;
-        stampImage.onload = null;
-        stampImage.hidden = true;
-        stampEmpty.hidden = false;
-        return;
-      }
-      const src = `${base}${imageExtensions[index++]}`;
-      stampImage.onload = () => {
-        stampEmpty.hidden = true;
-        stampImage.hidden = false;
-        stampImage.onerror = null;
-      };
-      stampImage.onerror = tryNext;
-      stampImage.src = src;
-    };
-    tryNext();
+    // 먼저 05-1.jpg, 05-2.jpg 같은 다중사진 형식을 확인합니다.
+    const numberedSlides = [];
+    for (let number = 1; number <= 10; number += 1) {
+      const found = await findExistingImage(`${base}-${number}`);
+      if (token !== stampLoadToken) return;
+      if (!found) break;
+      numberedSlides.push(found);
+    }
+
+    if (numberedSlides.length) {
+      stampSlides = numberedSlides;
+      renderStampSlide();
+      return;
+    }
+
+    // 다중사진이 없으면 기존 방식(01.jpeg, 02.jpeg 등)을 그대로 사용합니다.
+    const single = await findExistingImage(base);
+    if (token !== stampLoadToken) return;
+
+    stampSlides = single ? [single] : [];
+    renderStampSlide();
   }
+
+  stampPrevButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    previousStampSlide();
+  });
+
+  stampNextButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    nextStampSlide();
+  });
+
+  // 모바일: 사진을 좌우로 밀어 다음/이전 사진을 볼 수 있습니다.
+  stampMedia?.addEventListener('touchstart', (event) => {
+    stampTouchStartX = event.changedTouches[0]?.clientX || 0;
+  }, { passive: true });
+
+  stampMedia?.addEventListener('touchend', (event) => {
+    if (stampSlides.length <= 1) return;
+    const endX = event.changedTouches[0]?.clientX || 0;
+    const distance = endX - stampTouchStartX;
+    if (Math.abs(distance) < 45) return;
+    if (distance < 0) nextStampSlide();
+    else previousStampSlide();
+  }, { passive: true });
+
 
   stampButtons.forEach((button) => {
     button.addEventListener('click', () => {

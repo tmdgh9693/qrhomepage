@@ -2524,3 +2524,76 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
     max-height: 55vh;
   }
 }
+
+
+/* ===== 스탬프 위치 사진 슬라이드(다중 이미지) ===== */
+.stamp-location-dialog__media {
+  position: relative;
+  touch-action: pan-y;
+}
+
+.stamp-location-slider__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 42px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: rgba(23, 59, 114, .82);
+  box-shadow: 0 5px 16px rgba(16, 24, 40, .24);
+  cursor: pointer;
+  font: inherit;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stamp-location-slider__arrow--prev {
+  left: 10px;
+}
+
+.stamp-location-slider__arrow--next {
+  right: 10px;
+}
+
+.stamp-location-slider__arrow[hidden],
+.stamp-location-slider__counter[hidden] {
+  display: none !important;
+}
+
+.stamp-location-slider__counter {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  z-index: 5;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(23, 59, 114, .82);
+  box-shadow: 0 3px 10px rgba(16, 24, 40, .15);
+  font-size: .7rem;
+  font-weight: 850;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .stamp-location-slider__arrow {
+    width: 36px;
+    height: 46px;
+    font-size: 1.65rem;
+  }
+
+  .stamp-location-slider__arrow--prev {
+    left: 6px;
+  }
+
+  .stamp-location-slider__arrow--next {
+    right: 6px;
+  }
+}
