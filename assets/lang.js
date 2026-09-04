@@ -31,7 +31,7 @@
             caution2: '네트워크 상태에 따라 페이지 연결이 늦어질 수 있습니다.',
             caution3: '개인정보나 민감한 정보는 오픈카톡에 남기지 마세요.',
             caution4: '운영 상황에 따라 안내 내용이 변경될 수 있으니 최신 공지를 확인해 주세요.',
-            caution5: '상품은 1인 1회만 수령 가능하며 중복 수령은 불가합니다.',
+            caution5: '상품은 1인 1회만 수령 가능하며 중복, 대리 수령은 불가합니다.',
             caution6: '상품은 선착순으로 제공되며, 모두 소진되면 수령하지 못할 수 있습니다.',
             caution7: '대리 수령 및 대리로 스탬프를 찍어주는 행위는 불가합니다.',
             // 하단탭
@@ -140,7 +140,7 @@
             caution2: 'The page may load slowly depending on network conditions.',
             caution3: 'Do not leave personal or sensitive information in Open KakaoTalk.',
             caution4: 'Information may change according to operating conditions, so check the latest notices.',
-            caution5: 'Each person may receive a prize only once; duplicate collection is not allowed.',
+            caution5: 'Each person may receive the product only once; duplicate claims or claims made on behalf of others are not permitted.',
             caution6: 'Prizes are provided on a first-come, first-served basis and may run out.',
             caution7: 'Proxy collection and stamping on behalf of another person are not allowed.',
             // 하단탭
@@ -249,7 +249,7 @@
             caution2: 'ネットワーク状況によりページの接続が遅くなる場合があります。', 
             caution3: '個人情報や機密情報をオープンカカオトークに残さないでください。', 
             caution4: '運営状況により案内内容が変更される場合があります。最新のお知らせをご確認ください。', 
-            caution5: '商品は1人1回のみ受け取り可能で、重複受け取りはできません。', 
+            caution5: '商品は1人1回のみ受け取ることができ、重複受取や代理受取はできません。', 
             caution6: '商品は先着順で、なくなり次第終了となります。', 
             caution7: '代理受け取りや他人の代わりにスタンプを押す行為は禁止です。',
             // 하단탭
@@ -355,7 +355,7 @@
             caution2: '根据网络状况，页面连接可能会变慢。', 
             caution3: '请勿在开放式 KakaoTalk 中留下个人或敏感信息。',
             caution4: '指南内容可能根据运营情况变更，请查看最新公告。', 
-            caution5: '每人仅可领取一次奖品，不可重复领取。',
+            caution5: '每位顾客仅限领取一次，不得重复领取或由他人代领。',
             caution6: '奖品按先到先得方式提供，发完即止。', 
             caution7: '禁止代领或替他人盖章。',
             // 하단탭
