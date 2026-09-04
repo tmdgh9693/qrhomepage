@@ -366,6 +366,144 @@
   const safetyPhoto = document.getElementById('safetyGuidePhoto');
   const safetyButtons = [...document.querySelectorAll('[data-safety-guide]')];
 
+  let safetySlides = [];
+  let safetySlideIndex = 0;
+  let safetyTouchStartX = 0;
+  let safetyLoadToken = 0;
+
+  const safetyPrevButton = document.createElement('button');
+  safetyPrevButton.type = 'button';
+  safetyPrevButton.className = 'safety-guide-slider__arrow safety-guide-slider__arrow--prev';
+  safetyPrevButton.setAttribute('aria-label', '이전 사진');
+  safetyPrevButton.textContent = '‹';
+  safetyPrevButton.hidden = true;
+
+  const safetyNextButton = document.createElement('button');
+  safetyNextButton.type = 'button';
+  safetyNextButton.className = 'safety-guide-slider__arrow safety-guide-slider__arrow--next';
+  safetyNextButton.setAttribute('aria-label', '다음 사진');
+  safetyNextButton.textContent = '›';
+  safetyNextButton.hidden = true;
+
+  const safetyCounter = document.createElement('div');
+  safetyCounter.className = 'safety-guide-slider__counter';
+  safetyCounter.setAttribute('aria-live', 'polite');
+  safetyCounter.hidden = true;
+
+  safetyPhotoWrap?.append(safetyPrevButton, safetyNextButton, safetyCounter);
+
+  function renderSafetySlide() {
+    if (!safetyPhotoWrap || !safetyPhoto) return;
+
+    if (!safetySlides.length) {
+      safetyPhotoWrap.hidden = true;
+      safetyPhoto.removeAttribute('src');
+      safetyPhoto.alt = '';
+      safetyPrevButton.hidden = true;
+      safetyNextButton.hidden = true;
+      safetyCounter.hidden = true;
+      return;
+    }
+
+    safetySlideIndex = Math.max(0, Math.min(safetySlideIndex, safetySlides.length - 1));
+    safetyPhoto.src = safetySlides[safetySlideIndex];
+    safetyPhotoWrap.hidden = false;
+
+    const multiple = safetySlides.length > 1;
+    safetyPrevButton.hidden = !multiple;
+    safetyNextButton.hidden = !multiple;
+    safetyCounter.hidden = !multiple;
+    if (multiple) safetyCounter.textContent = `${safetySlideIndex + 1} / ${safetySlides.length}`;
+  }
+
+  function previousSafetySlide() {
+    if (safetySlides.length <= 1) return;
+    safetySlideIndex = (safetySlideIndex - 1 + safetySlides.length) % safetySlides.length;
+    renderSafetySlide();
+  }
+
+  function nextSafetySlide() {
+    if (safetySlides.length <= 1) return;
+    safetySlideIndex = (safetySlideIndex + 1) % safetySlides.length;
+    renderSafetySlide();
+  }
+
+  function safetyProbeImage(src) {
+    return new Promise((resolve) => {
+      const image = new Image();
+      image.onload = () => resolve(src);
+      image.onerror = () => resolve(null);
+      image.src = src;
+    });
+  }
+
+  async function loadSafetyImages(baseImage, imageAlt) {
+    if (!safetyPhotoWrap || !safetyPhoto) return;
+
+    const token = ++safetyLoadToken;
+    safetySlides = [];
+    safetySlideIndex = 0;
+    safetyPhoto.alt = imageAlt;
+    safetyPhotoWrap.hidden = true;
+    safetyPrevButton.hidden = true;
+    safetyNextButton.hidden = true;
+    safetyCounter.hidden = true;
+
+    if (!baseImage) {
+      renderSafetySlide();
+      return;
+    }
+
+    // 예: assets/shinbuk-safety-guide.jpg
+    // 새 슬라이드 파일: shinbuk-safety-guide-1.jpg ~ -7.jpg
+    const lastDot = baseImage.lastIndexOf('.');
+    const base = lastDot >= 0 ? baseImage.slice(0, lastDot) : baseImage;
+    const extension = lastDot >= 0 ? baseImage.slice(lastDot) : '.jpg';
+
+    const numbered = [];
+    for (let number = 1; number <= 7; number += 1) {
+      const found = await safetyProbeImage(`${base}-${number}${extension}`);
+      if (token !== safetyLoadToken) return;
+      if (!found) break;
+      numbered.push(found);
+    }
+
+    if (numbered.length) {
+      safetySlides = numbered;
+      renderSafetySlide();
+      return;
+    }
+
+    // 번호 파일이 아직 없으면 기존 1장 파일을 그대로 표시합니다.
+    const single = await safetyProbeImage(baseImage);
+    if (token !== safetyLoadToken) return;
+    safetySlides = single ? [single] : [];
+    renderSafetySlide();
+  }
+
+  safetyPrevButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    previousSafetySlide();
+  });
+
+  safetyNextButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    nextSafetySlide();
+  });
+
+  safetyPhotoWrap?.addEventListener('touchstart', (event) => {
+    safetyTouchStartX = event.changedTouches[0]?.clientX || 0;
+  }, { passive: true });
+
+  safetyPhotoWrap?.addEventListener('touchend', (event) => {
+    if (safetySlides.length <= 1) return;
+    const endX = event.changedTouches[0]?.clientX || 0;
+    const distance = endX - safetyTouchStartX;
+    if (Math.abs(distance) < 45) return;
+    if (distance < 0) nextSafetySlide();
+    else previousSafetySlide();
+  }, { passive: true });
+
   function closeSafetyDialog() {
     if (!safetyDialog) return;
     if (typeof safetyDialog.close === 'function' && safetyDialog.open) safetyDialog.close();
@@ -386,17 +524,7 @@
       if (safetyPlaceName) safetyPlaceName.textContent = title;
       if (safetyMessage) safetyMessage.textContent = message;
 
-      if (safetyPhotoWrap && safetyPhoto) {
-        if (imageUrl) {
-          safetyPhoto.src = imageUrl;
-          safetyPhoto.alt = imageAlt;
-          safetyPhotoWrap.hidden = false;
-        } else {
-          safetyPhotoWrap.hidden = true;
-          safetyPhoto.removeAttribute('src');
-          safetyPhoto.alt = '';
-        }
-      }
+      loadSafetyImages(imageUrl, imageAlt);
 
       if (typeof safetyDialog.showModal === 'function') safetyDialog.showModal();
       else safetyDialog.setAttribute('open', '');

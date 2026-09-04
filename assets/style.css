@@ -2597,3 +2597,76 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
     right: 6px;
   }
 }
+
+
+/* ===== 안전 안내 사진 7장 슬라이더 ===== */
+.safety-guide-photo {
+  position: relative;
+  touch-action: pan-y;
+}
+
+.safety-guide-slider__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 42px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: rgba(23, 59, 114, .82);
+  box-shadow: 0 5px 16px rgba(16, 24, 40, .24);
+  cursor: pointer;
+  font: inherit;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.safety-guide-slider__arrow--prev {
+  left: 10px;
+}
+
+.safety-guide-slider__arrow--next {
+  right: 10px;
+}
+
+.safety-guide-slider__arrow[hidden],
+.safety-guide-slider__counter[hidden] {
+  display: none !important;
+}
+
+.safety-guide-slider__counter {
+  position: absolute;
+  left: 50%;
+  bottom: 42px;
+  z-index: 5;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(23, 59, 114, .82);
+  box-shadow: 0 3px 10px rgba(16, 24, 40, .15);
+  font-size: .7rem;
+  font-weight: 850;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .safety-guide-slider__arrow {
+    width: 36px;
+    height: 46px;
+    font-size: 1.65rem;
+  }
+
+  .safety-guide-slider__arrow--prev {
+    left: 6px;
+  }
+
+  .safety-guide-slider__arrow--next {
+    right: 6px;
+  }
+}
