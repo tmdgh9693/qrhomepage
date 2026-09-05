@@ -16,7 +16,7 @@
             timeTitle: '방문 시간 안내', timeText: '여수구항등대 (여수연안여객선터미널) 및 오동도등대는 18시 이후에 방문하실 수 없습니다. 시간 확인 후 18시 이전에 방문하시길 바랍니다.',
             // 공지사항
             notice: '공지사항', important: '중요', passportPlace: '종이 여권 수령 장소',
-            passportPlaceText: '섬박람회 주행사장 정문 종합 안내소, 오동도등대, 여수연안여객선터미널',
+            passportPlaceText: '2026여수세계섬박람회 주행사장 물품보관(충전소), 오동도등대, 여수연안여객선터미널',
             newNotice: '여수연안여객선터미널의 구항등대는 출입이 불가합니다. 인증사진은 스탬프 설치 장소 또는 구항등대가 보이는 출입 가능한 인근 장소에서 촬영해 주세요. 안전을 위해 출입 제한구역에 접근하지 마시고 현장 안내를 반드시 따라주시기 바랍니다.',
             noticeMustRead: '필독',
             guhangNoticeTitle: '구항등대 (여수연안여객선터미널) 방문 안내',
@@ -125,7 +125,7 @@
             timeText: 'The Yeosu Old Port Lighthouse (Yeosu Coastal Passenger Terminal) and Odongdo Lighthouse are closed to visitors after 6:00 PM. Please check the hours and visit before 6:00 PM.',
             // 공지사항
             notice: 'Notices', important: 'Important', passportPlace: 'Paper Passport Issuance Locations',
-            passportPlaceText: 'Main Information Center at the Main Entrance of the Island Expo Main Venue, Odongdo Lighthouse, Yeosu Coastal Passenger Terminal',
+            passportPlaceText: '2026 Yeosu World Island Exhibition Main Venue – Luggage Storage (Charging Station), Odongdo Lighthouse, Yeosu Coastal Passenger Terminal',
             newNotice: 'The Old Harbor Lighthouse at Yeosu Coastal Passenger Ferry Terminal is not open to visitors. For your verification photo, take a photo at the stamp location or from an accessible nearby area where the lighthouse is visible. For safety, do not enter restricted areas and follow all on-site guidance.',
             noticeMustRead: 'Must Read',
             guhangNoticeTitle: 'Old Harbor Lighthouse (Yeosu Coastal Passenger Ferry Terminal) Visit Guide',
@@ -234,7 +234,7 @@
             timeText: '麗水旧港灯台（麗水沿岸旅客ターミナル）および梧桐島灯台は18時以降の訪問ができません。時間を確認の上、18時前に訪問してください。',
             // 공지사항
             notice: 'お知らせ', important: '重要', passportPlace: '紙パスポート発行場所',
-            passportPlaceText: '島博メイン会場正門の総合案内所、梧桐島灯台、麗水沿岸旅客船ターミナル',
+            passportPlaceText: '2026麗水世界島博覧会 メイン会場－手荷物預かり所（充電ステーション）、梧桐島灯台、麗水沿岸旅客船ターミナル',
             newNotice: '麗水沿岸旅客ターミナルの旧港灯台は立入禁止です。認証写真は、スタンプ設置場所または旧港灯台が見える立入可能な周辺場所で撮影してください。安全のため立入制限区域には近づかず、現地の案内に必ず従ってください。',
             noticeMustRead: '必読',
             guhangNoticeTitle: '旧港灯台（麗水沿岸旅客ターミナル）訪問案内',
@@ -340,7 +340,7 @@
             // 공지사항
             notice: '公告事项',
             important: '重要', passportPlace: '纸质护照发放地点',
-            passportPlaceText: '岛屿博览会主会场正门综合服务处、梧桐岛灯塔、丽水沿海客运码头',
+            passportPlaceText: '2026丽水世界岛屿博览会 主会场－行李寄存处（充电站）、梧桐岛灯塔、丽水沿海客运码头',
             newNotice: '丽水沿岸客运码头的旧港灯塔禁止进入。认证照片请在印章设置处，或在可合法进入且能看到旧港灯塔的附近地点拍摄。为确保安全，请勿进入限制区域，并务必遵守现场指引。',
             noticeMustRead: '必读',
             guhangNoticeTitle: '丽水旧港灯塔（丽水沿岸客运码头）到访指南',
