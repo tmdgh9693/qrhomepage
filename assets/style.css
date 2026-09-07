@@ -2680,9 +2680,9 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
 
 /* ===== HERO 오른쪽 상단: 기념품 수령 현황 ===== */
 .tour-hero {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  column-gap: 20px;
   align-items: start;
 }
 
@@ -2694,8 +2694,8 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
 .hero-gift-status {
   width: 190px;
   padding: 14px 15px;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-self: end;
+  align-self: start;
   border: 1px solid #cfe0f8;
   border-radius: 16px;
   background: rgba(255, 255, 255, .96);
@@ -2751,18 +2751,132 @@ html:lang(zh-CN) .hero-gift-status__title {
 /* 모바일/좁은 화면에서는 겹치지 않도록 제목 아래 오른쪽에 배치 */
 @media (max-width: 640px) {
   .tour-hero {
-    flex-direction: column;
-    gap: 18px;
+    grid-template-columns: 1fr;
+    row-gap: 18px;
   }
 
   .hero-gift-status {
     width: min(100%, 230px);
-    justify-content: flex-end;
+    justify-self: end;
   }
 }
 
 @media (max-width: 380px) {
   .hero-gift-status {
     width: 100%;
+  }
+}
+
+
+/* ===== 모바일 HERO 기념품 수령 현황 가독성 개선 ===== */
+
+/* 태블릿 이하: 카드 폭/간격을 더 안정적으로 정리 */
+@media (max-width: 760px) {
+  .tour-hero {
+    row-gap: 16px !important;
+  }
+
+  .tour-hero__actions {
+    gap: 10px !important;
+  }
+
+  .hero-gift-status {
+    width: 100% !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+    padding: 17px 18px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 22px rgba(23, 59, 114, .08) !important;
+  }
+
+  .hero-gift-status__title {
+    gap: 9px !important;
+    font-size: .9rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .hero-gift-status__title > span {
+    font-size: 1.15rem !important;
+  }
+
+  .hero-gift-status__title strong {
+    font-size: .9rem !important;
+    font-weight: 900 !important;
+  }
+
+  .hero-gift-status__count {
+    margin-top: 10px !important;
+    font-size: 1.75rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.025em !important;
+  }
+
+  .hero-gift-status__date {
+    margin-top: 8px !important;
+    font-size: .78rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* 휴대폰: 상단 버튼/현황 카드가 같은 폭으로 보이도록 */
+@media (max-width: 520px) {
+  .tour-hero__actions {
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+  }
+
+  .tour-hero__actions > a {
+    min-height: 56px !important;
+    padding: 11px 10px !important;
+    border-radius: 16px !important;
+  }
+
+  .tour-hero__actions strong {
+    font-size: .82rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero-gift-status {
+    margin-top: 4px !important;
+    min-height: 132px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  .hero-gift-status__title {
+    font-size: .94rem !important;
+  }
+
+  .hero-gift-status__title strong {
+    font-size: .94rem !important;
+  }
+
+  .hero-gift-status__count {
+    font-size: 1.9rem !important;
+  }
+
+  .hero-gift-status__date {
+    font-size: .8rem !important;
+  }
+}
+
+/* 아주 작은 화면에서도 좌우 여백/글자 크기 안정화 */
+@media (max-width: 380px) {
+  .hero-gift-status {
+    padding: 15px 16px !important;
+  }
+
+  .hero-gift-status__title,
+  .hero-gift-status__title strong {
+    font-size: .88rem !important;
+  }
+
+  .hero-gift-status__count {
+    font-size: 1.7rem !important;
+  }
+
+  .hero-gift-status__date {
+    font-size: .75rem !important;
   }
 }
