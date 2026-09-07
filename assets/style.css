@@ -2677,3 +2677,92 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
   color: #667085;
   font-size: 0.68rem;
 }
+
+/* ===== HERO 오른쪽 상단: 기념품 수령 현황 ===== */
+.tour-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  column-gap: 20px;
+  align-items: start;
+}
+
+.tour-hero .hero__content {
+  min-width: 0;
+  max-width: none;
+}
+
+.hero-gift-status {
+  width: 190px;
+  padding: 14px 15px;
+  justify-self: end;
+  align-self: start;
+  border: 1px solid #cfe0f8;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 9px 24px rgba(23, 59, 114, .09);
+}
+
+.hero-gift-status__title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #173b72;
+  font-size: .76rem;
+  line-height: 1.35;
+}
+
+.hero-gift-status__title > span {
+  flex: 0 0 auto;
+  font-size: .95rem;
+}
+
+.hero-gift-status__title strong {
+  min-width: 0;
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.hero-gift-status__count {
+  max-width: none !important;
+  margin: 9px 0 0 !important;
+  color: #0f6fff !important;
+  font-size: 1.45rem !important;
+  line-height: 1.1 !important;
+  font-weight: 950;
+  letter-spacing: -.02em;
+}
+
+.hero-gift-status__date {
+  display: block;
+  margin-top: 6px;
+  color: #667085;
+  font-size: .66rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+html:lang(en) .hero-gift-status__title,
+html:lang(ja) .hero-gift-status__title,
+html:lang(zh) .hero-gift-status__title,
+html:lang(zh-CN) .hero-gift-status__title {
+  overflow-wrap: anywhere;
+}
+
+/* 모바일/좁은 화면에서는 겹치지 않도록 제목 아래 오른쪽에 배치 */
+@media (max-width: 640px) {
+  .tour-hero {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
+
+  .hero-gift-status {
+    width: min(100%, 230px);
+    justify-self: end;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-gift-status {
+    width: 100%;
+  }
+}
