@@ -2680,9 +2680,9 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
 
 /* ===== HERO 오른쪽 상단: 기념품 수령 현황 ===== */
 .tour-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 190px;
-  column-gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
   align-items: start;
 }
 
@@ -2694,8 +2694,8 @@ html:lang(zh) .nav-place-card__description { overflow-wrap: anywhere; word-break
 .hero-gift-status {
   width: 190px;
   padding: 14px 15px;
-  justify-self: end;
-  align-self: start;
+  justify-content: flex-end;
+  align-items: flex-start;
   border: 1px solid #cfe0f8;
   border-radius: 16px;
   background: rgba(255, 255, 255, .96);
@@ -2751,13 +2751,13 @@ html:lang(zh-CN) .hero-gift-status__title {
 /* 모바일/좁은 화면에서는 겹치지 않도록 제목 아래 오른쪽에 배치 */
 @media (max-width: 640px) {
   .tour-hero {
-    grid-template-columns: 1fr;
-    row-gap: 18px;
+    flex-direction: column;
+    gap: 18px;
   }
 
   .hero-gift-status {
     width: min(100%, 230px);
-    justify-self: end;
+    justify-content: flex-end;
   }
 }
 
