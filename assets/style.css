@@ -2946,3 +2946,105 @@ html:lang(zh-CN) .hero-gift-status__title {
     font-size: .61rem !important;
   }
 }
+
+
+/* ===== PC 기념품 수령 현황 겹침 방지 ===== */
+@media (min-width: 761px) {
+  .tour-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 330px) !important;
+    column-gap: 28px !important;
+    align-items: start !important;
+  }
+
+  .tour-hero .hero__content {
+    min-width: 0 !important;
+  }
+
+  .hero-gift-status {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 330px !important;
+    padding: 16px 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-gift-status__title {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    column-gap: 8px !important;
+    white-space: normal !important;
+  }
+
+  .hero-gift-status__title > span {
+    flex: none !important;
+    min-width: 0 !important;
+  }
+
+  .hero-gift-status__title > strong[data-i18n="noticeTitle"] {
+    min-width: 0 !important;
+    font-size: .82rem !important;
+    line-height: 1.35 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  .hero-gift-status__title .hero-gift-status__date {
+    min-width: max-content !important;
+    margin: 0 !important;
+    font-size: .66rem !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    justify-self: end !important;
+  }
+
+  .hero-gift-status__count {
+    margin: 16px 0 3px !important;
+    text-align: center !important;
+  }
+}
+
+/* 노트북처럼 PC 폭이 조금 좁은 경우에도 서로 침범하지 않도록 */
+@media (min-width: 761px) and (max-width: 980px) {
+  .tour-hero {
+    grid-template-columns: minmax(0, 1fr) 285px !important;
+    column-gap: 18px !important;
+  }
+
+  .hero-gift-status {
+    max-width: 285px !important;
+    padding: 15px 14px !important;
+  }
+
+  .hero-gift-status__title {
+    column-gap: 6px !important;
+  }
+
+  .hero-gift-status__title > strong[data-i18n="noticeTitle"] {
+    font-size: .76rem !important;
+  }
+
+  .hero-gift-status__title .hero-gift-status__date {
+    font-size: .59rem !important;
+  }
+}
+
+/* 영문처럼 제목이 긴 언어는 PC에서도 겹치지 않게 줄바꿈 허용 */
+@media (min-width: 761px) {
+  html:lang(en) .hero-gift-status__title {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    row-gap: 5px !important;
+  }
+
+  html:lang(en) .hero-gift-status__title .hero-gift-status__date {
+    grid-column: 2 !important;
+    justify-self: start !important;
+  }
+
+  html:lang(ja) .hero-gift-status__title > strong[data-i18n="noticeTitle"],
+  html:lang(zh) .hero-gift-status__title > strong[data-i18n="noticeTitle"],
+  html:lang(zh-CN) .hero-gift-status__title > strong[data-i18n="noticeTitle"] {
+    white-space: normal !important;
+  }
+}
