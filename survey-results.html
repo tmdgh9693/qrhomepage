@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<title>행사 만족도 조사 결과</title>
+<style>
+:root{--b:#0f6fff;--t:#182230;--m:#667085;--l:#e5eaf1;--bg:#f5f8fc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}
+.wrap{width:min(980px,calc(100% - 24px));margin:24px auto 56px}.eyebrow{color:var(--b);font-weight:900;letter-spacing:.1em;font-size:.78rem;margin:0 0 6px}h1{margin:0;font-size:clamp(1.7rem,6vw,2.4rem)}.desc{color:var(--m);line-height:1.65;font-size:.9rem}.summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}.card,.panel{background:#fff;border:1px solid var(--l);border-radius:18px;box-shadow:0 7px 22px rgba(20,49,91,.05)}.card{padding:16px}.card span{display:block;color:var(--m);font-size:.8rem;font-weight:700}.card strong{display:block;color:var(--b);font-size:1.8rem;margin-top:7px}.panel{padding:16px;margin-top:12px}.panel h2{font-size:1.05rem;margin:0 0 12px}.q{padding:14px 0;border-top:1px solid #edf1f6}.q:first-child{border-top:0;padding-top:0}.qt{font-weight:850;line-height:1.45;font-size:.94rem}.avg{color:var(--b);font-weight:950;font-size:1.55rem;margin:8px 0}.rows{display:grid;gap:6px}.row{display:grid;grid-template-columns:30px 1fr 42px;gap:8px;align-items:center;font-size:.78rem}.track{height:9px;background:#edf2f8;border-radius:999px;overflow:hidden}.fill{height:100%;background:var(--b);border-radius:999px}.count{text-align:right;color:var(--m)}.tags{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.tag{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;background:#f7f9fc;border:1px solid #e8edf4;border-radius:13px;font-size:.84rem}.tag strong{color:var(--b)}.state{text-align:center;color:var(--m);padding:30px 10px}.foot{color:#98a2b3;font-size:.74rem;text-align:right;margin-top:12px}button{border:0;border-radius:11px;padding:9px 13px;background:var(--b);color:#fff;font-weight:800;margin-top:12px}@media(max-width:600px){.tags{grid-template-columns:1fr}.wrap{margin-top:18px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<p class="eyebrow">SURVEY RESULTS</p>
+<h1>행사 만족도 조사 결과</h1>
+<p class="desc">「섬 따라 등대 한바퀴」 만족도 조사 집계 현황입니다. 원본 응답과 자유서술 내용은 공개하지 않습니다.</p>
+<section class="summary"><div class="card"><span>총 응답 수</span><strong id="total">-</strong></div><div class="card"><span>최근 응답</span><strong id="latest" style="font-size:1rem;line-height:1.4">-</strong></div></section>
+<div id="loading" class="panel state">결과를 불러오는 중입니다.</div>
+<div id="content" hidden>
+<section class="panel"><h2>문항별 만족도</h2><div id="questions"></div></section>
+<section class="panel"><h2>불편사항 응답</h2><div id="issues" class="tags"></div></section>
+<section class="panel"><h2>응답 언어</h2><div id="langs" class="tags"></div><button id="refresh">새로고침</button></section>
+<div id="updated" class="foot"></div>
+</div>
+</main>
+<script>
+const U='https://rkxqayycirimuptduwwy.supabase.co';
+const K='sb_publishable_dFlJrnyhyXKMcdwEmjLKQA_D8gGDa0Z';
+const Q={q1:"이번 '섬 따라 등대 한바퀴' 행사에 전반적으로 만족하셨나요?",q2:'행사 참여 방법은 이해하기 쉬웠나요?',q3:'스탬프 대상지 위치와 이동 동선은 찾기 편리했나요?',q4:'홈페이지의 명소정보·길찾기·운영시간·안전 안내는 도움이 되었나요?',q5:'스탬프 투어를 통해 여수의 등대와 주변 관광지에 관심이 높아졌나요?',q6:'기념품은 행사 참여와 완주에 도움이 되었나요?',q7:'앞으로 비슷한 행사가 열린다면 다시 참여하고 싶으신가요?'};
+const I={method:'참여 방법',location:'대상지 위치',route:'이동 동선',stamp:'스탬프 이용',qr:'QR·홈페이지',guidance:'현장 안내',gift:'기념품',other:'기타',none:'불편사항 없음'};
+const L={ko:'한국어',en:'English',ja:'日本語',zh:'中文'};
+function tagBox(el,data,map){el.replaceChildren();for(const [k,label] of Object.entries(map)){const d=document.createElement('div');d.className='tag';const a=document.createElement('span');a.textContent=label;const b=document.createElement('strong');b.textContent=`${Number(data?.[k]||0).toLocaleString('ko-KR')}명`;d.append(a,b);el.append(d)}}
+function qBox(key,avg,counts){const d=document.createElement('div');d.className='q';const t=document.createElement('div');t.className='qt';t.textContent=Q[key];const a=document.createElement('div');a.className='avg';a.textContent=avg==null?'-':`${Number(avg).toFixed(2)} / 5점`;const rows=document.createElement('div');rows.className='rows';const total=[1,2,3,4,5].reduce((s,n)=>s+Number(counts?.[n]||0),0);[5,4,3,2,1].forEach(n=>{const c=Number(counts?.[n]||0),r=document.createElement('div');r.className='row';const x=document.createElement('span');x.textContent=`${n}점`;const tr=document.createElement('div');tr.className='track';const f=document.createElement('div');f.className='fill';f.style.width=total?`${c/total*100}%`:'0%';tr.append(f);const z=document.createElement('span');z.className='count';z.textContent=`${c}명`;r.append(x,tr,z);rows.append(r)});if(key==='q4'&&Number(counts?.not_used||0)>0){const r=document.createElement('div');r.className='row';r.innerHTML=`<span>미사용</span><div class="track"><div class="fill" style="width:0%"></div></div><span class="count">${Number(counts.not_used)}명</span>`;rows.append(r)}d.append(t,a,rows);return d}
+async function load(){const loading=document.getElementById('loading'),content=document.getElementById('content');loading.hidden=false;content.hidden=true;try{const r=await fetch(`${U}/rest/v1/rpc/get_public_survey_results`,{method:'POST',headers:{apikey:K,'Content-Type':'application/json'},body:'{}'});if(!r.ok)throw new Error(r.status);const d=await r.json();document.getElementById('total').textContent=Number(d.total_responses||0).toLocaleString('ko-KR');document.getElementById('latest').textContent=d.latest_response_at?new Date(d.latest_response_at).toLocaleString('ko-KR'):'아직 응답 없음';const qs=document.getElementById('questions');qs.replaceChildren();for(const k of ['q1','q2','q3','q4','q5','q6','q7'])qs.append(qBox(k,d.averages?.[k],d.score_counts?.[k]||{}));tagBox(document.getElementById('issues'),d.inconveniences||{},I);tagBox(document.getElementById('langs'),d.languages||{},L);document.getElementById('updated').textContent=`마지막 확인: ${new Date().toLocaleString('ko-KR')}`;loading.hidden=true;content.hidden=false}catch(e){console.error(e);loading.textContent='결과를 불러오지 못했습니다. Supabase 설정을 확인해 주세요.'}}
+document.getElementById('refresh').onclick=load;load();
+</script>
+</body>
+</html>
