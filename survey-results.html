@@ -44,19 +44,25 @@ th,td{padding:10px 8px;border-bottom:1px solid #edf1f6;text-align:right}
 th:first-child,td:first-child{text-align:left}
 th{color:var(--m);font-size:.76rem}
 
-.comments{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.comment-list{display:grid;gap:10px}
-.comment-item{padding:12px 13px;background:#f8fafc;border:1px solid #e7edf4;border-radius:14px}
+.comments{display:grid;gap:10px}
+.comment-group{background:#f8fafc;border:1px solid #e7edf4;border-radius:14px;overflow:hidden}
+.comment-group summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;cursor:pointer;font-size:.9rem;font-weight:850;line-height:1.45;list-style:none}
+.comment-group summary::-webkit-details-marker{display:none}
+.comment-group summary::after{content:'＋';flex:0 0 auto;color:var(--b);font-size:1.15rem;font-weight:900}
+.comment-group[open] summary::after{content:'−'}
+.comment-group__count{margin-left:auto;color:var(--m);font-size:.75rem;font-weight:800;white-space:nowrap}
+.comment-group__body{padding:0 12px 12px;border-top:1px solid #e7edf4}
+.comment-list{display:grid;gap:10px;padding-top:10px}
+.comment-item{padding:12px 13px;background:#fff;border:1px solid #e7edf4;border-radius:12px}
 .comment-item p{margin:0;white-space:pre-wrap;line-height:1.6;font-size:.88rem}
 .comment-item time{display:block;margin-top:7px;color:#98a2b3;font-size:.72rem}
-.comment-empty{color:var(--m);font-size:.84rem}
+.comment-empty{color:var(--m);font-size:.84rem;padding:10px 2px 0}
 
 @media(max-width:760px){
   .visit-summary{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:600px){
   .tags{grid-template-columns:1fr}
-  .comments{grid-template-columns:1fr}
   .wrap{margin-top:18px}
   .summary{grid-template-columns:1fr 1fr}
 }
@@ -81,16 +87,27 @@ th{color:var(--m);font-size:.76rem}
   <section class="panel"><h2>응답 언어</h2><div id="langs" class="tags"></div></section>
   <section class="panel">
     <h2>서술형 응답</h2>
-    <p class="note">설문 작성 시 개인정보를 입력하지 않도록 안내했지만, 아래 내용은 실제 자유서술 응답이므로 외부 공유 시 한 번 확인해 주세요.</p>
+    <p class="note">아래 항목을 눌러 펼쳤을 때만 전체 서술 내용을 확인할 수 있습니다.</p>
     <div class="comments">
-      <div>
-        <h3 style="font-size:.95rem;margin:14px 0 9px">불편했던 점이나 개선되었으면 하는 사항을 알려주세요.</h3>
-        <div id="improvementComments" class="comment-list"></div>
-      </div>
-      <div>
-        <h3 style="font-size:.95rem;margin:14px 0 9px">이번 행사에서 가장 만족스러웠던 점을 알려주세요.</h3>
-        <div id="positiveComments" class="comment-list"></div>
-      </div>
+      <details class="comment-group">
+        <summary>
+          <span>불편했던 점이나 개선되었으면 하는 사항을 알려주세요.</span>
+          <span class="comment-group__count" id="improvementCount">0건</span>
+        </summary>
+        <div class="comment-group__body">
+          <div id="improvementComments" class="comment-list"></div>
+        </div>
+      </details>
+
+      <details class="comment-group">
+        <summary>
+          <span>이번 행사에서 가장 만족스러웠던 점을 알려주세요.</span>
+          <span class="comment-group__count" id="positiveCount">0건</span>
+        </summary>
+        <div class="comment-group__body">
+          <div id="positiveComments" class="comment-list"></div>
+        </div>
+      </details>
     </div>
   </section>
 </div>
@@ -245,14 +262,22 @@ async function loadSurvey(){
 
     tagBox(document.getElementById('issues'),d.inconveniences||{},I);
     tagBox(document.getElementById('langs'),d.languages||{},L);
+    const improvementRows = comments.improvement_comments || [];
+    const positiveRows = comments.positive_comments || [];
+
     renderComments(
       document.getElementById('improvementComments'),
-      comments.improvement_comments||[]
+      improvementRows
     );
     renderComments(
       document.getElementById('positiveComments'),
-      comments.positive_comments||[]
+      positiveRows
     );
+
+    document.getElementById('improvementCount').textContent =
+      `${improvementRows.length.toLocaleString('ko-KR')}건`;
+    document.getElementById('positiveCount').textContent =
+      `${positiveRows.length.toLocaleString('ko-KR')}건`;
 
     loading.hidden=true;
     content.hidden=false;
