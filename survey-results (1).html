@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<title>행사 만족도 조사 · 홈페이지 방문 현황</title>
+<style>
+:root{--b:#0f6fff;--t:#182230;--m:#667085;--l:#e5eaf1;--bg:#f5f8fc;--green:#159a5b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}
+.wrap{width:min(980px,calc(100% - 24px));margin:24px auto 56px}
+.eyebrow{color:var(--b);font-weight:900;letter-spacing:.1em;font-size:.78rem;margin:0 0 6px}
+h1{margin:0;font-size:clamp(1.7rem,6vw,2.4rem)}
+.desc{color:var(--m);line-height:1.65;font-size:.9rem}
+.section-title{margin:24px 0 10px;font-size:1.15rem}
+.summary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}
+.visit-summary{grid-template-columns:repeat(4,1fr)}
+.card,.panel{background:#fff;border:1px solid var(--l);border-radius:18px;box-shadow:0 7px 22px rgba(20,49,91,.05)}
+.card{padding:16px}
+.card span{display:block;color:var(--m);font-size:.8rem;font-weight:700}
+.card strong{display:block;color:var(--b);font-size:1.8rem;margin-top:7px}
+.visit-summary .card strong{color:var(--green)}
+.panel{padding:16px;margin-top:12px}
+.panel h2{font-size:1.05rem;margin:0 0 12px}
+.q{padding:14px 0;border-top:1px solid #edf1f6}
+.q:first-child{border-top:0;padding-top:0}
+.qt{font-weight:850;line-height:1.45;font-size:.94rem}
+.avg{color:var(--b);font-weight:950;font-size:1.55rem;margin:8px 0}
+.rows{display:grid;gap:6px}
+.row{display:grid;grid-template-columns:30px 1fr 42px;gap:8px;align-items:center;font-size:.78rem}
+.track{height:9px;background:#edf2f8;border-radius:999px;overflow:hidden}
+.fill{height:100%;background:var(--b);border-radius:999px}
+.count{text-align:right;color:var(--m)}
+.tags{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.tag{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;background:#f7f9fc;border:1px solid #e8edf4;border-radius:13px;font-size:.84rem}
+.tag strong{color:var(--b)}
+.state{text-align:center;color:var(--m);padding:30px 10px}
+.foot{color:#98a2b3;font-size:.74rem;text-align:right;margin-top:12px}
+.note{margin:8px 0 0;color:var(--m);font-size:.78rem;line-height:1.55}
+button{border:0;border-radius:11px;padding:9px 13px;background:var(--b);color:#fff;font-weight:800;margin-top:12px;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th,td{padding:10px 8px;border-bottom:1px solid #edf1f6;text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--m);font-size:.76rem}
+
+.comments{display:grid;gap:10px}
+.comment-group{background:#f8fafc;border:1px solid #e7edf4;border-radius:14px;overflow:hidden}
+.comment-group summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;cursor:pointer;font-size:.9rem;font-weight:850;line-height:1.45;list-style:none}
+.comment-group summary::-webkit-details-marker{display:none}
+.comment-group summary::after{content:'＋';flex:0 0 auto;color:var(--b);font-size:1.15rem;font-weight:900}
+.comment-group[open] summary::after{content:'−'}
+.comment-group__count{margin-left:auto;color:var(--m);font-size:.75rem;font-weight:800;white-space:nowrap}
+.comment-group__body{padding:0 12px 12px;border-top:1px solid #e7edf4}
+.comment-list{display:grid;gap:10px;padding-top:10px}
+.comment-item{padding:12px 13px;background:#fff;border:1px solid #e7edf4;border-radius:12px}
+.comment-item p{margin:0;white-space:pre-wrap;line-height:1.6;font-size:.88rem}
+.comment-item time{display:block;margin-top:7px;color:#98a2b3;font-size:.72rem}
+.comment-empty{color:var(--m);font-size:.84rem;padding:10px 2px 0}
+
+@media(max-width:760px){
+  .visit-summary{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .tags{grid-template-columns:1fr}
+  .wrap{margin-top:18px}
+  .summary{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+<p class="eyebrow">SURVEY & VISITOR RESULTS</p>
+<h1>행사 만족도 조사 · 홈페이지 방문 현황</h1>
+<p class="desc">「섬 따라 등대 한바퀴」 만족도 조사 집계와 홈페이지 방문 현황을 한 페이지에서 확인할 수 있습니다. 원본 응답과 자유서술 내용은 공개하지 않습니다.</p>
+
+<h2 class="section-title">만족도 조사</h2>
+<section class="summary">
+  <div class="card"><span>총 응답 수</span><strong id="total">-</strong></div>
+  <div class="card"><span>최근 응답</span><strong id="latest" style="font-size:1rem;line-height:1.4">-</strong></div>
+</section>
+
+<div id="loadingSurvey" class="panel state">설문 결과를 불러오는 중입니다.</div>
+<div id="surveyContent" hidden>
+  <section class="panel"><h2>문항별 만족도</h2><div id="questions"></div></section>
+  <section class="panel"><h2>불편사항 응답</h2><div id="issues" class="tags"></div></section>
+  <section class="panel"><h2>응답 언어</h2><div id="langs" class="tags"></div></section>
+  <section class="panel">
+    <h2>서술형 응답</h2>
+    <p class="note">아래 항목을 눌러 펼쳤을 때만 전체 서술 내용을 확인할 수 있습니다.</p>
+    <div class="comments">
+      <details class="comment-group">
+        <summary>
+          <span>불편했던 점이나 개선되었으면 하는 사항을 알려주세요.</span>
+          <span class="comment-group__count" id="improvementCount">0건</span>
+        </summary>
+        <div class="comment-group__body">
+          <div id="improvementComments" class="comment-list"></div>
+        </div>
+      </details>
+
+      <details class="comment-group">
+        <summary>
+          <span>이번 행사에서 가장 만족스러웠던 점을 알려주세요.</span>
+          <span class="comment-group__count" id="positiveCount">0건</span>
+        </summary>
+        <div class="comment-group__body">
+          <div id="positiveComments" class="comment-list"></div>
+        </div>
+      </details>
+    </div>
+  </section>
+</div>
+
+<h2 class="section-title">홈페이지 방문 현황</h2>
+<section class="summary visit-summary">
+  <div class="card"><span>전체 방문자</span><strong id="visitTotalVisitors">-</strong></div>
+  <div class="card"><span>전체 조회수</span><strong id="visitTotalPageviews">-</strong></div>
+  <div class="card"><span>오늘 방문자</span><strong id="visitTodayVisitors">-</strong></div>
+  <div class="card"><span>오늘 조회수</span><strong id="visitTodayPageviews">-</strong></div>
+</section>
+
+<div id="loadingVisits" class="panel state">방문 현황을 불러오는 중입니다.</div>
+<div id="visitContent" hidden>
+  <section class="panel">
+    <h2>최근 14일 방문 현황</h2>
+    <table>
+      <thead><tr><th>날짜</th><th>방문자</th><th>조회수</th></tr></thead>
+      <tbody id="visitDaily"></tbody>
+    </table>
+    <p class="note" id="trackingStarted"></p>
+    <p class="note">방문자 수는 브라우저에 저장된 익명 ID를 기준으로 계산되며, 추적 기능 적용 이후의 접속만 집계됩니다.</p>
+  </section>
+</div>
+
+<button id="refresh">전체 새로고침</button>
+<div id="updated" class="foot"></div>
+</main>
+
+<script>
+const U='https://rkxqayycirimuptduwwy.supabase.co';
+const K='sb_publishable_dFlJrnyhyXKMcdwEmjLKQA_D8gGDa0Z';
+
+const Q={
+  q1:"이번 '섬 따라 등대 한바퀴' 행사에 전반적으로 만족하셨나요?",
+  q2:'행사 참여 방법은 이해하기 쉬웠나요?',
+  q3:'스탬프 대상지 위치와 이동 동선은 찾기 편리했나요?',
+  q4:'홈페이지의 명소정보·길찾기·운영시간·안전 안내는 도움이 되었나요?',
+  q5:'스탬프 투어를 통해 여수의 등대와 주변 관광지에 관심이 높아졌나요?',
+  q6:'기념품은 행사 참여와 완주에 도움이 되었나요?',
+  q7:'앞으로 비슷한 행사가 열린다면 다시 참여하고 싶으신가요?'
+};
+const I={
+  method:'참여 방법',location:'대상지 위치',route:'이동 동선',
+  stamp:'스탬프 이용',qr:'QR·홈페이지',guidance:'현장 안내',
+  gift:'기념품',other:'기타',none:'불편사항 없음'
+};
+const L={ko:'한국어',en:'English',ja:'日本語',zh:'中文'};
+
+async function rpc(name, body={}) {
+  const r = await fetch(`${U}/rest/v1/rpc/${name}`,{
+    method:'POST',
+    headers:{apikey:K,'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  });
+  if(!r.ok) throw new Error(`${name}: ${r.status}`);
+  return r.json();
+}
+
+function tagBox(el,data,map){
+  el.replaceChildren();
+  for(const [k,label] of Object.entries(map)){
+    const d=document.createElement('div'); d.className='tag';
+    const a=document.createElement('span'); a.textContent=label;
+    const b=document.createElement('strong'); b.textContent=`${Number(data?.[k]||0).toLocaleString('ko-KR')}명`;
+    d.append(a,b); el.append(d);
+  }
+}
+
+function qBox(key,avg,counts){
+  const d=document.createElement('div'); d.className='q';
+  const t=document.createElement('div'); t.className='qt'; t.textContent=Q[key];
+  const a=document.createElement('div'); a.className='avg';
+  a.textContent=avg==null?'-':`${Number(avg).toFixed(2)} / 5점`;
+  const rows=document.createElement('div'); rows.className='rows';
+  const total=[1,2,3,4,5].reduce((s,n)=>s+Number(counts?.[n]||0),0);
+
+  [5,4,3,2,1].forEach(n=>{
+    const c=Number(counts?.[n]||0);
+    const r=document.createElement('div'); r.className='row';
+    const x=document.createElement('span'); x.textContent=`${n}점`;
+    const tr=document.createElement('div'); tr.className='track';
+    const f=document.createElement('div'); f.className='fill';
+    f.style.width=total?`${c/total*100}%`:'0%';
+    tr.append(f);
+    const z=document.createElement('span'); z.className='count'; z.textContent=`${c}명`;
+    r.append(x,tr,z); rows.append(r);
+  });
+
+  if(key==='q4'&&Number(counts?.not_used||0)>0){
+    const r=document.createElement('div'); r.className='row';
+    const x=document.createElement('span'); x.textContent='미사용';
+    const tr=document.createElement('div'); tr.className='track';
+    const f=document.createElement('div'); f.className='fill'; f.style.width='0%';
+    tr.append(f);
+    const z=document.createElement('span'); z.className='count'; z.textContent=`${Number(counts.not_used)}명`;
+    r.append(x,tr,z); rows.append(r);
+  }
+
+  d.append(t,a,rows);
+  return d;
+}
+
+
+function renderComments(container, rows){
+  container.replaceChildren();
+  if(!Array.isArray(rows) || rows.length===0){
+    const p=document.createElement('p');
+    p.className='comment-empty';
+    p.textContent='작성된 응답이 없습니다.';
+    container.append(p);
+    return;
+  }
+
+  rows.forEach(row=>{
+    const item=document.createElement('article');
+    item.className='comment-item';
+
+    const p=document.createElement('p');
+    p.textContent=String(row.text||'');
+
+    const time=document.createElement('time');
+    time.textContent=row.created_at
+      ? new Date(row.created_at).toLocaleString('ko-KR')
+      : '';
+
+    item.append(p,time);
+    container.append(item);
+  });
+}
+
+async function loadSurvey(){
+  const loading=document.getElementById('loadingSurvey');
+  const content=document.getElementById('surveyContent');
+  loading.hidden=false; content.hidden=true;
+
+  try{
+    const [d, comments]=await Promise.all([
+      rpc('get_public_survey_results'),
+      rpc('get_public_survey_comments')
+    ]);
+    document.getElementById('total').textContent=Number(d.total_responses||0).toLocaleString('ko-KR');
+    document.getElementById('latest').textContent=d.latest_response_at
+      ? new Date(d.latest_response_at).toLocaleString('ko-KR')
+      : '아직 응답 없음';
+
+    const qs=document.getElementById('questions');
+    qs.replaceChildren();
+    for(const k of ['q1','q2','q3','q4','q5','q6','q7']){
+      qs.append(qBox(k,d.averages?.[k],d.score_counts?.[k]||{}));
+    }
+
+    tagBox(document.getElementById('issues'),d.inconveniences||{},I);
+    tagBox(document.getElementById('langs'),d.languages||{},L);
+    const improvementRows = comments.improvement_comments || [];
+    const positiveRows = comments.positive_comments || [];
+
+    renderComments(
+      document.getElementById('improvementComments'),
+      improvementRows
+    );
+    renderComments(
+      document.getElementById('positiveComments'),
+      positiveRows
+    );
+
+    document.getElementById('improvementCount').textContent =
+      `${improvementRows.length.toLocaleString('ko-KR')}건`;
+    document.getElementById('positiveCount').textContent =
+      `${positiveRows.length.toLocaleString('ko-KR')}건`;
+
+    loading.hidden=true;
+    content.hidden=false;
+  }catch(e){
+    console.error(e);
+    loading.textContent='설문 결과를 불러오지 못했습니다.';
+  }
+}
+
+async function loadVisits(){
+  const loading=document.getElementById('loadingVisits');
+  const content=document.getElementById('visitContent');
+  loading.hidden=false; content.hidden=true;
+
+  try{
+    const d=await rpc('get_site_visit_stats');
+
+    document.getElementById('visitTotalVisitors').textContent=
+      Number(d.total_visitors||0).toLocaleString('ko-KR');
+    document.getElementById('visitTotalPageviews').textContent=
+      Number(d.total_pageviews||0).toLocaleString('ko-KR');
+    document.getElementById('visitTodayVisitors').textContent=
+      Number(d.today_visitors||0).toLocaleString('ko-KR');
+    document.getElementById('visitTodayPageviews').textContent=
+      Number(d.today_pageviews||0).toLocaleString('ko-KR');
+
+    const tbody=document.getElementById('visitDaily');
+    tbody.replaceChildren();
+
+    const rows=Array.isArray(d.daily)?d.daily:[];
+    if(rows.length===0){
+      const tr=document.createElement('tr');
+      const td=document.createElement('td');
+      td.colSpan=3;
+      td.style.textAlign='center';
+      td.style.color='#667085';
+      td.textContent='아직 기록된 방문이 없습니다.';
+      tr.append(td);
+      tbody.append(tr);
+    }else{
+      rows.forEach(row=>{
+        const tr=document.createElement('tr');
+        const date=document.createElement('td');
+        const visitors=document.createElement('td');
+        const views=document.createElement('td');
+        date.textContent=row.date;
+        visitors.textContent=Number(row.visitors||0).toLocaleString('ko-KR');
+        views.textContent=Number(row.pageviews||0).toLocaleString('ko-KR');
+        tr.append(date,visitors,views);
+        tbody.append(tr);
+      });
+    }
+
+    document.getElementById('trackingStarted').textContent=
+      d.tracking_started_at
+        ? `방문자 기록 시작: ${new Date(d.tracking_started_at).toLocaleString('ko-KR')}`
+        : '방문자 기록은 아직 시작되지 않았습니다. 메인 홈페이지에 방문자 추적 스크립트를 연결하면 기록이 시작됩니다.';
+
+    loading.hidden=true;
+    content.hidden=false;
+  }catch(e){
+    console.error(e);
+    loading.textContent='방문 현황을 불러오지 못했습니다.';
+  }
+}
+
+async function loadAll(){
+  await Promise.all([loadSurvey(),loadVisits()]);
+  document.getElementById('updated').textContent=`마지막 확인: ${new Date().toLocaleString('ko-KR')}`;
+}
+
+document.getElementById('refresh').onclick=loadAll;
+loadAll();
+</script>
+</body>
+</html>
