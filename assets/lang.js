@@ -26,7 +26,7 @@
             guhangVerifyNearby: '구항등대가 보이는 출입 가능한 인근 장소에서 촬영',
             guhangSafetyWarning: '안전을 위해 출입 제한구역에는 들어가지 마시고 현장 안내를 반드시 따라주세요.',
             //매일 수정
-            announce: '기념품 수령 현황', noticeTitle: '기념품 수령 현황', noticeText: '55 / 400', noticeUpdateDate: '2026.09.13. 기준',
+            announce: '기념품 수령 현황', noticeTitle: '기념품 수령 현황', noticeText: '60 / 400', noticeUpdateDate: '2026.09.16. 기준',
             // 주의사항
             caution: '주의사항',
             caution1: 'QR 코드는 공식 안내 장소에 부착된 것만 이용해 주세요.',
@@ -140,7 +140,7 @@
             guhangVerifyNearby: 'Take a photo from an accessible nearby area where the Old Harbor Lighthouse is visible.',
             guhangSafetyWarning: 'For your safety, do not enter restricted areas and always follow on-site guidance.',
            //매일 수정
-            announce: 'Souvenir Pickup Status', noticeTitle: 'Souvenir Pickup Status', noticeText: '55 / 400', noticeUpdateDate: 'As of 2026.09.13.',
+            announce: 'Souvenir Pickup Status', noticeTitle: 'Souvenir Pickup Status', noticeText: '60 / 400', noticeUpdateDate: 'As of 2026.09.16.',
             // 주의사항
             caution: 'Important Notes', 
             caution1: 'Use only QR codes posted at official information locations.',
@@ -254,7 +254,7 @@
             guhangVerifyNearby: '旧港灯台が見える立入可能な周辺場所で撮影',
             guhangSafetyWarning: '安全のため立入制限区域には入らず、現地の案内に必ず従ってください。' ,
             //매일 수정
-            announce: '記念品受取状況', noticeTitle: '記念品受取状況', noticeText: '55 / 400', noticeUpdateDate: '2026.09.13. 現在',
+            announce: '記念品受取状況', noticeTitle: '記念品受取状況', noticeText: '60 / 400', noticeUpdateDate: '2026.09.16. 現在',
             // 주의사항
             caution: '注意事項', 
             caution1: 'QRコードは公式案内場所に掲示されたものだけをご利用ください。', 
@@ -365,7 +365,7 @@
             guhangVerifyNearby: '在可进入且能看到旧港灯塔的附近地点拍摄。',
             guhangSafetyWarning: '为确保安全，请勿进入限制区域，并务必遵守现场指引。',
             //매일 수정
-            announce: '纪念品领取情况', noticeTitle: '纪念品领取情况', noticeText: '55 / 400', noticeUpdateDate: '截至2026.09.13.',
+            announce: '纪念品领取情况', noticeTitle: '纪念品领取情况', noticeText: '60 / 400', noticeUpdateDate: '截至2026.09.16.',
             // 주의사항
             caution: '注意事项', 
             caution1: '请仅使用张贴在官方说明地点的二维码。',
