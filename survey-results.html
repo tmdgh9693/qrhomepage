@@ -68,6 +68,19 @@ th{color:var(--m);font-size:.76rem}
 }
 </style>
 </head>
+
+<body>
+<main class="wrap">
+<p class="eyebrow">SURVEY & VISITOR RESULTS</p>
+<h1>행사 만족도 조사 · 홈페이지 방문 현황</h1>
+<p class="desc">「섬 따라 등대 한바퀴」 만족도 조사 집계와 홈페이지 방문 현황을 한 페이지에서 확인할 수 있습니다. 원본 응답과 자유서술 내용은 공개하지 않습니다.</p>
+
+<h2 class="section-title">만족도 조사</h2>
+<section class="summary">
+  <div class="card"><span>총 응답 수</span><strong id="total">-</strong></div>
+  <div class="card"><span>최근 응답</span><strong id="latest" style="font-size:1rem;line-height:1.4">-</strong></div>
+</section>
+
   <h2 class="section-title">홈페이지 방문 현황</h2>
 <section class="summary visit-summary">
   <div class="card"><span>전체 방문자</span><strong id="visitTotalVisitors">-</strong></div>
@@ -92,18 +105,6 @@ th{color:var(--m);font-size:.76rem}
 <button id="refresh">전체 새로고침</button>
 <div id="updated" class="foot"></div>
 </main>
-
-<body>
-<main class="wrap">
-<p class="eyebrow">SURVEY & VISITOR RESULTS</p>
-<h1>행사 만족도 조사 · 홈페이지 방문 현황</h1>
-<p class="desc">「섬 따라 등대 한바퀴」 만족도 조사 집계와 홈페이지 방문 현황을 한 페이지에서 확인할 수 있습니다. 원본 응답과 자유서술 내용은 공개하지 않습니다.</p>
-
-<h2 class="section-title">만족도 조사</h2>
-<section class="summary">
-  <div class="card"><span>총 응답 수</span><strong id="total">-</strong></div>
-  <div class="card"><span>최근 응답</span><strong id="latest" style="font-size:1rem;line-height:1.4">-</strong></div>
-</section>
 
 <div id="loadingSurvey" class="panel state">설문 결과를 불러오는 중입니다.</div>
 <div id="surveyContent" hidden>
